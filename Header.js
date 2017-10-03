@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-import { contactDetails, icons } from '../constants'
+import { contactDetails } from '../constants'
 import theme from '../theme'
+import icons from './iconConstants'
 
 import styled, { css } from 'styled-components'
 import { Flex, Box } from 'rebass'

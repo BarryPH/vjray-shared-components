@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from '../theme'
-import { icons } from '../constants'
+import icons from './iconConstants'
 
 import { Box, Border } from 'rebass'
 import { Grid } from 'grid-styled'

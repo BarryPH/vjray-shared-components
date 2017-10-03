@@ -76,6 +76,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Display-Thin.woff');
   src: local('GT-Eesti-Pro-Display-Thin'),
        url('/static/fonts/GT-Eesti-Pro-Display-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
 }
 
 @font-face {
@@ -83,6 +85,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Display-Light.woff');
   src: local('GT-Eesti-Pro-Display-Light'),
        url('/static/fonts/GT-Eesti-Pro-Display-Light.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
 }
 
 @font-face {
@@ -90,6 +94,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Display-Regular.woff');
   src: local('GT-Eesti-Pro-Display-Regular'),
        url('/static/fonts/GT-Eesti-Pro-Display-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
@@ -97,6 +103,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Display-Medium.woff');
   src: local('GT-Eesti-Pro-Display-Medium'),
        url('/static/fonts/GT-Eesti-Pro-Display-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
@@ -104,6 +112,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Text-Light.woff');
   src: local('GT-Eesti-Pro-Text-Light'), local('GT-Eesti-Pro-Text-Light'),
        url('/static/fonts/GT-Eesti-Pro-Text-Light.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
 }
 
 @font-face {
@@ -111,6 +121,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Text-Book.woff');
   src: local('GT-Eesti-Pro-Text-Book'), local('GT-Eesti-Pro-Text-Book'),
        url('/static/fonts/GT-Eesti-Pro-Text-Book.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
@@ -118,6 +130,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Text-Regular.woff');
   src: local('GT-Eesti-Pro-Text-Regular'), local('GT-Eesti-Pro-Text-Regular'),
        url('/static/fonts/GT-Eesti-Pro-Text-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
@@ -125,6 +139,8 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Text-Medium.woff');
   src: local('GT-Eesti-Pro-Text-Medium'), local('GT-Eesti-Pro-Text-Medium'),
        url('/static/fonts/GT-Eesti-Pro-Text-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
@@ -132,12 +148,14 @@ img {
   src: url('/static/fonts/GT-Eesti-Pro-Text-Bold.woff');
   src: local('GT-Eesti-Pro-Text-Bold'), local('GT-Eesti-Pro-Text-Bold'),
        url('/static/fonts/GT-Eesti-Pro-Text-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
 
 body {
-  font-family: 'GT-Eesti-Pro-Text-Light';
+  font-family: 'GT-Eesti-Pro-Text';
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 200;
   letter-spacing: 0.03em;
   line-height: 1.375;
   color: ${theme.colors.text};

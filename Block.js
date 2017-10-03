@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components';
-import { Box } from 'rebass';
+import { Box, Container } from 'rebass';
 import hoc from './hoc'
 import theme from '../theme.js';
-import Container from './Container.js';
+// import Container from './Container.js';
 
 const Root = hoc(Box).extend`
   font-family: inherit;
@@ -20,25 +20,24 @@ const Root = hoc(Box).extend`
   `}
 `;
 
-Root.Section = Root.withComponent('section')
-
 const Block = (props) => (
-  <Root.Section
+  <Root
+    is='section'
+    id={props.id}
     bg={props.bg}
     border={props.border}
     pt={props.pt || [ 4, 4, 5, 5 ]}
     pb={props.pb || [ 4, 4, 5, 5 ]}
     noBottomPadding={props.noBottomPadding}
     style={props.style}
-    id={props.id}
   >
     <Container
       mw={props.mw}
-      textCenter={props.textCenter}
+      align={props.align}
     >
       {props.children}
     </Container>
-  </Root.Section>
+  </Root>
 );
 
 export default Block;
