@@ -17,7 +17,6 @@ html {
   box-sizing: inherit;
 }
 
-
 blockquote,
 dl,
 dd,
@@ -71,7 +70,6 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
-
 
 @font-face {
   font-family: 'GT-Eesti-Pro-Display-Thin';
@@ -140,8 +138,8 @@ body {
   font-family: 'GT-Eesti-Pro-Text-Light';
   font-size: 16px;
   font-weight: normal;
-  letter-spacing: ${theme.letterSpacing.body};
-  line-height: ${theme.lineHeight.text};
+  letter-spacing: 0.03em;
+  line-height: 1.375;
   color: ${theme.colors.text};
 }
 

@@ -1,14 +1,14 @@
 import Head from 'next/head'
-import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components'
-import theme from '../theme';
+import PropTypes from 'prop-types'
+import { Provider } from 'rebass'
+import theme from '../theme-new'
 import globalStyles from './global'
 
-
 // https://github.com/zeit/next.js/blob/master/examples/layout-component/components/layout.js
+// http://jxnblk.com/rebass/theming
 
 const Root = props => (
-  <ThemeProvider theme={ theme }>
+  <Provider theme={ theme }>
     <div>
       <Head>
         <title>{ props.title }</title>
@@ -20,7 +20,7 @@ const Root = props => (
       { props.children }
 
     </div>
-  </ThemeProvider>
+  </Provider>
 );
 
 class Layout extends React.Component {
