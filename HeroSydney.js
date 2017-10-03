@@ -1,51 +1,10 @@
-
-/*
-    return (
-      <Root>
-        <FullBoxHeight>
-          <CoverImage homeSydney src='http://res.cloudinary.com/pw-img-cdn/image/upload/v1504164089/home-sydney_qrh7b8.jpg' />
-
-          <Container
-            mw='sm'
-            textCenter
-            relative
-            pt={[ 4, 4, 5, 5, 6 ]}
-          >
-            <Subheadline color='brandAlt' children='Dependable and effective' />
-            <Display color='brandAlt'>
-              We believe in better <LineBreak bp='1' m='auto'>Strata management for Sydney.</LineBreak>
-            </Display>
-            <Text
-              color='text'
-              mb={3}
-              mx='auto'
-              w={[ 1, 10/12 ]}
-            />
-            <Text font='textMedium'>
-              <Button
-                color='brandAlt'
-                bg='white'
-                icon
-                children='Visit VJ Ray Strata'
-              />
-            </Text>
-          </Container>
-
-        </FullBoxHeight>
-      </Root>
-    )
-
-*/
-
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Link from 'next/link';
 
 import styled, { css } from 'styled-components';
 import { Flex, Box } from 'rebass';
-import { FlexEmbed } from '../FlexEmbed.js';
+import { FlexEmbed } from './FlexEmbed.js';
 import hoc from './hoc'
 import theme from '../theme.js';
 
