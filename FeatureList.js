@@ -21,7 +21,7 @@ const GridRoot = styled(Grid)`
 
 const Feature = props => (
   <StyledGrid>
-    <Border color={theme.colors.brand} mb={2} p={1}>
+    <Border borderWidth={props.border ? '1px' : '0'} color={theme.colors.brand} mb={2} p={1}>
       <StyledIcon icon={props.icon} />
       <Header>{props.header}</Header>
     </Border>
@@ -53,26 +53,30 @@ const Divider = () => (
   </RootDivider>
 );
 
-const FeatureList = () => (
+const FeatureList = (props) => (
   <Box w={[ 5/6, 5/6, 5/6, 1 ]} mx='auto' mt={[ 2, 2, 2, 3 ]}>
     <Box mx={-3}>
       <Feature
         icon={icons.experience}
+        border={props.border}
         header='Strata Management'
         lede="We've pretty much seen it all, so we know how to solve it."
       />
       <Feature
         icon={icons.lockin}
+        border={props.border}
         header='Real Estate sales'
         lede="Stay because you're happy, not because you're stuck with us."
       />
       <Feature
         icon={icons.service}
+        border={props.border}
         header='Real Estate rentals'
         lede="We're open Saturdays, because not everyone has time in work hours."
       />
       <Feature
         icon={icons.emergency}
+        border={props.border}
         header='Real Estate valuations'
         lede="Emergencies happen. Speak to one of our senior staff anytime."
       />

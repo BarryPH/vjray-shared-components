@@ -20,6 +20,8 @@ const Root = hoc(Box).extend`
   `}
 `;
 
+// `
+
 const LogoBox = styled(Box)`
   @media (max-width: 512px) {
     margin-top: 12px;

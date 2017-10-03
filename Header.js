@@ -9,6 +9,7 @@ import { Flex, Box } from 'rebass'
 
 import hoc from './hoc'
 import Icon from './Icon';
+import { IconPhone } from './Icons'
 import { Display } from './Headline'
 import { Text, InlineText, Divider } from './Text'
 import Container from './Container'
@@ -144,6 +145,16 @@ const ResponsiveToggle = styled(Box)`
   `}
 `//`
 
+const CTALink = props => (
+  <Link href={props.href}>
+    <a><LinkText>
+      <StyledButton invert>
+        {props.children}
+      </StyledButton>
+    </LinkText></a>
+  </Link>
+)
+
 const DesktopNav = styled(ResponsiveToggle)`
   bottom: 0;
   left: 0;
@@ -159,15 +170,10 @@ const Nav = styled(ResponsiveToggle)`
 
   a {
     cursor: pointer;
-  }
-
-  /* Following styles are applied to span as well to style dividers from Text.js */
-  a, span {
     line-height: ${theme.blockHeights.navBar};
   }
 
-  a:not(:last-child),
-  span:not(:last-child) {
+  a:not(:last-child) {
     margin-right: 1.5rem;
   }
 
@@ -253,6 +259,7 @@ const LinkText = props =>
 
 const StyledDivider = styled(Divider)`
   margin-left: 0 !important;
+  line-height: ${theme.blockHeights.navBar};
 `
 
 const MobileLinkText = props =>
@@ -368,14 +375,12 @@ class Header extends React.Component {
                     <a><LinkText isActive={this.props.pathname === '/what-we-do-for-you'}>What We Do For You</LinkText></a>
                   </Link>
 
-                  <Link href='/contact'>
-                    <a><LinkText isActive={this.props.pathname === '/contact'}>Contact Us</LinkText></a>
+                  <Link href='/useful-info'>
+                    <a><LinkText isActive={this.props.pathname === '/useful-info'}>Useful Info</LinkText></a>
                   </Link>
 
-                  <StyledDivider />
-
-                  <Link href={'tel:' + contactDetails.phone}>
-                    <a><LinkText>{contactDetails.phone}</LinkText></a>
+                  <Link href='/contact'>
+                    <a><LinkText isActive={this.props.pathname === '/contact'}>Contact Us</LinkText></a>
                   </Link>
                 </Nav>
               </DesktopNav>
@@ -391,13 +396,22 @@ class Header extends React.Component {
               </Box>
 
               <Nav hidePhoneNumberResponsively>
-                <Link href='vjraystrata.com.au'>
-                  <a><LinkText>
-                    <StyledButton invert>
-                      Visit VJ Ray Strata
-                    </StyledButton>
-                  </LinkText></a>
-                </Link>
+                {this.props.linkToStrata &&
+                  <CTALink
+                   href='vjraystrata.com.au'
+                  >
+                    Visit VJ Ray Strata
+                  </CTALink>
+                }
+
+                {!this.props.linkToStrata &&
+                  <CTALink
+                    href={'tel:' + contactDetails.phone}
+                  >
+                    <IconPhone navBar />
+                    {contactDetails.phone}
+                  </CTALink>
+                }
               </Nav>
 
               <ResponsiveToggle hideAtDesktop p={2}>
@@ -424,6 +438,9 @@ class Header extends React.Component {
                 <Link href='/'>
                   <a><MobileLinkText>Home</MobileLinkText></a>
                 </Link>
+                  <Link href='/who-we-are'>
+                    <a><LinkText isActive={this.props.pathname === '/who-we-are'}>Who We Are</LinkText></a>
+                  </Link>
                 <Link href='/who-we-are'>
                   <a><MobileLinkText>Who we are</MobileLinkText></a>
                 </Link>
@@ -458,6 +475,7 @@ Header.propTypes = {
   invertTextOnMobile: PropTypes.bool,
   pathname: PropTypes.string,
   reverseBorder: PropTypes.bool,
+  linkToStrata: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -465,6 +483,7 @@ Header.defaultProps = {
   clear: false,
   invertTextOnMobile: false,
   reverseBorder: false,
+  linkToStrata: false,
 };
 
 export default Header;
