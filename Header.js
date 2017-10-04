@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { contactDetails } from '../constants'
 import theme from '../theme'
 import icons from './iconConstants'
+import { headerFade } from './animationConstants'
 
 import styled, { css } from 'styled-components'
 import { Flex, Box } from 'rebass'
@@ -12,20 +13,73 @@ import hoc from './hoc'
 import Icon from './Icon';
 import { IconPhone } from './Icons'
 import { Display } from './Headline'
-// import { Text, InlineText, Divider } from './Text'
 import { Text } from './Texts'
+import { Divider } from './Text'
 import Container from './Container'
 import Button from './Button'
-import { ButtonOutline } from './Buttons'
 import Hamburger from './Hamburger'
+import MobileNav from './HeaderMobileNav'
+import DesktopNav from './HeaderDesktopNav'
 
 
-const fade = {
-  duration: 0.25,
-  delay: 0.15,
-};
+//
+// Text & buttons
+//
 
-const Root = styled(({
+const LinkTextRoot = hoc('span')
+
+const LinkText = props => (
+  <LinkTextRoot
+    font='textRegular'
+    fontSize={[ 2, 3 ]}
+    color='inherit'
+    children={props.children}
+  />
+)
+
+const StyledButton = Button.extend`
+  border-width: 1px;
+`
+
+const CTA = styled.span`
+  ${props => props.hidePhoneNumberResponsively && css`
+    @media (min-width: 769px) and (max-width: 1023px) {
+      display: none;
+    }
+  `}
+`
+
+const CTALink = props => (
+  <Link href={props.href}>
+    <a>
+      <LinkText>
+        <StyledButton color='text'>{props.children}</StyledButton>
+      </LinkText>
+    </a>
+  </Link>
+);
+
+
+//
+// Resp toggle
+// TODO: use util
+//
+
+const ResponsiveToggle = styled(Box)`
+  ${props => props.hideAtDesktop && css`
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  `}
+
+  ${props => props.hideAtMobile && css`
+    @media (max-width: 768px) {
+      display: none;
+    }
+  `}
+`
+
+const HeaderRoot = styled(({
   isHidden,
   isWindowScrolled,
   isModalVisible,
@@ -46,10 +100,10 @@ const Root = styled(({
   top: 0;
   transform: translate3d(0, 0, 0) translateY(0px);
   transition:
-    opacity ${fade.duration}s ease-in-out ${fade.delay}s,
-    transform ${fade.duration}s ease-in-out ${fade.delay}s,
-    background-color ${fade.duration}s ease-in-out,
-    border ${fade.duration}s ease-in-out 0s;
+    opacity ${headerFade.duration}s ease-in-out ${headerFade.delay}s,
+    transform ${headerFade.duration}s ease-in-out ${headerFade.delay}s,
+    background-color ${headerFade.duration}s ease-in-out,
+    border ${headerFade.duration}s ease-in-out 0s;
   width: 100%;
   z-index: 3;
 
@@ -81,10 +135,10 @@ const Root = styled(({
     opacity: 0;
     transform: translate3d(0, 0, 0) translateY(-${theme.blockHeights.navBar});
     transition:
-      opacity ${fade.duration}s ease-in-out 1s,
-      transform ${fade.duration}s ease-in-out 1s,
-      background-color ${fade.duration}s ease-in-out,
-      border ${fade.duration}s ease-in-out 0s;
+      opacity ${headerFade.duration}s ease-in-out 1s,
+      transform ${headerFade.duration}s ease-in-out 1s,
+      background-color ${headerFade.duration}s ease-in-out,
+      border ${headerFade.duration}s ease-in-out 0s;
   `}
 
   ${props => props.isWindowScrolled && css`
@@ -95,10 +149,10 @@ const Root = styled(({
       0 6px 30px 5px rgba(0,0,0,0.03);
     color: ${theme.colors.text};
     transition:
-      opacity ${fade.duration}s ease-in-out,
-      transform ${fade.duration}s ease-in-out,
-      background-color ${fade.duration}s ease-in-out,
-      border ${fade.duration}s ease-in-out;
+      opacity ${headerFade.duration}s ease-in-out,
+      transform ${headerFade.duration}s ease-in-out,
+      background-color ${headerFade.duration}s ease-in-out,
+      border ${headerFade.duration}s ease-in-out;
   `}
 
   ${props => props.isModalVisible && css`
@@ -107,10 +161,10 @@ const Root = styled(({
     background-color: var(--Header-background-color);
     border-bottom: 1px solid var(--Header-border-color);
     transition:
-      opacity ${fade.duration}s ease-in-out,
-      transform ${fade.duration}s ease-in-out,
-      background-color ${fade.duration}s ease-in-out,
-      border ${fade.duration}s ease-in-out;
+      opacity ${headerFade.duration}s ease-in-out,
+      transform ${headerFade.duration}s ease-in-out,
+      background-color ${headerFade.duration}s ease-in-out,
+      border ${headerFade.duration}s ease-in-out;
   `}
 
   ${props => props.invertTextOnMobile && css`
@@ -129,174 +183,75 @@ const Root = styled(({
   `}
 `;
 
-// Resp toggle
-// TODO: use util
+const Root = props => (
+  <div>
+    <HeaderRoot
+      isHidden={!props.isVisible}
+      isWindowScrolled={props.isWindowScrolled}
+      isModalVisible={props.isModalVisible}
+    >
+      <Container
+        px={[ 1, 2, 2, 3 ]}
+        mw='lg'
+        w={1}
+      >
+        <Flex
+          align='center'
+          justify='space-between'
+        >
+          <Box>
+            <Link href='/'>
+              <a><Icon
+                color={props.color}
+                size='80'
+                icon={icons.logo}
+              /></a>
+            </Link>
+          </Box>
 
-const ResponsiveToggle = styled(Box)`
-  ${props => props.hideAtDesktop && css`
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  `}
+          <ResponsiveToggle hideAtMobile>
+            <DesktopNav
+              navItems={props.desktopNavItems}
+              pathname={props.pathname}
+            />
 
-  ${props => props.hideAtMobile && css`
-    @media (max-width: 768px) {
-      display: none;
-    }
-  `}
-`//`
+            <CTA hidePhoneNumberResponsively>
+              {props.linkToStrata &&
+                <CTALink href='vjraystrata.com.au' >
+                  Visit VJ Ray Strata
+                </CTALink>
+              }
 
-// 
-// Text & buttons
-// 
+              {!props.linkToStrata &&
+                <CTALink href={'tel:' + contactDetails.phone} >
+                  <IconPhone navBar />
+                  {contactDetails.phone}
+                </CTALink>
+              }
+            </CTA>
+          </ResponsiveToggle>
 
-const LinkTextRoot = styled(Text)`
-  ${props => props.isActive && css`
-    border-bottom: 2px solid currentColor;
-    padding-bottom: 33px;
-  `}
-`;
+          <ResponsiveToggle hideAtDesktop p={2}>
+            <Hamburger onClick={props.handleModalTriggerClick} isOpen={props.isModalVisible}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </Hamburger>
+          </ResponsiveToggle>
 
-const LinkText = props => (
-  <LinkTextRoot
-    family="textRegular"
-    color="inherit"
-    isActive={props.isActive}
-    children={props.children}
-  />
-);
+        </Flex>
+      </Container>
+    </HeaderRoot>
 
-const StyledButton = styled(ButtonOutline)`
-  border-width: 1px;
-  box-shadow: inset 0 0 0 1px;
-`
-const CTALink = props => (
-  <Link href={props.href}>
-    <a>
-      <LinkText>
-        <StyledButton color='text'>{props.children}</StyledButton>
-      </LinkText>
-    </a>
-  </Link>
-);
+    <MobileNav
+      navItems={props.mobileNavItems}
+      handleModalClick={props.handleModalClick}
+      isVisible={props.isModalVisible}
+    />
+  </div>
+)
 
-// const StyledDivider = styled(Divider)`
-//   margin-left: 0 !important;
-//   line-height: ${theme.blockHeights.navBar};
-// `;
-
-const MobileLinkText = props => (
-  <Display
-    align="left"
-    color="text"
-    isActive={props.isActive}
-    children={props.children}
-  />
-);
-
-
-// 
-// Navs
-// 
-
-const DesktopNav = styled(ResponsiveToggle)`
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-`
-
-const Nav = styled(ResponsiveToggle)`
-  display: flex;
-  justify-content: center;
-
-  a {
-    cursor: pointer;
-    line-height: ${theme.blockHeights.navBar};
-  }
-
-  a:not(:last-child) {
-    margin-right: 1.5rem;
-  }
-
-  ${props => props.hidePhoneNumberResponsively && css`
-    @media (min-width: 769px) and (max-width: 1023px) {
-      display: none;
-    }
-  `}
-`;//`
-
-
-// 
-// Mobile nav
-// 
-
-const MobileNav = styled.nav`
-  a {
-    margin: 0.5rem 0;
-  }
-`;
-
-const MobileNavContainer = styled(Container)`
-  @media (max-width: ${theme.breakpoints[1]}em) {
-    padding: 0;
-  }
-`
-
-const MobileNavFlex = Flex.extend`
-  align-content: flex-end;
-  opacity: 0;
-  transform: translateY(-32px);
-
-  ${props => props.isVisible && css`
-    opacity: 1;
-    transform: translateY(0);
-    transition:
-      opacity ${fade.duration}s ease-in-out,
-      transform ${fade.duration}s ease-in-out;
-  `}
-`//`
-
-const MobileModal = Flex.extend`
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity ${fade.duration}s ease-in-out,
-    transform 0s ease-in-out 0s;
-  background-color: ${theme.colors.offWhite};
-  bottom: 0;
-  left: 0;
-  padding: ${theme.space[3]}px;
-  position: fixed;
-  right: 0;
-  top: ${theme.blockHeights.navBar};
-  z-index: 15;
-
-  ${props => !props.isVisible && css`
-    opacity: 0;
-    transform: translateY(100vh);
-    transition:
-      opacity ${fade.duration}s ease-in-out,
-      transform 0s ease-in-out ${fade.duration}s;
-  `}
-`//`
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * final component
- */
 
 
 class Header extends React.Component {
@@ -363,123 +318,55 @@ class Header extends React.Component {
   }
 
   render() {
+    const desktopNavItems = [
+      {
+        label: 'Who we are',
+        href: '/who-we-are',
+      },
+      {
+        label: 'What we do for you',
+        href: '/what-we-do-for-you',
+      },
+      {
+        label: 'Useful Info',
+        href: '/useful-info',
+      },
+      {
+        label: 'Contact',
+        href: '/contact',
+      },
+    ];
+
+    const mobileNavItems = [
+      {
+        label: 'Home',
+        href: '/',
+      },
+      {
+        label: 'Who we are',
+        href: '/who-we-are',
+      },
+      {
+        label: 'What we do for you',
+        href: '/what-we-do-for-you',
+      },
+      {
+        label: 'Contact',
+        href: '/contact',
+      },
+    ];
+
     return (
-      <div>
-        <Root
-          isHidden={!this.state.isVisible}
-          isWindowScrolled={this.state.isWindowScrolled}
-          isModalVisible={this.state.isModalVisible}
-        >
-          <Container
-            px={[ 1, 2, 2, 3 ]}
-            mw='lg'
-            w={1}
-          >
-            <Flex
-              align='center'
-              justify='space-between'
-            >
+      <Root
+        desktopNavItems={desktopNavItems}
+        mobileNavItems={mobileNavItems}
 
-              <DesktopNav hideAtMobile style={{ textAlign: 'center' }}>
-                <Nav>
-                  <Link href='/who-we-are'>
-                    <a><LinkText isActive={this.props.pathname === '/who-we-are'}>Who We Are</LinkText></a>
-                  </Link>
+        handleModalClick={this.handleModalClick}
+        handleModalTriggerClick={this.handleModalTriggerClick}
 
-                  <Link href='/what-we-do-for-you'>
-                    <a><LinkText isActive={this.props.pathname === '/what-we-do-for-you'}>What We Do For You</LinkText></a>
-                  </Link>
-
-                  <Link href='/useful-info'>
-                    <a><LinkText isActive={this.props.pathname === '/useful-info'}>Useful Info</LinkText></a>
-                  </Link>
-
-                  <Link href='/contact'>
-                    <a><LinkText isActive={this.props.pathname === '/contact'}>Contact Us</LinkText></a>
-                  </Link>
-                </Nav>
-              </DesktopNav>
-
-              <Box>
-                <Link href='/'>
-                  <a><Icon
-                    color={this.props.color}
-                    size='80'
-                    icon={icons.logo}
-                  /></a>
-                </Link>
-              </Box>
-
-              <Nav hidePhoneNumberResponsively>
-                {this.props.linkToStrata &&
-                  <CTALink
-                   href='vjraystrata.com.au'
-                  >
-                    Visit VJ Ray Strata
-                  </CTALink>
-                }
-
-                {!this.props.linkToStrata &&
-                  <CTALink
-                    href={'tel:' + contactDetails.phone}
-                  >
-                    <IconPhone navBar />
-                    {contactDetails.phone}
-                  </CTALink>
-                }
-              </Nav>
-
-              <ResponsiveToggle hideAtDesktop p={2}>
-                <Hamburger onClick={this.handleModalTriggerClick} isOpen={this.state.isModalVisible}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </Hamburger>
-              </ResponsiveToggle>
-
-            </Flex>
-          </Container>
-        </Root>
-
-        <MobileModal
-          onClick={this.handleModalClick}
-          isVisible={this.state.isModalVisible}
-          column
-        >
-          <MobileNav>
-            <MobileNavContainer textCenter>
-              <MobileNavFlex column isVisible={this.state.isModalVisible}>
-                <Link href='/'>
-                  <a><MobileLinkText>Home</MobileLinkText></a>
-                </Link>
-                  <Link href='/who-we-are'>
-                    <a><LinkText isActive={this.props.pathname === '/who-we-are'}>Who We Are</LinkText></a>
-                  </Link>
-                <Link href='/who-we-are'>
-                  <a><MobileLinkText>Who we are</MobileLinkText></a>
-                </Link>
-                <Link href='/what-we-do-for-you'>
-                  <a><MobileLinkText>What we do for you</MobileLinkText></a>
-                </Link>
-                <Link href='/contact'>
-                  <a><MobileLinkText>Contact us</MobileLinkText></a>
-                </Link>
-
-                <Link href='/let-us-help-you'>
-                  <a>
-                    <Text align='left' font='textRegular' mt={1}>
-                      <ButtonOutline icon children='Get a fast quote' />
-                    </Text>
-                  </a>
-                </Link>
-
-              </MobileNavFlex>
-            </MobileNavContainer>
-          </MobileNav>
-        </MobileModal>
-
-      </div>
+        {...this.state}
+        {...this.props}
+      />
     )
   }
 }
@@ -497,6 +384,7 @@ Header.defaultProps = {
   color: 'text',
   clear: false,
   invertTextOnMobile: false,
+  pathname: '',
   reverseBorder: false,
   linkToStrata: false,
 };
