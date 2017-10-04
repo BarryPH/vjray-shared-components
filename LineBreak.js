@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import { displayBreakPoint } from './utils'
 
-const RespToggle = styled.span`
+const LineBreak = styled.span`
+  font: inherit;
+  display: block;
   ${displayBreakPoint}
 `
 
-export default RespToggle
+export default LineBreak

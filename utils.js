@@ -1,4 +1,4 @@
-import { style } from 'styled-system'
+import { style, responsiveStyle } from 'styled-system'
 
 // https://github.com/jxnblk/styled-system#style
 // https://github.com/jxnblk/rebass/pull/275
@@ -21,7 +21,27 @@ const family = style({
   key: 'families'
 })
 
+const letterSpacing = style({
+  prop: 'ls',
+  cssProperty: 'letterSpacing',
+  key: 'letterSpacings'
+})
+
+const lineHeight = style({
+  prop: 'lh',
+  cssProperty: 'lineHeight',
+  key: 'lineHeights'
+})
+
+const displayBreakPoint = responsiveStyle({
+  prop: 'break',
+  cssProperty: 'display'
+})
+
 export {
   weight,
-  family
+  family,
+  lineHeight,
+  letterSpacing,
+  displayBreakPoint
 }

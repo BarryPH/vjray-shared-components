@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
-import { Box, Flex } from 'rebass';
+import { Box, Flex, Container } from 'rebass';
 import theme from '../theme.js';
-import Container from './Container'
 
 
 // @media (min-width: 768px) {
@@ -15,6 +14,22 @@ import Container from './Container'
 // @media (min-width: 1536px) {
 //   height: calc(var(--Hero-height) + var(--Header-height)) !important;
 // }
+
+/*
+ * HeroFrame is an alternative to HeroBox.
+ * it works without need for HeroContainer, HeroFlex or HeroTitleBox.
+ */
+
+const HeroFrame = styled(Box)`
+  --Header-height: ${theme.blockHeights.navBar};
+  height: auto;
+  padding-top: var(--Header-height);
+  position: relative;
+`
+
+/*
+ * HeroBox, HeroContainer, and HeroFlex or HeroTitleBox work together.
+ */
 
 const HeroBox = styled(Box)`
   --Header-height: ${theme.blockHeights.navBar};
@@ -43,18 +58,6 @@ const HeroBox = styled(Box)`
         right: 0;
       }
   `}
-`//`
-
-/*
- * HeroFrame is an alternative to HeroBox.
- * it works without need for HeroContainer, HeroFlex or HeroTitleBox.
- */
-
-const HeroFrame = styled(Box)`
-  --Header-height: ${theme.blockHeights.navBar};
-  height: auto;
-  padding-top: var(--Header-height);
-  position: relative;
 `
 
 const HeroContainer = styled(Container)`
@@ -77,7 +80,7 @@ const HeroTitleBoxRoot = styled(Box)`
       p { color: ${theme.colors.text20}; }
     }
   `}
-`//`
+`
 
 const HeroTitleBox = props =>
   <HeroTitleBoxRoot ml={[ 0, 0, 4, 0 ]} {...props} />

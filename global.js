@@ -1,6 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
-import theme from '../theme.js';
+import theme from '../theme-new.js';
 
 
 injectGlobal`
@@ -153,12 +153,12 @@ img {
 }
 
 body {
+  color: ${theme.colors.text};
   font-family: 'GT-Eesti-Pro-Text';
   font-size: 16px;
   font-weight: 200;
-  letter-spacing: 0.03em;
-  line-height: 1.375;
-  color: ${theme.colors.text};
+  letter-spacing: ${theme.letterSpacings.body};
+  line-height: ${theme.lineHeights.text};
 }
 
 a {

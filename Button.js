@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import { Button as foo } from 'rebass';
 import theme from '../theme.js';
 
 // Using the SuitCSS button
@@ -7,34 +8,11 @@ import theme from '../theme.js';
 // letter-spacing: var(--Button-letter-spacing);
 // --Button-height: calc(54px - calc( 2 * var(--Button-border-width)) );
 
-const Button = styled.button`
-  --Button-background-color: transparent;
-  --Button-border-color: currentcolor;
-  --Button-border-width: 2px;
-  --Button-color: inherit;
-  --Button-disabled-opacity: 0.6;
-  --Button-font: inherit;
-  --Button-height: 44px;
-  --Button-padding: 2px 1rem 0;
-
-  background: var(--Button-background-color);
-  border-color: var(--Button-border-color);
-  border-style: solid;
-  border-width: var(--Button-border-width);
-  color: var(--Button-color);
-  cursor: pointer;
-  display: inline-block;
-  font-family: var(--Button-font);
+const Button = styled(foo)`
+  font-family: inherit;
   font-size: inherit;
   letter-spacing: inherit;
-  line-height: var(--Button-height);
-  margin: 0;
-  padding: var(--Button-padding);
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: inherit;
-  user-select: none;
+  line-height: inherit;
 
   &:-moz-focus-inner {
     border: 0;
@@ -58,14 +36,6 @@ const Button = styled.button`
     cursor: default;
     opacity: var(--Button-disabled-opacity);
   }
-
-  ${props => props.color && css`
-    --Button-color: ${theme.colors[props.color]};
-  `}
-
-  ${props => props.bgColor && css`
-    --Button-background-color: ${theme.colors[props.bgColor]};
-  `}
 
   ${props => props.clean && css`
     --Button-background-color: transparent;

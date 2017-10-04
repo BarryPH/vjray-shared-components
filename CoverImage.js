@@ -2,9 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled, { css } from 'styled-components'
-import theme from '../theme.js';
-
 import { Box } from 'rebass';
+import theme from '../theme.js';
 
 
 const Root = styled(Box)`

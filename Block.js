@@ -1,15 +1,9 @@
-import styled, {css} from 'styled-components';
-import { Box, Container } from 'rebass';
-import hoc from './hoc'
-import theme from '../theme.js';
-// import Container from './Container.js';
+import styled, {css} from 'styled-components'
+import { Box, Container, Border } from 'rebass'
+import theme from '../theme-new.js'
 
-const Root = hoc(Box).extend`
+const Root = styled(Box)`
   font-family: inherit;
-
-  ${props => props.bg && css`
-    background-color: ${theme.colors[props.color]};
-  `}
 
   ${props => props.border && css`
     border-top: 1px solid ${theme.colors.text10};
@@ -40,4 +34,4 @@ const Block = (props) => (
   </Root>
 );
 
-export default Block;
+export default Block
