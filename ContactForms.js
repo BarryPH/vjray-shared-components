@@ -1,23 +1,12 @@
 import PropTypes from 'prop-types'
-
 import { Box } from 'rebass'
-import Container from './Container'
-import { Display, Subheadline } from './Headline'
-import { SmallText } from './Text'
 import { Tabs, Pane } from './Tabs'
-
 import FormContact from './FormContact'
 import FormIssue from './FormIssue'
 
 
 const Root = props => (
   <div>
-    <Container textCenter>
-      <Subheadline color='brandAlt' children='Get in touch' />
-      <Display color='brand' mb={1} children='How can we help you?' />
-      <SmallText pt={3} color='text70'>For emergencies, call 1300 073 123 any time.</SmallText>
-    </Container>
-
     <Box mt={[ 3, 3, 3, 4]}>
       <Tabs selected={props.defaultForm === 'report' ? 1 : 0}>
         {props.tabs.map(tab =>

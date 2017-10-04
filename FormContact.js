@@ -3,7 +3,7 @@ import Formsy, { HOC } from 'formsy-react';
 
 import insertGoogleTags from '../../lib/insert-google-tags.js';
 
-import theme from '../theme'
+import theme from '../theme-new'
 import FormContainer from './FormContainer'
 import {
   Form,

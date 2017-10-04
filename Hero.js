@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
-import { Box, Flex, Container } from 'rebass';
+import { Box, Flex } from 'rebass';
+import Container from './Container2';
 import theme from '../theme.js';
 
 

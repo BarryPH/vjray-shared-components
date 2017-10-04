@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components'
-import { Box, Container, Border } from 'rebass'
+import { Box } from 'rebass'
+import Container from './Container2'
 import theme from '../theme-new.js'
 
 const Root = styled(Box)`
@@ -26,8 +27,8 @@ const Block = (props) => (
     style={props.style}
   >
     <Container
-      mw={props.mw}
-      align={props.align}
+      maxWidth={props.maxWidth}
+      textCenter={props.textCenter}
     >
       {props.children}
     </Container>

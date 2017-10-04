@@ -28,7 +28,6 @@ const Root = styled(Rebass.Text)`
 // * LargeText
 // * AuthorText
 
-
 const Text = props =>
   <Root
     fontSize={[ 2, 2, 2, 3 ]}
@@ -37,21 +36,21 @@ const Text = props =>
   />
 
 const SmallText = props =>
-<Root
+  <Root
     fontSize={[ 1, 1, 2 ]}
     weight={2}
     {...props}
   />
 
 const MediumText = props =>
-<Root
+  <Root
     fontSize={[ 3, 3, 4 ]}
     weight={2}
     {...props}
   />
 
 const LargeText = props =>
-<Root
+  <Root
     fontSize={[ 3, 3, 4, 5 ]}
     weight={2}
     lh='subheadline'
@@ -60,7 +59,7 @@ const LargeText = props =>
   />
 
 const AuthorText = props =>
-<Root
+  <Root
     is='span'
     caps
     color='inherit'
@@ -88,7 +87,7 @@ const Divider = styled.span`
 // Find another way…
 // 
 
-const TextBlock = styled('div')`
+const TextBlock = styled("div")`
   h1 {
     font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[5]}px;
@@ -111,7 +110,7 @@ const TextBlock = styled('div')`
   h2 {
     font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[3]}px;
-    letterSpacing: ${theme.letterSpacings.text};
+    letterspacing: ${theme.letterSpacings.text};
     line-height: ${theme.lineHeights.subheadline};
     margin-bottom: ${theme.space[1]}px;
 
@@ -126,7 +125,7 @@ const TextBlock = styled('div')`
 
   p,
   li {
-    font-size: 16px;
+    font-size: ${theme.fontSizes[2]}px;
     font-family: ${theme.families.textLight};
     margin: 0;
     order: initial;
@@ -134,7 +133,7 @@ const TextBlock = styled('div')`
     width: 100%;
 
     @media (min-width: ${theme.breakpoints[1]}em) {
-      font-size: 19px;
+      font-size: ${theme.fontSizes[3]}px;
     }
   }
 
@@ -154,7 +153,7 @@ const TextBlock = styled('div')`
     padding-left: 8px;
     width: auto;
   }
-`
+`;
 
 const DangerouslyResetTextBlock = styled(TextBlock)`
   > div,

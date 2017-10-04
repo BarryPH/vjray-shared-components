@@ -60,7 +60,7 @@ const Display = props =>
 
 const MetaHeading = props =>
   <Root
-    align='center'
+    center
     caps
     family='textMedium'
     fontSize={[0, 0, 1]}

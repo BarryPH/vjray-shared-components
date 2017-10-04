@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Formsy, { HOC } from 'formsy-react';
-import styled, { css } from 'styled-components'
 
+import styled, { css } from 'styled-components'
 import { Box } from 'rebass'
-import theme from '../theme'
+import theme from '../theme-new'
 import LaddaButton from './LaddaButton.js'
-import { Text } from './Text'
+import { Text } from './Texts'
 import {
   Form,
   SuccessMessage,
@@ -75,11 +75,16 @@ class FormContainer extends React.Component {
           >
             {this.props.children}
 
-            <Text align='right'>
+            <Text right>
               { this.state.formSent &&
                 <SuccessMessage>Thanks! We'll contact you within 48 hours.</SuccessMessage>
               }
-              <LaddaButton primary loading={this.state.loading} type='submit' disabled={this.state.formSent || !this.state.canSubmit}>
+              <LaddaButton 
+                bg="brand" 
+                loading={this.state.loading} 
+                type='submit' 
+                disabled={this.state.formSent || !this.state.canSubmit}
+              >
                 { this.state.formSent ? 'Sent' : 'Send' }
               </LaddaButton>
             </Text>

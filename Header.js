@@ -12,10 +12,11 @@ import hoc from './hoc'
 import Icon from './Icon';
 import { IconPhone } from './Icons'
 import { Display } from './Headline'
-import { Text, InlineText, Divider } from './Text'
+// import { Text, InlineText, Divider } from './Text'
+import { Text } from './Texts'
 import Container from './Container'
 import Button from './Button'
-
+import { ButtonOutline } from './Buttons'
 import Hamburger from './Hamburger'
 
 
@@ -126,11 +127,10 @@ const Root = styled(({
       }
     }
   `}
-`;//`
+`;
 
-const StyledButton = Button.extend`
-  border-width: 1px;
-`
+// Resp toggle
+// TODO: use util
 
 const ResponsiveToggle = styled(Box)`
   ${props => props.hideAtDesktop && css`
@@ -146,15 +146,58 @@ const ResponsiveToggle = styled(Box)`
   `}
 `//`
 
+// 
+// Text & buttons
+// 
+
+const LinkTextRoot = styled(Text)`
+  ${props => props.isActive && css`
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 33px;
+  `}
+`;
+
+const LinkText = props => (
+  <LinkTextRoot
+    family="textRegular"
+    color="inherit"
+    isActive={props.isActive}
+    children={props.children}
+  />
+);
+
+const StyledButton = styled(ButtonOutline)`
+  border-width: 1px;
+  box-shadow: inset 0 0 0 1px;
+`
 const CTALink = props => (
   <Link href={props.href}>
-    <a><LinkText>
-      <StyledButton invert>
-        {props.children}
-      </StyledButton>
-    </LinkText></a>
+    <a>
+      <LinkText>
+        <StyledButton color='text'>{props.children}</StyledButton>
+      </LinkText>
+    </a>
   </Link>
-)
+);
+
+// const StyledDivider = styled(Divider)`
+//   margin-left: 0 !important;
+//   line-height: ${theme.blockHeights.navBar};
+// `;
+
+const MobileLinkText = props => (
+  <Display
+    align="left"
+    color="text"
+    isActive={props.isActive}
+    children={props.children}
+  />
+);
+
+
+// 
+// Navs
+// 
 
 const DesktopNav = styled(ResponsiveToggle)`
   bottom: 0;
@@ -186,11 +229,9 @@ const Nav = styled(ResponsiveToggle)`
 `;//`
 
 
-/*
- * -----------
- * Mobile nav
- * -----------
- */
+// 
+// Mobile nav
+// 
 
 const MobileNav = styled.nav`
   a {
@@ -242,34 +283,7 @@ const MobileModal = Flex.extend`
   `}
 `//`
 
-const LinkTextRoot = hoc('span').extend`
-  ${props => props.isActive && css`
-    border-bottom: 2px solid currentColor;
-    padding-bottom: 33px;
-  `}
-`
 
-const LinkText = props =>
-  <LinkTextRoot
-    font='textRegular'
-    fontSize={[ 2, 3 ]}
-    color='inherit'
-    isActive={props.isActive}
-    children={props.children}
-  />
-
-const StyledDivider = styled(Divider)`
-  margin-left: 0 !important;
-  line-height: ${theme.blockHeights.navBar};
-`
-
-const MobileLinkText = props =>
-  <Display
-    align='left'
-    color='text'
-    isActive={props.isActive}
-    children={props.children}
-  />
 
 
 
@@ -455,7 +469,7 @@ class Header extends React.Component {
                 <Link href='/let-us-help-you'>
                   <a>
                     <Text align='left' font='textRegular' mt={1}>
-                      <StyledButton invert icon children='Get a fast quote' />
+                      <ButtonOutline icon children='Get a fast quote' />
                     </Text>
                   </a>
                 </Link>

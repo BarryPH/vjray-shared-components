@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import { css } from 'styled-components';
-import Button from './Button.js';
+import styled, { css } from 'styled-components';
+// import {Button as foo} from './Button';
+import { Button } from './Buttons';
 
+// const LaddaButtonRoot = styled(foo)`
 const LaddaButtonRoot = Button.extend`
   position: relative;
   border: 0;
