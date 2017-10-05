@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
+import { Box, Flex } from 'rebass'
+
+import { site } from "../constants";
 import theme from '../theme'
 import icons from './iconConstants'
 import hoc from './hoc'
-import { Box, Flex } from 'rebass'
-import Container from './Container'
+import Container from './Container2'
 import { Divider } from './Text'
 import Icon from './Icon';
 import ResponsiveToggle from './ResponsiveToggle';
@@ -118,24 +120,17 @@ const StyledDivider = styled(Divider)`
 `
 
 
-const Footer = (props) => (
+const Footer = props => (
   <Root bg={props.bg}>
-    <Container
-      mw="lg"
-      pt={[ 0, 2 ]}
-      pb={3}
-    >
-      <Flex direction={[ 'column', 'row' ]} justify='space-between'>
-
+    <Container maxWidth="72em" pt={[0, 2]} pb={3}>
+      <Flex direction={["column", "row"]} justify="space-between">
         <ResponsiveToggle hideAtMobile>
           <Flex column>
             <LogoBox>
-              <Link href='/'>
-                <a><Icon
-                  color='text'
-                  size='80'
-                  icon={icons.logo}
-                /></a>
+              <Link href="/">
+                <a>
+                  <Icon color="text" size="80" icon={icons.logo} />
+                </a>
               </Link>
             </LogoBox>
           </Flex>
@@ -143,48 +138,89 @@ const Footer = (props) => (
 
         <Box>
           <Nav>
-            <Flex direction={[ 'column', 'row' ]} justify='center'>
+            <Flex direction={["column", "row"]} justify="center">
               <Column>
-                <Link href='/who-we-are'><a><span>About Us</span></a></Link>
-                <Link href='/'><a>Home page</a></Link>
-                <Link href='/who-we-are'><a>Who we are</a></Link>
-                <Link href='/what-we-do-for-you'><a>What we do for you</a></Link>
+                <Link href="/who-we-are">
+                  <a>
+                    <span>About Us</span>
+                  </a>
+                </Link>
+                <Link href="/">
+                  <a>Home page</a>
+                </Link>
+                <Link href="/who-we-are">
+                  <a>Who we are</a>
+                </Link>
+                <Link href="/what-we-do-for-you">
+                  <a>What we do for you</a>
+                </Link>
               </Column>
               <Column>
-                <Link href='/useful-info'><a><span>Useful Info</span></a></Link>
-                <Link href='/useful-info'><a>Strata guides</a></Link>
-                <Link href='/useful-info#blog'><a>Strata blog</a></Link>
-                <Link href='/useful-info/forms-and-fact-sheets'><a>Forms and facts</a></Link>
+                <Link href="/useful-info">
+                  <a>
+                    <span>Useful Info</span>
+                  </a>
+                </Link>
+                <Link href="/useful-info">
+                  <a>Strata guides</a>
+                </Link>
+                <Link href="/useful-info#blog">
+                  <a>Strata blog</a>
+                </Link>
+                <Link href="/useful-info/forms-and-fact-sheets">
+                  <a>Forms and facts</a>
+                </Link>
               </Column>
               <Column>
-                <Link href='/contact'><a><span>Contact Us</span></a></Link>
-                <Link href='/let-us-help-you'><a>Get a fast quote</a></Link>
-                <Link href='/contact?form=report#contact-forms'><a>Report an issue</a></Link>
-                <Link href='/emergency'><a>Emergencies</a></Link>
+                <Link href="/contact">
+                  <a>
+                    <span>Contact Us</span>
+                  </a>
+                </Link>
+                <Link href="/let-us-help-you">
+                  <a>Get a fast quote</a>
+                </Link>
+                <Link href="/contact?form=report#contact-forms">
+                  <a>Report an issue</a>
+                </Link>
+                <Link href="/emergency">
+                  <a>Emergencies</a>
+                </Link>
               </Column>
             </Flex>
           </Nav>
-
         </Box>
       </Flex>
 
       <RuledBox>
-        <Flex direction={[ 'column', 'row' ]} justify='space-between'>
+        <Flex direction={["column", "row"]} justify="space-between">
           <SecondNav>
             <span>© 2017 VJ Ray</span>
             <StyledDivider />
-            <Link href='/terms-of-use'><a>Terms</a></Link>
+            <Link href="/terms-of-use">
+              <a>Terms</a>
+            </Link>
             <StyledDivider />
-            <Link href='/privacy-policy'><a>Privacy</a></Link>
+            <Link href="/privacy-policy">
+              <a>Privacy</a>
+            </Link>
           </SecondNav>
-          <SecondNav mt={[ 0, 'auto' ]}>
-            <Link href='https://patternworks.com.au/'><a>Site by Patternworks</a></Link>
-            <StyledDivider />
-            <Link href='https://admin.vjraystrata.com.au/keystone/signin'><a>Login</a></Link>
+          <SecondNav mt={[0, "auto"]}>
+            <Link href="https://patternworks.com.au/">
+              <a>Site by Patternworks</a>
+            </Link>
+
+            {site === "strata" && (
+              <div>
+                <StyledDivider />
+                <Link href="https://admin.vjraystrata.com.au/keystone/signin">
+                  <a>Login</a>
+                </Link>
+              </div>
+            )}
           </SecondNav>
         </Flex>
       </RuledBox>
-
     </Container>
   </Root>
 );
