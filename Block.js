@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled, {css} from 'styled-components'
 import { Box } from 'rebass'
 import Container from './Container2'
@@ -34,5 +35,24 @@ const Block = (props) => (
     </Container>
   </Root>
 );
+
+Block.propTypes = {
+  id: PropTypes.string,
+  bg: PropTypes.string,
+  border: PropTypes.bool,
+  pt: PropTypes.array,
+  pb: PropTypes.array,
+  noBottomPadding: PropTypes.bool,
+  style: PropTypes.string,
+  maxWidth: PropTypes.string,
+  textCenter: PropTypes.bool
+};
+
+Block.defaultProps = {
+  headlineColor: "text",
+  family: "displayRegular",
+  border: false,
+  noBottomPadding: false,
+};
 
 export default Block
