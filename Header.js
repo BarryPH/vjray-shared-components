@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-
 import {
   site,
   navItems,
@@ -9,19 +8,16 @@ import {
 import theme from '../theme'
 import icons from './iconConstants'
 import { headerFade } from './animationConstants'
-
 import styled, { css } from 'styled-components'
 import { Flex, Box } from 'rebass'
-
 import Icon from './Icon';
 import { IconPhone } from './Icons'
-import { Display } from './Headline'
+import { Display } from './Headings'
 import { Text } from './Texts'
 import { Divider } from './Text'
-import Container from './Container'
+import Container from './Container2'
 import { ButtonOutline } from './Buttons'
 import RespToggle from './ResponsiveToggle'
-
 import Hamburger from './Hamburger'
 import MobileNav from './HeaderMobileNav'
 import DesktopNav from './HeaderDesktopNav'
@@ -35,7 +31,7 @@ const StyledButton = styled(ButtonOutline)`
   box-shadow: inset 0 0 0 1px;
 `;
 
-// ref for the CTA btn
+// ref for the CTA btn in case there's a problem
 // const CTA = styled(Box)`
 //   ${props => props.hidePhoneNumberResponsively && css`
 //     @media (min-width: 769px) and (max-width: 1023px) {
@@ -297,6 +293,29 @@ class Header extends React.Component {
   }
 
   render() {
+    const desktopNavItems = [
+      {
+        label: "Strata Management",
+        href: "/strata-management"
+      },
+      {
+        label: "For Landlords",
+        href: "/rental-property-management-for-landlords"
+      },
+      {
+        label: "For Tenants",
+        href: "/rental-property-management-for-tenants"
+      },
+      {
+        label: "Valuations",
+        href: "/useful-info"
+      },
+      {
+        label: "Contact",
+        href: "/contact"
+      }
+    ];
+    
     return (
       <Root
         handleModalClick={this.handleModalClick}

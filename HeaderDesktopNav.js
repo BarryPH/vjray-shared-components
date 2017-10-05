@@ -1,35 +1,11 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
+import { Absolute, Flex } from 'rebass'
 import theme from '../theme'
-import hoc from './hoc'
+import { Text } from './Texts'
 
-const LinkTextRoot = hoc('span').extend`
-  ${props => props.isActive && css`
-    border-bottom: 2px solid currentColor;
-    padding-bottom: 33px;
-  `}
-`
-
-const LinkText = props =>
-  <LinkTextRoot
-    font='textRegular'
-    fontSize={[ 2, 3 ]}
-    color='inherit'
-    isActive={props.isActive}
-    children={props.children}
-  />
-
-const Nav = styled.span`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-
+const StyledFlex = styled(Flex)`
   a {
     cursor: pointer;
     line-height: ${theme.blockHeights.navBar};
@@ -38,22 +14,40 @@ const Nav = styled.span`
   a:not(:last-child) {
     margin-right: 1.5rem;
   }
+`;
 
+const LinkTextRoot = styled(Text)`
+  ${props => props.isActive && css`
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 33px;
+  `}
 `
 
+const LinkText = props => (
+  <LinkTextRoot
+    is="span"
+    family="textRegular"
+    color="inherit"
+    isActive={props.isActive}
+    children={props.children}
+  />
+);
+
 const HeaderDesktopNav = props => (
-  <Nav centered style={{ textAlign: 'center' }}>
-    {props.navItems
-      .filter(item => item.label !== 'Home')
-      .map(item => {
-        return (
-          <Link href={item.href}>
-            <a><LinkText isActive={props.pathname === item.href}>{item.label}</LinkText></a>
-          </Link>
-        )
-      })
-    }
-  </Nav>
+  <Absolute top right bottom left>
+    <StyledFlex justify="center">
+      {props.navItems
+        .filter(item => item.label !== 'Home')
+        .map(item => {
+          return (
+            <Link href={item.href}>
+              <a><LinkText isActive={props.pathname === item.href}>{item.label}</LinkText></a>
+            </Link>
+          )
+        })
+      }
+    </StyledFlex>
+  </Absolute>
 )
 
 HeaderDesktopNav.propTypes = {
