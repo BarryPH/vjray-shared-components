@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-import { contactDetails } from '../constants'
+import { site, contactDetails } from '../constants'
 import theme from '../theme'
 import icons from './iconConstants'
 import { headerFade } from './animationConstants'
@@ -204,7 +204,7 @@ const Root = props => (
               <a><Icon
                 color={props.color}
                 size='80'
-                icon={icons.logoGroup}
+                icon={site === 'strata' ? icons.logo : icons.logoGroup}
               /></a>
             </Link>
           </Box>
@@ -216,16 +216,16 @@ const Root = props => (
             />
 
             <CTA hidePhoneNumberResponsively>
-              {props.linkToStrata &&
-                <CTALink href='vjraystrata.com.au' >
-                  Visit VJ Ray Strata
-                </CTALink>
-              }
-
-              {!props.linkToStrata &&
+              {site === 'strata' &&
                 <CTALink href={'tel:' + contactDetails.phone} >
                   <IconPhone navBar />
                   {contactDetails.phone}
+                </CTALink>
+              }
+
+              {site !== 'strata' &&
+                <CTALink href='vjraystrata.com.au' >
+                  Visit VJ Ray Strata
                 </CTALink>
               }
             </CTA>
