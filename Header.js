@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Flex, Box } from 'rebass'
 
-import { site, navItems } from "../constants";
+import { site, navItems, contactDetails } from "../constants";
 import icons from './iconConstants'
 import { headerFade } from './animationConstants'
 import theme from '../theme'
@@ -64,7 +64,7 @@ const Root = props => (
 
         {/* LOGO, CTA & HAMBURGER */}
         <Flex align="center" justify="space-between" style={{ position:"relative" }}>
-          
+
           <Box>
             <Link href="/">
               <a>
