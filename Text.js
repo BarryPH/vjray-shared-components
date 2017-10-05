@@ -66,6 +66,8 @@ const LargeText = props =>
     {...props}
   />
 
+const AuthorRoot = hoc('span').extend``
+
 const AuthorText = props =>
   <AuthorRoot
     color='inherit'
@@ -88,10 +90,10 @@ const Divider = styled.span`
   }
 `;
 
-// 
+//
 // Text blocks
 // Find another way…
-// 
+//
 
 const TextBlock = styled('div')`
   h1 {
