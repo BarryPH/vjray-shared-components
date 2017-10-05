@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types'
 
 import styled, { css } from 'styled-components';
-import { Flex } from 'rebass';
+import { Flex, Overlay } from 'rebass';
 import { FlexEmbed } from './FlexEmbed';
 import theme from '../theme';
 import Container from './Container2';
@@ -15,43 +15,44 @@ const transition = {
 };
 
 const Modal = styled.div`
-  background-color: #151515;
-  bottom: 0;
-  content: " ";
-  opacity: 0;
   position: fixed;
   top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #151515;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+
   transition:
     opacity 0s,
     visibility 0s,
     z-index 0s;
-  left: 0;
-  right: 0;
-  visibility: hidden;
-  z-index: -1;
 
   ${props => props.isVisible && css`
     opacity: 1;
+    visibility: visible;
+    z-index: 15;
+
     transition:
       opacity ${transition.duration}s ${transition.type} ${transition.delay}s,
       visibility 0s linear ${transition.delay}s,
       z-index 0s linear ${transition.delay}s;
-    visibility: visible;
-    z-index: 15;
   `}
 `;
 
 const ModalClose = styled.a`
   --Close-space: 3rem;
+
+  position: fixed;
+  right: var(--Close-space);
+  top: calc( 0.7 * var(--Close-space));
   color: #fff;
-  content: " ";
   cursor: pointer;
   font-size: 5rem;
   font-family: ${theme.fonts.displayThin};
   line-height: 1;
-  position: fixed;
-  right: var(--Close-space);
-  top: calc( 0.7 * var(--Close-space));
 `;
 
 const VideoIframe = styled.iframe`
@@ -73,7 +74,7 @@ class VideoModal extends React.Component {
   render() {
     return (
       <Modal isVisible={this.props.isVisible} >
-        <ModalClose onClick={this.props.closeModal} href='#'>&times;</ModalClose>
+        <ModalClose onClick={this.props.closeModal}>&times;</ModalClose>
         <Flex align='center' style={{ height: '100vh' }}>
           <Container mw='lg' w='1140px'>
             <FlexEmbed ratio='9/16'>

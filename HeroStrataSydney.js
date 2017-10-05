@@ -12,7 +12,7 @@ import LineBreak from './LineBreak';
 import { Display, Subheading  } from './Headings';
 import Button from './Button';
 import CoverImage from './CoverImage';
-import HeroVideoModal from './HeroVideoModal';
+import VideoModal from './VideoModal';
 
 
 const Root = styled(Box)`
@@ -48,7 +48,7 @@ class SydneyBox extends React.Component {
   render() {
     return (
       <Root>
-        <HeroVideoModal
+        <VideoModal
           isVisible={!this.state.contentIsVisible}
           setContentVisibility={this.setContentVisibility}
           closeModal={() => this.setState({ contentIsVisible: true })}
