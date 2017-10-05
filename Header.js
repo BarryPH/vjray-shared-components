@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 
 import {
   site,
-  desktopNavItems,
-  mobileNavItems,
+  navItems,
   contactDetails
 } from "../constants";
 import theme from '../theme'
@@ -55,9 +54,9 @@ const CTALink = props => (
   </Link>
 );
 
-// 
+//
 // Header root
-// 
+//
 
 const HeaderRoot = styled(({
   isHidden,
@@ -171,11 +170,11 @@ const Root = props => (
       isModalVisible={props.isModalVisible}
     >
       <Container px={[1, 2, 2, 3]} mw="lg" w={1}>
-        
+
         {/* MENU */}
         <RespToggle break={["none", "none", "block"]}>
           <DesktopNav
-            navItems={props.desktopNavItems}
+            navItems={navItems}
             pathname={props.pathname}
           />
         </RespToggle>
@@ -225,7 +224,7 @@ const Root = props => (
     </HeaderRoot>
 
     <MobileNav
-      navItems={props.mobileNavItems}
+      navItems={navItems}
       handleModalClick={props.handleModalClick}
       isVisible={props.isModalVisible}
     />
@@ -300,9 +299,6 @@ class Header extends React.Component {
   render() {
     return (
       <Root
-        desktopNavItems={desktopNavItems}
-        mobileNavItems={mobileNavItems}
-
         handleModalClick={this.handleModalClick}
         handleModalTriggerClick={this.handleModalTriggerClick}
 

@@ -43,13 +43,16 @@ const Nav = styled.span`
 
 const HeaderDesktopNav = props => (
   <Nav centered style={{ textAlign: 'center' }}>
-    {props.navItems.map((item) => {
-      return (
-        <Link href={item.href}>
-          <a><LinkText isActive={props.pathname === item.href}>{item.label}</LinkText></a>
-        </Link>
-      )
-    })}
+    {props.navItems
+      .filter(item => item.label !== 'Home')
+      .map(item => {
+        return (
+          <Link href={item.href}>
+            <a><LinkText isActive={props.pathname === item.href}>{item.label}</LinkText></a>
+          </Link>
+        )
+      })
+    }
   </Nav>
 )
 
