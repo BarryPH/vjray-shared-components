@@ -137,6 +137,7 @@ const TextBlock = styled("div")`
     margin: 0;
     order: initial;
     padding: 0;
+    text-align: left;
     width: 100%;
 
     @media (min-width: ${theme.breakpoints[1]}em) {

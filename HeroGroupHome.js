@@ -26,7 +26,7 @@ const StyledHeroBox = styled(HeroBox)`
 const HeroHome = props => (
   <StyledHeroBox>
     <Image contact img='http://res.cloudinary.com/pw-img-cdn/image/upload/v1503618861/hero-contact-_awgf0r.png' />
-    <HeroContainer maxWidth="1140px">
+    <HeroContainer maxWidth="72em">
       <HeroFlex>
         <HeroTitleBox width={[5 / 10, 5 / 12, 6 / 12]} mb={[3, 4]} ml={4}>
           <Display

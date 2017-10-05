@@ -1,40 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Flex, Box, Banner, ButtonCircle, Arrow } from 'rebass'
-// import theme from './theme-new'
+import { Flex, Box, Banner } from 'rebass'
 import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from './Hero'
-import Container from "./Container2"
-import { Text, LargeText } from './Texts'
-import { Display, Subheading } from './Headings'
-import LineBreak from './LineBreak'
-import RespToggle from './ResponsiveToggle'
-import CoverImage from './CoverImage'
+import BlockCrown from "./BlockCrown";
+import { Text } from './Texts'
 import { Button } from './Buttons'
 
-
-const StyledHeroBox = styled(HeroBox)`
-  --Hero-height: 70vh !important;
-  --Hero-height-mobile: 70vh !important;
-  align-items: initial;
-  background-color: #4F90C8;
-
-  &:after {
-    background-color: rgba(255, 255, 255, 0.15);
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(18, 150, 222, 1),
-        rgba(18, 150, 222, 0.4) 75%
-      );
-    background-blend-mode: multiply;
-    bottom: 0;
-    content: " ";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-`
 
 const StyledBanner = styled(Banner)`
   height: 70vh;
@@ -69,44 +40,23 @@ const StyledButton = styled(Button)`
 
 {/* <CoverImage who src="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg" /> */}
 
-{/* <StyledHeroBox is="section" py={[4, 4, 5, 5]}> */}
-
 const HeroStrata = props => (
-  <StyledBanner 
-    is="section" 
+  <StyledBanner
+    is="section"
     py={[64, 64, 128, 128]}
     backgroundImage="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg"
   >
     <HeroContainer textCenter style={{ zIndex: 1 }}>
-      <Box 
-        w={[7 / 12, 5 / 6, 6 / 12, 2 / 3]} 
-        mx="auto" 
-        mb={[4, 5, 6]}
+      <BlockCrown
+        crownWidth="42em"
+        subhead={props.subhead}
+        subheadColor="white"
+        title={props.title}
+        titleColor="white"
+        text={props.text}
+        largeTextColor="white"
       >
-
-        <Subheading 
-          center 
-          border 
-          color="white" 
-          children={props.subhead} 
-        />
-        <Display
-          center
-          color="white"
-          dangerouslySetInnerHTML={{ __html: props.headline }}
-        />
-        <Text
-          center
-          color="white"
-          dangerouslySetInnerHTML={{ __html: props.lede }}
-        />
-
-        <Text 
-          center 
-          noUnderline 
-          family="textMedium"
-          mt={3}
-        >
+        <Text center noUnderline family="textMedium" mt={3}>
           <StyledButton
             fontSize={[2, 2, 2, 3]}
             bg="white"
@@ -118,8 +68,7 @@ const HeroStrata = props => (
             Visit VJ Ray Strata
           </StyledButton>
         </Text>
-        
-      </Box>
+      </BlockCrown>
     </HeroContainer>
   </StyledBanner>
 );

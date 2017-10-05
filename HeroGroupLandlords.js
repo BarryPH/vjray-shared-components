@@ -19,7 +19,7 @@ const StyledHeroBox = styled(HeroBox)`
 
 const HeroContact = props => (
   <StyledHeroBox>
-    <HeroContainer maxWidth="1140px">
+    <HeroContainer maxWidth="72em">
       <HeroFlex>
         <HeroTitleBox width={[ 7/12, 5/12, 4/12, 4/12 ]} ml={[ 1, 3 ]} mb={[ 3, 4 ]}>
           <MobileSubheadline color='brand' children='Contact us' />
