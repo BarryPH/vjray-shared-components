@@ -16,7 +16,7 @@ import { Display } from './Headline'
 import { Text } from './Texts'
 import { Divider } from './Text'
 import Container from './Container'
-import Button from './Button'
+import { ButtonOutline } from './Buttons'
 import Hamburger from './Hamburger'
 import MobileNav from './HeaderMobileNav'
 import DesktopNav from './HeaderDesktopNav'
@@ -37,9 +37,9 @@ const LinkText = props => (
   />
 )
 
-const StyledButton = Button.extend`
-  border-width: 1px;
-`
+const StyledButton = styled(ButtonOutline)`
+  box-shadow: inset 0 0 0 1px;
+`;
 
 const CTA = styled.span`
   ${props => props.hidePhoneNumberResponsively && css`
@@ -204,7 +204,7 @@ const Root = props => (
               <a><Icon
                 color={props.color}
                 size='80'
-                icon={icons.logo}
+                icon={icons.logoGroup}
               /></a>
             </Link>
           </Box>
