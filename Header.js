@@ -63,7 +63,7 @@ const Root = props => (
         </RespToggle>
 
         {/* LOGO, CTA & HAMBURGER */}
-        <Flex align="center" justify="space-between">
+        <Flex align="center" justify="space-between" style={{ position:"relative" }}>
           
           <Box>
             <Link href="/">
