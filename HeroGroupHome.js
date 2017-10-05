@@ -23,23 +23,9 @@ const StyledHeroBox = styled(HeroBox)`
   );
 `;
 
-const StyledButton = styled(ButtonOutline)`
-  border-radius: 99999px;
-
-  span {
-    border-top: 0.3125em solid transparent;
-    border-bottom: 0.3125em solid transparent;
-    border-left: 0.4375em solid;
-    border-right: 0;
-  }
-`;
-
 const HeroHome = props => (
   <StyledHeroBox>
-    <Image
-      what
-      img="http://res.cloudinary.com/pw-img-cdn/image/upload/v1503618862/hero-what-_i582ye.png"
-    />
+    <Image contact img='http://res.cloudinary.com/pw-img-cdn/image/upload/v1503618861/hero-contact-_awgf0r.png' />
     <HeroContainer maxWidth="1140px">
       <HeroFlex>
         <HeroTitleBox width={[5 / 10, 5 / 12, 6 / 12]} mb={[3, 4]} ml={4}>

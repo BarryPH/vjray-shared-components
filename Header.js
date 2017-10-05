@@ -17,6 +17,8 @@ import { Text } from './Texts'
 import { Divider } from './Text'
 import Container from './Container'
 import { ButtonOutline } from './Buttons'
+import RespToggle from './ResponsiveToggle'
+
 import Hamburger from './Hamburger'
 import MobileNav from './HeaderMobileNav'
 import DesktopNav from './HeaderDesktopNav'
@@ -25,17 +27,6 @@ import DesktopNav from './HeaderDesktopNav'
 //
 // Text & buttons
 //
-
-const LinkTextRoot = hoc('span')
-
-const LinkText = props => (
-  <LinkTextRoot
-    font='textRegular'
-    fontSize={[ 2, 3 ]}
-    color='inherit'
-    children={props.children}
-  />
-)
 
 const StyledButton = styled(ButtonOutline)`
   box-shadow: inset 0 0 0 1px;
@@ -52,9 +43,9 @@ const CTA = styled.span`
 const CTALink = props => (
   <Link href={props.href}>
     <a>
-      <LinkText>
+      <Text is="span" family="textRegular">
         <StyledButton color='text'>{props.children}</StyledButton>
-      </LinkText>
+      </Text>
     </a>
   </Link>
 );
@@ -79,6 +70,10 @@ const ResponsiveToggle = styled(Box)`
   `}
 `
 
+// 
+// Header root
+// 
+
 const HeaderRoot = styled(({
   isHidden,
   isWindowScrolled,
@@ -86,7 +81,7 @@ const HeaderRoot = styled(({
   children,
   ...rest
 }) => (
-  <Flex {...rest}>{children}</Flex>
+  <Flex is="header" {...rest}>{children}</Flex>
 ))`
   --Header-background-color: rbga(255, 255, 255, 1);
   --Header-border-color: rgba(88, 88, 112, 0.15);
@@ -209,7 +204,7 @@ const Root = props => (
             </Link>
           </Box>
 
-          <ResponsiveToggle hideAtMobile>
+          <RespToggle break={[ 'none', 'none', 'block' ]}>
             <DesktopNav
               navItems={props.desktopNavItems}
               pathname={props.pathname}
@@ -229,16 +224,16 @@ const Root = props => (
                 </CTALink>
               }
             </CTA>
-          </ResponsiveToggle>
+          </RespToggle>
 
-          <ResponsiveToggle hideAtDesktop p={2}>
+          <RespToggle break={[ null, null, null, 'none' ]} hideAtDesktop p={2}>
             <Hamburger onClick={props.handleModalTriggerClick} isOpen={props.isModalVisible}>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
             </Hamburger>
-          </ResponsiveToggle>
+          </RespToggle>
 
         </Flex>
       </Container>

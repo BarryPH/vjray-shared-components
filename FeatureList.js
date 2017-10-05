@@ -77,7 +77,7 @@ const FeatureList = (props) => (
     mx='auto' 
     mt={[ 2, 2, 3, 4 ]}
   >
-    <Flex mx={-3}>
+    <Flex mx={-3} wrap={[ 'wrap', 'nowrap']}>
       <Feature
         icon={icons.experience}
         border={props.border}

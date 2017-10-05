@@ -154,7 +154,7 @@ img {
 
 body {
   color: ${theme.colors.text};
-  font-family: 'GT-Eesti-Pro-Text';
+  font-family: 'GT-Eesti-Pro-Text-Light';
   font-size: 16px;
   font-weight: 200;
   letter-spacing: ${theme.letterSpacings.body};

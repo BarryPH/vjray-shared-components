@@ -4,34 +4,19 @@ import {
   ButtonOutline as rae, 
   ButtonCircle as me
 } from 'rebass';
-// import { weight, family, lineHeight, letterSpacing } from "./utils";
 
-// this doesn't work despite previously working
-// WTF?
-// const BaseStyles = {
-//   fontFamily: "inherit",
-//   fontSize: "inherit",
-//   letterSpacing: "inherit",
-//   lineHeight: 2
-// };
-// {...BaseStyles}
-
-// const BaseStyles = {
-//   span {
-//     border-top: 0.3125em solid transparent;
-//     border-bottom: 0.3125em solid transparent;
-//     border-left: 0.4375em solid;
-//     border-right: 0;
-//   }
-// }
-
-
-const Button = styled(doe)`
+// inherit wrapped text styles
+// not rebass' settings
+const BaseStyles = `
   font-family: inherit;
   font-size: inherit;
   letter-spacing: inherit;
-  line-height: inherit;
   line-height: 1.75;
+  text-transform: inherit;
+`;
+
+const Button = styled(doe)`
+  ${BaseStyles}
 
   ${props => props.icon && css`
     :after {
@@ -45,11 +30,7 @@ const Button = styled(doe)`
 `
 
 const ButtonOutline = styled(rae)`
-  font-family: inherit;
-  font-size: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-  line-height: 1.75;
+  ${BaseStyles}
 
   ${props => props.icon && css`
     :after {
@@ -63,11 +44,7 @@ const ButtonOutline = styled(rae)`
 `
 
 const ButtonCircle = styled(me)`
-  font-family: inherit;
-  font-size: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-  line-height: 1.75;
+  ${BaseStyles}
 
   ${props => props.icon && css`
     :after {

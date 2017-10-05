@@ -70,6 +70,13 @@ const AuthorText = props =>
     {...props}
   />
 
+const PrimaryButtonText = props =>
+<SmallText 
+    caps
+    ls="meta"
+    {...props}
+  />
+
 const Divider = styled.span`
   --spacing: 0.75rem;
   color: inherit;
@@ -177,6 +184,7 @@ export {
   MediumText,
   SmallText,
   AuthorText,
+  PrimaryButtonText,
   Divider,
   TextBlock,
   DangerouslyResetTextBlock
