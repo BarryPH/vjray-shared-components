@@ -16,8 +16,6 @@ const Ratio = styled(Box)`
   `}
 `
 
-//`
-
 const Content = styled(Box)`
   bottom: 0;
   height: 100%;

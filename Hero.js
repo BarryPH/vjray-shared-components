@@ -3,19 +3,6 @@ import { Box, Flex } from 'rebass';
 import Container from './Container2';
 import theme from '../theme.js';
 
-
-// @media (min-width: 768px) {
-//   height: calc(var(--Hero-height-tablet) + var(--Header-height)) !important;
-// }
-//
-// @media (min-width: 1024px) {
-//   height: calc(var(--Hero-height-laptop) + var(--Header-height)) !important;
-// }
-//
-// @media (min-width: 1536px) {
-//   height: calc(var(--Hero-height) + var(--Header-height)) !important;
-// }
-
 /*
  * HeroFrame is an alternative to HeroBox.
  * it works without need for HeroContainer, HeroFlex or HeroTitleBox.

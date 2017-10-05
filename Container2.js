@@ -9,15 +9,6 @@ const Container = styled(_Container)`
     text-align: center;
   `}
 
-  ${props => props.center && css`
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 50%;
-    transform: translateY(-50%);
-  `}
-
   ${props => props.mobileBleed && css`
     @media (max-width: 768px) {
       padding-left: 0;

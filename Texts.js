@@ -63,7 +63,7 @@ const AuthorText = props =>
     is='span'
     caps
     color='inherit'
-    fontSize={[ 2, 2, 2, 3, 4 ]}
+    fontSize={[ 2, 2, 2, 3 ]}
     family='textBook'
     weight={3}
     ls='touch'
