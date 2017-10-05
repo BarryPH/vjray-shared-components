@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 import theme from '../theme'
+import { contactLocationsForPathnames } from '../constants'
 import { Box, Flex } from 'rebass'
 import { Text, SmallText } from './Text'
 import {
@@ -131,9 +132,8 @@ const Location = (props) => (
 );
 
 Location.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.object.isRequired,
 };
-
 
 const Contact = (props) => (
   <Flex
@@ -142,10 +142,22 @@ const Contact = (props) => (
     mt={props.mt || [ 3, 3, 4 ]}
     mx={-2}>
 
-    {locationList.map((location, i) =>
-      <Location location={location} key={i} />
-    )}
+    {locationList
+      // Only show locations configured for the current page in constants.js
+      .filter(location => contactLocationsForPathnames[props.pathname].locations.includes(location.name))
+      .map((location, i) =>
+        <Location location={location} key={i} />
+      )
+    }
   </Flex>
 );
+
+Contact.propTypes = {
+  pathname: PropTypes.string,
+};
+
+Contact.defaultProps = {
+  pathname: '/',
+};
 
 export default Contact;
