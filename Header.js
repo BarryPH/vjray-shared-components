@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Flex, Box } from 'rebass'
 
-import { site, navItems, contactDetails } from "../constants";
+import { site, navItems } from "../constants";
 import icons from './iconConstants'
 import { headerFade } from './animationConstants'
 import theme from '../theme'
@@ -15,31 +15,44 @@ import { Display } from './Headings'
 import { Text } from './Texts'
 import { Divider } from './Text'
 import Container from './Container2'
-import { ButtonOutline } from './Buttons'
-import RespToggle from './ResponsiveToggle'
 import Hamburger from './Hamburger'
 import MobileNav from './HeaderMobileNav'
 import DesktopNav from './HeaderDesktopNav'
+import { displayBreakPoint } from "./utils";
+
+import { ButtonOutline } from './Buttons'
 
 
+const StyledFlex = styled(Flex)`
+  height: ${theme.blockHeights.navBar};
+  position: relative;
+`
+  
 const StyledButton = styled(ButtonOutline)`
   box-shadow: inset 0 0 0 1px;
 `;
-
-// ref for the CTA btn in case there's a problem
-// const CTA = styled(Box)`
-//   ${props => props.hidePhoneNumberResponsively && css`
-//     @media (min-width: 769px) and (max-width: 1023px) {
-//       display: none;
-//     }
-//   `}
-// `
+  
+  // ref for the CTA btn in case there's a problem
+  // const CTA = styled(Box)`
+  //   ${props => props.hidePhoneNumberResponsively && css`
+  //     @media (min-width: 769px) and (max-width: 1023px) {
+    //       display: none;
+    //     }
+    //   `}
+    // `
+    
+    
+const CTABlock = styled(Box)`
+  ${displayBreakPoint}
+  justify-content: center;
+  position: relative;
+`
 
 const CTALink = props => (
   <Link href={props.href}>
     <a>
-      <Text is="span" family="textRegular">
-        <StyledButton color='text'>{props.children}</StyledButton>
+      <Text family="textRegular">
+        <StyledButton color="text">{props.children}</StyledButton>
       </Text>
     </a>
   </Link>
@@ -53,18 +66,12 @@ const Root = props => (
       isModalVisible={props.isModalVisible}
     >
       <Container px={[1, 2, 2, 3]} maxWidth="72em" w={1}>
+        <StyledFlex align="center" justify="space-between">
 
-        {/* MENU */}
-        <RespToggle break={["none", "none", "block"]}>
-          <DesktopNav
-            navItems={navItems}
-            pathname={props.pathname}
-          />
-        </RespToggle>
+          {/* MENU */}
+          <DesktopNav navItems={navItems} pathname={props.pathname} />
 
-        {/* LOGO, CTA & HAMBURGER */}
-        <Flex align="center" justify="space-between" style={{ position:"relative" }}>
-
+          {/* LOGO, CTA & HAMBURGER */}
           <Box>
             <Link href="/">
               <a>
@@ -77,7 +84,7 @@ const Root = props => (
             </Link>
           </Box>
 
-          <RespToggle break={["block", "block", "none", "block"]}>
+          <CTABlock break={["flex", "flex", "none", "flex"]}>
             {site === "strata" && (
               <CTALink href={"tel:" + contactDetails.phone}>
                 <IconPhone navBar />
@@ -88,9 +95,9 @@ const Root = props => (
             {site !== "strata" && (
               <CTALink href="vjraystrata.com.au">Visit VJ Ray Strata</CTALink>
             )}
-          </RespToggle>
+          </CTABlock>
 
-          <RespToggle break={[null, null, null, "none"]} hideAtDesktop p={2}>
+          <CTABlock break={[null, null, null, "none"]} hideAtDesktop p={2}>
             <Hamburger
               onClick={props.handleModalTriggerClick}
               isOpen={props.isModalVisible}
@@ -100,8 +107,8 @@ const Root = props => (
               <span />
               <span />
             </Hamburger>
-          </RespToggle>
-        </Flex>
+          </CTABlock>
+        </StyledFlex>
       </Container>
     </HeaderRoot>
 

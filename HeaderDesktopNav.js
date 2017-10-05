@@ -4,6 +4,11 @@ import styled, { css } from 'styled-components'
 import { Absolute, Flex } from 'rebass'
 import theme from '../theme'
 import { Text } from './Texts'
+import { displayBreakPoint } from "./utils";
+
+const Wrapper = styled(Absolute)`
+  ${displayBreakPoint}
+`
 
 const StyledFlex = styled(Flex)`
   a {
@@ -34,7 +39,10 @@ const LinkText = props => (
 );
 
 const HeaderDesktopNav = props => (
-  <Absolute top right bottom left>
+  <Wrapper 
+    break={["none", "none", "block"]}
+    top right bottom left
+  >
     <StyledFlex justify="center">
       {props.navItems
         .filter(item => item.label !== 'Home')
@@ -47,7 +55,7 @@ const HeaderDesktopNav = props => (
         })
       }
     </StyledFlex>
-  </Absolute>
+  </Wrapper >
 )
 
 HeaderDesktopNav.propTypes = {
