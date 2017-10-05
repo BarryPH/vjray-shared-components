@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
-
 import theme from '../theme'
-
 import hoc from './hoc'
 
 const LinkTextRoot = hoc('span').extend`

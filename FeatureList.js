@@ -51,7 +51,6 @@ const Feature = props => (
             fontSize={[3, 4]}
             mt={[0, 2]}
             mb={[1, 2]}
-            {...props}
           >
             {props.header}</Heading>
         </Box>

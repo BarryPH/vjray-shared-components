@@ -1,22 +1,27 @@
 import styled, { css } from 'styled-components'
-import hoc from './hoc'
+import { Box } from 'rebass'
 import theme from '../theme'
 
 // https://codepen.io/sdras/pen/a3596da23d8f9463079ac57c8e3ee9f8?editors=1010
 // https://github.com/zeit/next.js/tree/master/examples/svg-components
 // https://medium.com/@david.gilbertson/icons-as-react-components-de3e33cb8792
-
 // THIS?: https://github.com/jxnblk/reline
 
 const Icon = props => (
-  <IconRoot {...props}>
+  <IconRoot 
+    color={props.color}
+  >
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width={`${props.size}px`}
       height={`${props.size}px`}
       viewBox="0 0 90 90"
     >
-      <rect fill="none" width='90px' height='90px' />
+      <rect 
+        fill="none" 
+        width="90px" 
+        height="90px"
+      />
       <path
         d={props.icon}
       ></path>
@@ -24,7 +29,7 @@ const Icon = props => (
   </IconRoot>
 )
 
-const IconRoot = hoc('span').extend`
+const IconRoot = styled(Box)`
   display: inline-block;
   line-height: 1;
   position: relative;
@@ -35,10 +40,6 @@ const IconRoot = hoc('span').extend`
     fill: currentColor;
     vertical-align: var(--Icon-vertical-align);
   }
-
-  ${props => props.color && css`
-    color: ${theme.colors[props.color] || 'currentColor'};
-  `}
 `
 
 export default Icon;

@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-import { site, contactDetails } from '../constants'
+import {
+  site,
+  desktopNavItems,
+  mobileNavItems,
+  contactDetails
+} from "../constants";
 import theme from '../theme'
 import icons from './iconConstants'
 import { headerFade } from './animationConstants'
@@ -9,7 +14,6 @@ import { headerFade } from './animationConstants'
 import styled, { css } from 'styled-components'
 import { Flex, Box } from 'rebass'
 
-import hoc from './hoc'
 import Icon from './Icon';
 import { IconPhone } from './Icons'
 import { Display } from './Headline'
@@ -32,13 +36,14 @@ const StyledButton = styled(ButtonOutline)`
   box-shadow: inset 0 0 0 1px;
 `;
 
-const CTA = styled.span`
-  ${props => props.hidePhoneNumberResponsively && css`
-    @media (min-width: 769px) and (max-width: 1023px) {
-      display: none;
-    }
-  `}
-`
+// ref for the CTA btn
+// const CTA = styled(Box)`
+//   ${props => props.hidePhoneNumberResponsively && css`
+//     @media (min-width: 769px) and (max-width: 1023px) {
+//       display: none;
+//     }
+//   `}
+// `
 
 const CTALink = props => (
   <Link href={props.href}>
@@ -49,26 +54,6 @@ const CTALink = props => (
     </a>
   </Link>
 );
-
-
-//
-// Resp toggle
-// TODO: use util
-//
-
-const ResponsiveToggle = styled(Box)`
-  ${props => props.hideAtDesktop && css`
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  `}
-
-  ${props => props.hideAtMobile && css`
-    @media (max-width: 768px) {
-      display: none;
-    }
-  `}
-`
 
 // 
 // Header root
@@ -185,56 +170,56 @@ const Root = props => (
       isWindowScrolled={props.isWindowScrolled}
       isModalVisible={props.isModalVisible}
     >
-      <Container
-        px={[ 1, 2, 2, 3 ]}
-        mw='lg'
-        w={1}
-      >
-        <Flex
-          align='center'
-          justify='space-between'
-        >
+      <Container px={[1, 2, 2, 3]} mw="lg" w={1}>
+        
+        {/* MENU */}
+        <RespToggle break={["none", "none", "block"]}>
+          <DesktopNav
+            navItems={props.desktopNavItems}
+            pathname={props.pathname}
+          />
+        </RespToggle>
+
+        <Flex align="center" justify="space-between">
+          {/* LOGO */}
           <Box>
-            <Link href='/'>
-              <a><Icon
-                color={props.color}
-                size='80'
-                icon={site === 'strata' ? icons.logo : icons.logoGroup}
-              /></a>
+            <Link href="/">
+              <a>
+                <Icon
+                  color={props.color}
+                  size="80"
+                  icon={site === "strata" ? icons.logo : icons.logoGroup}
+                />
+              </a>
             </Link>
           </Box>
 
-          <RespToggle break={[ 'none', 'none', 'block' ]}>
-            <DesktopNav
-              navItems={props.desktopNavItems}
-              pathname={props.pathname}
-            />
+          {/* CTA */}
+          <RespToggle break={["block", "block", "none", "block"]}>
+            {site === "strata" && (
+              <CTALink href={"tel:" + contactDetails.phone}>
+                <IconPhone navBar />
+                {contactDetails.phone}
+              </CTALink>
+            )}
 
-            <CTA hidePhoneNumberResponsively>
-              {site === 'strata' &&
-                <CTALink href={'tel:' + contactDetails.phone} >
-                  <IconPhone navBar />
-                  {contactDetails.phone}
-                </CTALink>
-              }
-
-              {site !== 'strata' &&
-                <CTALink href='vjraystrata.com.au' >
-                  Visit VJ Ray Strata
-                </CTALink>
-              }
-            </CTA>
+            {site !== "strata" && (
+              <CTALink href="vjraystrata.com.au">Visit VJ Ray Strata</CTALink>
+            )}
           </RespToggle>
 
-          <RespToggle break={[ null, null, null, 'none' ]} hideAtDesktop p={2}>
-            <Hamburger onClick={props.handleModalTriggerClick} isOpen={props.isModalVisible}>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+          {/* HAMBURGER */}
+          <RespToggle break={[null, null, null, "none"]} hideAtDesktop p={2}>
+            <Hamburger
+              onClick={props.handleModalTriggerClick}
+              isOpen={props.isModalVisible}
+            >
+              <span />
+              <span />
+              <span />
+              <span />
             </Hamburger>
           </RespToggle>
-
         </Flex>
       </Container>
     </HeaderRoot>
@@ -245,7 +230,7 @@ const Root = props => (
       isVisible={props.isModalVisible}
     />
   </div>
-)
+);
 
 
 
@@ -313,44 +298,6 @@ class Header extends React.Component {
   }
 
   render() {
-    const desktopNavItems = [
-      {
-        label: 'Who we are',
-        href: '/who-we-are',
-      },
-      {
-        label: 'What we do for you',
-        href: '/what-we-do-for-you',
-      },
-      {
-        label: 'Useful Info',
-        href: '/useful-info',
-      },
-      {
-        label: 'Contact',
-        href: '/contact',
-      },
-    ];
-
-    const mobileNavItems = [
-      {
-        label: 'Home',
-        href: '/',
-      },
-      {
-        label: 'Who we are',
-        href: '/who-we-are',
-      },
-      {
-        label: 'What we do for you',
-        href: '/what-we-do-for-you',
-      },
-      {
-        label: 'Contact',
-        href: '/contact',
-      },
-    ];
-
     return (
       <Root
         desktopNavItems={desktopNavItems}
