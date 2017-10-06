@@ -78,12 +78,9 @@ const locationList = [{
   imageName: 'map-carringbah.jpg',
 }];
 
-
+// width={[ 9/10, 1/3 ]}
 const Location = (props) => (
-  <LocationRoot
-    width={[ 9/10, 1/3 ]}
-    px={[ 3, 2 ]}
-    >
+  <LocationRoot px={[ 3, 2 ]} width={props.width}>
     <Link href={props.location.googleMapsUrl}>
       <a>
         <img src={'/static/img/' + props.location.imageName} />
@@ -133,6 +130,7 @@ const Location = (props) => (
 
 Location.propTypes = {
   location: PropTypes.object.isRequired,
+  width: PropTypes.string,
 };
 
 const Contact = (props) => (
@@ -140,7 +138,9 @@ const Contact = (props) => (
     direction={[ 'column', 'row' ]}
     justify='center'
     mt={props.mt || [ 3, 3, 4 ]}
-    mx={-2}>
+    mx={-2}
+    width={props.width}
+  >
 
     {locationList
       // Only show locations configured for the current page in constants.js
@@ -154,6 +154,7 @@ const Contact = (props) => (
 
 Contact.propTypes = {
   pathname: PropTypes.string,
+  width: PropTypes.string,
 };
 
 Contact.defaultProps = {

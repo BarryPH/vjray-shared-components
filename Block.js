@@ -30,6 +30,7 @@ const Block = (props) => (
     <Container
       maxWidth={props.maxWidth}
       textCenter={props.textCenter}
+      textLeft={props.textLeft}
     >
       {props.children}
     </Container>
@@ -45,7 +46,8 @@ Block.propTypes = {
   noBottomPadding: PropTypes.bool,
   style: PropTypes.string,
   maxWidth: PropTypes.string,
-  textCenter: PropTypes.bool
+  textCenter: PropTypes.bool,
+  textLeft: PropTypes.bool
 };
 
 Block.defaultProps = {
@@ -53,6 +55,8 @@ Block.defaultProps = {
   family: "displayRegular",
   border: false,
   noBottomPadding: false,
+  textCenter: true,
+  textLeft: false,
 };
 
 export default Block

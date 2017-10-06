@@ -29,15 +29,6 @@ const StyledBanner = styled(Banner)`
   }
 `
 
-const StyledButton = styled(Button)`
-  span {
-    border-top: 0.3125em solid transparent;
-    border-bottom: 0.3125em solid transparent;
-    border-left: 0.4375em solid;
-    border-right: 0;
-  }
-`;
-
 {/* <CoverImage who src="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg" /> */}
 
 const HeroStrata = props => (
@@ -56,9 +47,8 @@ const HeroStrata = props => (
         text={props.text}
         largeTextColor="white"
       >
-        <Text center noUnderline family="textMedium" mt={3}>
-          <StyledButton
-            fontSize={[2, 2, 2, 3]}
+        <Text center noUnderline family="textRegular" mt={3}>
+          <Button
             bg="white"
             color="brandAlt"
             px={3}
@@ -66,7 +56,7 @@ const HeroStrata = props => (
             href="https://vjraystrata.com.au"
           >
             Visit VJ Ray Strata
-          </StyledButton>
+          </Button>
         </Text>
       </BlockCrown>
     </HeroContainer>

@@ -4,9 +4,13 @@ import theme from '../theme.js';
 
 const Container = styled(_Container)`
   position: relative;
-
+  
   ${props => props.textCenter && css`
     text-align: center;
+  `}
+  
+  ${props => props.textLeft && css`
+    text-align: left;
   `}
 
   ${props => props.mobileBleed && css`
@@ -16,12 +20,5 @@ const Container = styled(_Container)`
     }
   `}
 `;
-
-// const Container = props =>
-//   <Root
-//     px={3}
-//     mx='auto'
-//     {...props}
-//   />
 
 export default Container;

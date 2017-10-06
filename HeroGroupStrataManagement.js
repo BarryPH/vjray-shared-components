@@ -17,13 +17,13 @@ const StyledHeroBox = styled(HeroBox)`
   );
 `;
 
-const HeroContact = props => (
+const HeroStrataManagement = props => (
   <StyledHeroBox>
     <HeroContainer maxWidth="72em">
       <HeroFlex>
         <HeroTitleBox width={[ 7/12, 5/12, 4/12, 4/12 ]} ml={[ 2, 4 ]} mb={[ 3, 4 ]}>
           <MobileSubheadline color='brand' children='Contact us' />
-          <Display color='brand' mb={2} children='Rental Property Management headline.' />
+          <Display color='brand' mb={2} children='Strata Management headline.' />
           <LargeText hideAtMobile color='text' children='Subheadline if required.' />
         </HeroTitleBox>
       </HeroFlex>
@@ -31,4 +31,4 @@ const HeroContact = props => (
   </StyledHeroBox>
 )
 
-export default HeroContact
+export default HeroStrataManagement

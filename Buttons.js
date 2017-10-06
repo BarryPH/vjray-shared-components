@@ -20,6 +20,7 @@ const BaseStyles = `
   font-size: inherit;
   font-weight: inherit;
   line-height: 1.75;
+  text-transform: inherit;
 `;
 
 const ActionIcon = `

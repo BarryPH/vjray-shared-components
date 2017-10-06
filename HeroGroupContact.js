@@ -25,7 +25,7 @@ const HeroContact = props => (
       <HeroFlex>
         <HeroTitleBox width={[ 7/12, 5/12, 4/12, 4/12 ]} ml={[ 1, 3 ]} mb={[ 3, 4 ]}>
           <MobileSubheadline color='brand' children='Contact us' />
-          <Display color='brand' mb={2} children='How can we help make your Strata living easier?' />
+          <Display color='brand' mb={2} children='How can we help make your Real Estate Management easier?' />
           <LargeText hideAtMobile color='text' children='Visit, call or write to us.' />
         </HeroTitleBox>
       </HeroFlex>

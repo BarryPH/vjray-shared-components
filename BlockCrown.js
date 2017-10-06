@@ -1,22 +1,34 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Box } from 'rebass';
 import Block from './Block'
 import { LargeText } from './Texts'
 import { Display, Heading, Subheading } from './Headings'
+
+const StyledBox = styled(Box)`
+  text-align: left;
+
+  ${props => props.childBoxTextCenter && css`
+    text-align: center;
+  `}
+`
 
 // p?
 const BlockCrown = props => (
   <Block
     id={props.id}
     bg={props.bg}
+    textLeft={props.textLeft}
     textCenter={props.textCenter}
     maxWidth={props.maxWidth}
     border={props.border}
     noBottomPadding={props.noBottomPadding}
   >
-    <Box width={props.crownWidth} mx='auto'>
+    <Box 
+      width={props.crownWidth} 
+      mx='auto'
+    >
       {props.subhead && (
         <Subheading
           color={props.subheadColor}
@@ -47,7 +59,11 @@ const BlockCrown = props => (
         />
       )}
     </Box>
-    {props.children}
+    {props.children && (
+      <StyledBox>
+        {props.children}
+      </StyledBox>
+    )}
   </Block>
 );
 
@@ -57,8 +73,10 @@ BlockCrown.propTypes = {
   border: PropTypes.bool,
   noBottomPadding: PropTypes.bool,
   textCenter: PropTypes.bool,
+  textLeft: PropTypes.bool,
   maxWidth: PropTypes.string,
   crownWidth: PropTypes.string,
+  childBoxTextCenter: PropTypes.bool,
   subhead: PropTypes.string,
   subheadColor: PropTypes.string,
   heading: PropTypes.string,
@@ -73,8 +91,10 @@ BlockCrown.propTypes = {
 
 BlockCrown.defaultProps = {
   textCenter: true,
+  textLeft: false,
   border: false,
   noBottomPadding: false,
+  childBoxTextCenter: false,
   subheadColor: "text",
   headingColor: "text",
   titleColor: "text",
