@@ -55,7 +55,7 @@ const BlockCrown = props => (
         <LargeText
           color={props.largeTextColor}
           mb={4}
-          dangerouslySetInnerHTML={{ __html: props.text }}
+          children={props.text}
         />
       )}
     </Box>
