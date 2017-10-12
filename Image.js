@@ -73,12 +73,6 @@ const Root = styled('img')`
   `}
 `
 
-// const Image = props => (
-//   <Pin>
-//     <Root {...props} src={props.src} />
-//   </Pin>
-// )
-
 class Image extends React.Component {
   constructor(props) {
     super(props)

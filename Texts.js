@@ -20,6 +20,7 @@ const Root = styled(Rebass.Text)`
 // Rebass uses: 
 // * <Heading />
 // * <Subhead />
+// * <Text />
 // * <Lead /> 
 // * <Small />
 // 
@@ -73,9 +74,12 @@ const AuthorText = props =>
   />
 
 const PrimaryButtonText = props =>
-<SmallText 
+  <SmallText 
     caps
+    family='textMedium'
+    lh="buttonLarge"
     ls="meta"
+    mt={3}
     {...props}
   />
 

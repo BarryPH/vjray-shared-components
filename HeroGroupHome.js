@@ -9,11 +9,11 @@ import {
   HeroFlex,
   HeroTitleBox,
 } from './Hero'
-import Image from "./Image";
-import { Text, LargeText } from "./Text";
-import { Display } from "./Headline";
+import { PrimaryButtonText } from "./Texts";
 import { ButtonOutline } from "./Buttons";
 import VideoModal from './VideoModal';
+import HeroBlock from "./HeroBlock";
+import HGroup from "./HGroup";
 
 
 const StyledHeroBox = styled(HeroBox)`
@@ -35,41 +35,32 @@ class HeroHome extends React.Component {
 
   render() {
     return (
-      <StyledHeroBox>
+      <div>
         <VideoModal
           isVisible={!this.state.isContentVisible}
           setContentVisibility={this.setContentVisibility}
           closeModal={() => this.setState({ isContentVisible: true })}
         />
-
-        <Image contact img='http://res.cloudinary.com/pw-img-cdn/image/upload/v1503618861/hero-contact-_awgf0r.png' />
-        <HeroContainer maxWidth="72em">
-          <HeroFlex>
-            <HeroTitleBox width={[5 / 10, 5 / 12, 6 / 12]} mb={[3, 4]} ml={4}>
-              <Display
-                mb={2}
-                dangerouslySetInnerHTML={{ __html: this.props.headline }}
+        <HeroBlock
+          bg="beige"
+          img="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507792017/vanessa_waedtl.png"
+        >
+          <HGroup
+            title="The Real Estate team experienced in helping people."
+            titleColor="brand"
+          >
+            <PrimaryButtonText>
+              <ButtonOutline 
+                icon 
+                color="brand" 
+                px={3} 
+                children="Watch video"
+                onClick={() => this.setState({ isContentVisible: false })}
               />
-
-              {this.props.subheadline && <LargeText>{this.props.subheadline}</LargeText>}
-
-              {this.props.button && (
-                <Link href="">
-                  <a>
-                    <Text font="textMedium" mt={3}>
-                      <ButtonOutline icon color="brand" px={3} onClick={() => this.setState({ isContentVisible: false })}>
-                        Watch Video
-                      </ButtonOutline>
-                    </Text>
-                  </a>
-                </Link>
-              )}
-            </HeroTitleBox>
-          </HeroFlex>
-        </HeroContainer>
-
-        {this.props.children}
-      </StyledHeroBox>
+            </PrimaryButtonText>
+          </HGroup>
+        </HeroBlock>
+      </div>
     )
   }
 }

@@ -26,7 +26,7 @@ const BaseStyles = `
   font-size: initial;
   font-size: inherit;
   font-weight: inherit;
-  line-height: 1.75;
+  line-height: inherit;
   text-transform: inherit;
 `;
 

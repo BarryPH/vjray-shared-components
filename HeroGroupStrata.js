@@ -1,9 +1,10 @@
 import React from 'react';
+import Link from "next/link";
 import styled from 'styled-components'
 import { Flex, Box, Banner } from 'rebass'
 import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from './Hero'
-import BlockCrown from "./BlockCrown";
-import { Text } from './Texts'
+import Block from "./Block";
+import { PrimaryButtonText } from './Texts'
 import { Button } from './Buttons'
 
 
@@ -38,7 +39,7 @@ const HeroStrata = props => (
     backgroundImage="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg"
   >
     <HeroContainer textCenter style={{ zIndex: 1 }}>
-      <BlockCrown
+      <Block
         crownWidth="42em"
         subhead={props.subhead}
         subheadColor="white"
@@ -47,18 +48,16 @@ const HeroStrata = props => (
         text={props.text}
         largeTextColor="white"
       >
-        <Text center noUnderline family="textRegular" mt={3}>
-          <Button
-            bg="white"
-            color="brandAlt"
-            px={3}
-            icon
-            href="https://vjraystrata.com.au"
-          >
-            Visit VJ Ray Strata
-          </Button>
-        </Text>
-      </BlockCrown>
+        <Link href="https://vjraystrata.com.au">
+          <a>
+            <PrimaryButtonText center>
+              <Button bg="white" color="brandAlt" px={3} icon>
+                Visit VJ Ray Strata
+              </Button>
+            </PrimaryButtonText>
+          </a>
+        </Link>
+      </Block>
     </HeroContainer>
   </StyledBanner>
 );

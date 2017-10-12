@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass'
 import { LargeText, Text, PrimaryButtonText } from './Texts'
-import { Button } from './Buttons'
+import { ButtonOutline } from './Buttons'
 import Icon from './Icon';
 import icons from "./iconConstants";
 
@@ -46,9 +46,9 @@ const IconListItem = (props) => (
         }
       </Text>
       {props.item.buttonUrl &&
-        <PrimaryButtonText align='left' color='white' mt={2}>
+        <PrimaryButtonText align='left' color='white'>
           <Link href={props.item.buttonUrl}>
-            <Button large icon color='brand' bgColor='transparent' children={props.item.buttonLabel} />
+            <ButtonOutline icon color='brand' children={props.item.buttonLabel} />
           </Link>
         </PrimaryButtonText>
       }

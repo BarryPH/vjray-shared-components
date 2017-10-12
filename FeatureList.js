@@ -46,6 +46,7 @@ const Feature = props => (
               is="span"
               color="brand"
               actionIcon
+              ml={2}
               children="Find out more"
             />
           )}

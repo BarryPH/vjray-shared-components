@@ -19,16 +19,32 @@ const StyledHeroBox = styled(HeroBox)`
 
 const HeroStrataManagement = props => (
   <StyledHeroBox>
+    <Image
+      listening
+      img="http://res.cloudinary.com/pw-img-cdn/image/upload/v1503542523/home-hero_eq4eot.jpg"
+    />
     <HeroContainer maxWidth="72em">
       <HeroFlex>
-        <HeroTitleBox width={[ 7/12, 5/12, 4/12, 4/12 ]} ml={[ 2, 4 ]} mb={[ 3, 4 ]}>
-          <MobileSubheadline color='brand' children='Contact us' />
-          <Display color='brand' mb={2} children='Strata Management headline.' />
-          <LargeText hideAtMobile color='text' children='Subheadline if required.' />
+        <HeroTitleBox
+          width={[7 / 12, 5 / 12, 4 / 12, 4 / 12]}
+          ml={[2, 4]}
+          mb={[3, 4]}
+        >
+          <MobileSubheadline color="brand" children="Contact us" />
+          <Display
+            color="brand"
+            mb={2}
+            children="Skip the hassle of Strata Management headline."
+          />
+          <LargeText
+            hideAtMobile
+            color="text"
+            children="At VJ Ray Strata, we understand how valuable your peace of mind is."
+          />
         </HeroTitleBox>
       </HeroFlex>
     </HeroContainer>
   </StyledHeroBox>
-)
+);
 
 export default HeroStrataManagement

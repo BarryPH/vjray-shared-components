@@ -1,62 +1,107 @@
-import PropTypes from "prop-types";
-import styled, {css} from 'styled-components'
-import { Box } from 'rebass'
-import Container from './Container2'
-import theme from '../theme-new.js'
+import PropTypes from 'prop-types';
+import Link from 'next/link'
+import styled, { css } from 'styled-components'
+import { Box } from 'rebass';
+import BlockWrapper from './BlockWrapper'
+import { LargeText } from './Texts'
+import { Display, Heading, Subheading } from './Headings'
 
-const Root = styled(Box)`
-  ${props => props.border && css`
-    border-top: 1px solid ${theme.colors.text10};
+const StyledBox = styled(Box)`
+  text-align: left;
+
+  ${props => props.childBoxTextCenter && css`
+    text-align: center;
   `}
+`
 
-  ${props => props.noBottomPadding && css`
-    padding-bottom: 0 !important;
-  `}
-`;
-
-// pt={props.pt || [ 4, 4, 5, 5 ]}
-
-const Block = (props) => (
-  <Root
-    is='section'
+// p?
+const Block = props => (
+  <BlockWrapper
     id={props.id}
     bg={props.bg}
+    textLeft={props.textLeft}
+    textCenter={props.textCenter}
+    maxWidth={props.maxWidth}
     border={props.border}
-    pt={props.pt || [ 64, 64, 128, 128 ]}
-    pb={props.pb || [ 64, 64, 128, 128 ]}
     noBottomPadding={props.noBottomPadding}
-    style={props.style}
   >
-    <Container
-      maxWidth={props.maxWidth}
-      textCenter={props.textCenter}
-      textLeft={props.textLeft}
+    <Box 
+      width={props.crownWidth} 
+      mx='auto'
     >
-      {props.children}
-    </Container>
-  </Root>
+      {props.subhead && (
+        <Subheading
+          color={props.subheadColor}
+          children={props.subhead}
+        />
+      )}
+      {props.heading && (
+        <Heading
+          color={props.headingColor}
+          family={props.headingFamily}
+          children={props.heading}
+          mb={3}
+        />
+      )}
+      {props.title && (
+        <Display
+          color={props.titleColor}
+          family={props.titleFamily}
+          dangerouslySetInnerHTML={{ __html: props.title }}
+          mb={3}
+        />
+      )}
+      {props.text && (
+        <LargeText
+          color={props.largeTextColor}
+          mb={props.textIsLast ? 0 : 4}
+          children={props.text}
+        />
+      )}
+    </Box>
+    {props.children && (
+      <StyledBox>
+        {props.children}
+      </StyledBox>
+    )}
+  </BlockWrapper>
 );
 
 Block.propTypes = {
   id: PropTypes.string,
   bg: PropTypes.string,
   border: PropTypes.bool,
-  pt: PropTypes.array,
-  pb: PropTypes.array,
   noBottomPadding: PropTypes.bool,
-  style: PropTypes.string,
-  maxWidth: PropTypes.string,
   textCenter: PropTypes.bool,
-  textLeft: PropTypes.bool
-};
+  textLeft: PropTypes.bool,
+  maxWidth: PropTypes.string,
+  crownWidth: PropTypes.string,
+  childBoxTextCenter: PropTypes.bool,
+  subhead: PropTypes.string,
+  subheadColor: PropTypes.string,
+  heading: PropTypes.string,
+  headingColor: PropTypes.string,
+  headingFamily: PropTypes.string,
+  title: PropTypes.string,
+  titleColor: PropTypes.string,
+  titleFamily: PropTypes.string,
+  text: PropTypes.string,
+  textIsLast: PropTypes.bool,
+  largeTextColor: PropTypes.string,
+}
 
 Block.defaultProps = {
-  headlineColor: "text",
-  family: "displayRegular",
-  border: false,
-  noBottomPadding: false,
   textCenter: true,
   textLeft: false,
+  border: false,
+  noBottomPadding: false,
+  childBoxTextCenter: false,
+  subheadColor: "text",
+  headingColor: "text",
+  titleColor: "text",
+  titleFamily: "displayRegular",
+  largeTextColor: "text70",
+  textIsLast: false,
 };
 
-export default Block
+export default Block;
