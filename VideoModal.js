@@ -76,7 +76,7 @@ class VideoModal extends React.Component {
       <Modal isVisible={this.props.isVisible} >
         <ModalClose onClick={this.props.closeModal}>&times;</ModalClose>
         <Flex align='center' style={{ height: '100vh' }}>
-          <Container mw='lg' w='1140px'>
+          <Container maxWidth='72em'>
             <FlexEmbed ratio='9/16'>
               <VideoIframe
                 ref={(ref) => this.video = ref}
