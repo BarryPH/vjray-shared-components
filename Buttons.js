@@ -1,10 +1,17 @@
 import styled, {css} from 'styled-components';
 import { 
-  Button as doe, 
-  ButtonOutline as rae, 
-  ButtonCircle as me
+  Button as _Button, 
+  ButtonOutline as _ButtonOutline, 
+  ButtonCircle as _ButtonCircle
 } from 'rebass';
-import { weight, family, lineHeight, letterSpacing } from "./utils";
+import {
+  weight,
+  family,
+  lineHeight,
+  letterSpacing,
+  buttonHover,
+  actionIcon
+} from "./utils";
 
 // Buttons inherit font sizes and weights from 
 // wrapped text components.
@@ -23,33 +30,24 @@ const BaseStyles = `
   text-transform: inherit;
 `;
 
-const ActionIcon = `
-  :after {
-    content: '►';
-    font-size: 55%;
-    margin-left: 6px;
-    position: relative;
-    top: -1px;
-  }
-`;
-
 // application
-const Button = styled(doe)`
+const Button = styled(_Button)`
   ${BaseStyles}
   ${letterSpacing}
-  ${props => props.icon && css`${ActionIcon}`}
+  ${props => props.icon && css`${actionIcon}`}
 `
 
-const ButtonOutline = styled(rae)`
+const ButtonOutline = styled(_ButtonOutline)`
   ${BaseStyles}
   ${letterSpacing}
-  ${props => props.icon && css`${ActionIcon}`}
+  ${buttonHover}
+  ${props => props.icon && css`${actionIcon}`}
 `
 
-const ButtonCircle = styled(me)`
+const ButtonCircle = styled(_ButtonCircle)`
   ${BaseStyles}
   ${letterSpacing}
-  ${props => props.icon && css`${ActionIcon}`}
+  ${props => props.icon && css`${actionIcon}`}
 `
 
 // FAIL

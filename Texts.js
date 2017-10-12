@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import Rebass from 'rebass'
-import { weight, family, lineHeight, letterSpacing } from './utils'
+import { weight, family, lineHeight, letterSpacing, actionIcon } from "./utils";
 import theme from '../theme-new'
 
 
@@ -10,6 +10,8 @@ const Root = styled(Rebass.Text)`
   ${lineHeight}
   ${letterSpacing}
   
+  ${props => props.actionIcon && css`${actionIcon}`}
+
   ${props => props.noUnderline && css`
     a { background-image: initial; }
   `}
@@ -88,6 +90,8 @@ const Divider = styled.span`
     content: '•';
   }
 `;
+
+
 
 // 
 // Markdown Text blocks

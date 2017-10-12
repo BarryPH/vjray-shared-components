@@ -1,4 +1,8 @@
-import { style, responsiveStyle } from 'styled-system'
+import { 
+  style, 
+  responsiveStyle,
+  pseudoStyle 
+} from 'styled-system'
 
 // https://github.com/jxnblk/styled-system#style
 // https://github.com/jxnblk/rebass/pull/275
@@ -38,10 +42,30 @@ const displayBreakPoint = responsiveStyle({
   cssProperty: 'display'
 })
 
+// https://github.com/jxnblk/styled-system#pseudostyle
+const buttonHover = pseudoStyle("button", "buttonHover")({
+  color: "colors",
+  backgroundColor: "colors"
+});
+
+// this is just an object literal
+// no rebass here:
+const actionIcon = `
+  :after {
+    content: '►';
+    font-size: 55%;
+    margin-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+`;
+
 export {
   weight,
   family,
   lineHeight,
   letterSpacing,
-  displayBreakPoint
-}
+  displayBreakPoint,
+  buttonHover,
+  actionIcon
+};
