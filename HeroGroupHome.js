@@ -42,7 +42,7 @@ class HeroHome extends React.Component {
           closeModal={() => this.setState({ isContentVisible: true })}
         />
         <HeroBlock
-          bg="beige"
+          beigeGradientBg
           img="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507792017/vanessa_waedtl.png"
         >
           <HGroup

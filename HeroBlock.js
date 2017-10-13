@@ -5,7 +5,10 @@ import Image from "./Image2";
 import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from "./Hero";
 
 const HeroBlock = props => (
-  <HeroBox bg={props.bg}>
+  <HeroBox 
+    beigeGradientBg={props.beigeGradientBg}
+    bg={props.bg}
+  >
     <Image
       img={props.img}
     />
@@ -24,12 +27,14 @@ const HeroBlock = props => (
 );
 
 HeroBlock.propTypes = {
+  beigeGradientBg: PropTypes.bool,
   bg: PropTypes.string,
   img: PropTypes.string,
   maxWidth: PropTypes.string
 }
 
 HeroBlock.defaultProps = {
+  beigeGradientBg: false,
   maxWidth: "72em"
 }
 

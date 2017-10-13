@@ -17,17 +17,18 @@ const HeroFrame = styled(Box)`
 
 /*
  * HeroBox, HeroContainer, and HeroFlex or HeroTitleBox work together.
- */
-
-const HeroBox = styled(Box)`
-  --Header-height: ${theme.blockHeights.navBar};
-  --Hero-height: 50vh;
+ 
+ --Hero-height: 50vh;
   --Hero-height-mobile: 50vh;
   --Hero-height-tablet: 40vh;
   --Hero-height-laptop: 66vh;
+ 
+  */
 
+const HeroBox = styled(Box)`
+  --Header-height: ${theme.blockHeights.navBar};
   align-items: center;
-  height: calc(var(--Hero-height-mobile) + var(--Header-height));
+  height: calc(var(--Header-height) + 50vh);
   padding-top: var(--Header-height);
   position: relative;
 
@@ -35,6 +36,14 @@ const HeroBox = styled(Box)`
     min-height: calc(var(--Header-height) + 70vh) !important;
   }
 
+  ${props => props.beigeGradientBg && css`
+    background-image: linear-gradient(
+      to bottom,
+      rgba(222, 202, 178, 0.5),
+      rgb(247, 242, 236) 70%
+    );
+  `}
+  
   ${props => props.showAfterScreen && css`
     @media (max-width: 1024px) {
       &:after {

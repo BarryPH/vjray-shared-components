@@ -48,7 +48,7 @@ const buttonHover = pseudoStyle("button", "buttonHover")({
   backgroundColor: "colors"
 });
 
-// this is just an object literal
+// These are just object literals,
 // no rebass here:
 const actionIcon = `
   :after {
@@ -59,6 +59,7 @@ const actionIcon = `
     top: -1px;
   }
 `;
+
 
 export {
   weight,
