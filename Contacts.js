@@ -13,41 +13,6 @@ import {
 } from './Icons'
 
 
-const LocationRoot = styled(Box)`
-  @media (max-width: 700px) {
-    margin-left: auto;
-    margin-right: auto;
-
-    :last-child {
-      margin-top: 3rem;
-    }
-  }
-`
-const ItemsBox = styled(Box)`
-  --Item-rule: ${theme.colors.text20};
-  border-bottom: 1px solid var(--Item-rule);
-  border-top: 1px solid var(--Item-rule);
-`
-
-const Item = styled(Flex)`
-  align-items: flex-start;
-  color: ${theme.colors.text70} !important;
-  padding: 0.333rem 0;
-  text-align: left;
-
-  @media (max-width: 700px) {
-    font-size: 14px;
-  }
-
-  ${props => props.borderTop && css`
-  `}
-`;
-
-const ItemBody = styled('div')`
-  color: ${theme.colors.text70} !important;
-  flex: 1;
-`;
-
 const locationList = [{
   name: 'Campsie Head Office',
   subOne: '8 Anglo Road',
@@ -77,6 +42,40 @@ const locationList = [{
   googleMapsUrl: 'https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z',
   imageName: 'map-carringbah.jpg',
 }];
+
+const LocationRoot = styled(Box)`
+  @media (max-width: 700px) {
+    margin-left: auto;
+    margin-right: auto;
+
+    :last-child {
+      margin-top: 3rem;
+    }
+  }
+`;
+const ItemsBox = styled(Box)`
+  --Item-rule: ${theme.colors.text20};
+  border-bottom: 1px solid var(--Item-rule);
+  border-top: 1px solid var(--Item-rule);
+`;
+
+const Item = styled(Flex)`
+  align-items: flex-start;
+  color: ${theme.colors.text70} !important;
+  padding: 0.333rem 0;
+  text-align: left;
+
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
+
+  ${props => props.borderTop && css``};
+`;
+
+const ItemBody = styled("div")`
+  color: ${theme.colors.text70} !important;
+  flex: 1;
+`;
 
 // width={[ 9/10, 1/3 ]}
 const Location = (props) => (
@@ -130,23 +129,22 @@ const Location = (props) => (
 
 Location.propTypes = {
   location: PropTypes.object.isRequired,
-  width: PropTypes.string,
+  width: PropTypes.string
 };
 
 const Contact = (props) => (
   <Flex
     direction={[ 'column', 'row' ]}
     justify='center'
-    mt={props.mt || [ 3, 3, 4 ]}
+    mt={[ 3, 3, 4 ]}
     mx={-2}
-    width={props.width}
   >
 
     {locationList
       // Only show locations configured for the current page in constants.js
       .filter(location => contactLocationsForPathnames[props.pathname].locations.includes(location.name))
       .map((location, i) =>
-        <Location location={location} key={i} />
+        <Location location={location} key={i} width={props.width} />
       )
     }
   </Flex>
@@ -154,7 +152,7 @@ const Contact = (props) => (
 
 Contact.propTypes = {
   pathname: PropTypes.string,
-  width: PropTypes.string,
+  maxWidth: PropTypes.string,
 };
 
 Contact.defaultProps = {

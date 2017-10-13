@@ -19,7 +19,6 @@ import Hamburger from './Hamburger'
 import MobileNav from './HeaderMobileNav'
 import DesktopNav from './HeaderDesktopNav'
 import { displayBreakPoint } from "./utils";
-
 import { ButtonOutline } from './Buttons'
 
 
@@ -91,7 +90,6 @@ const Root = props => (
                 {contactDetails.phone}
               </CTALink>
             )}
-
             {site !== "strata" && (
               <CTALink href="vjraystrata.com.au">Visit VJ Ray Strata</CTALink>
             )}

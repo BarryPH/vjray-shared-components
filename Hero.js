@@ -39,8 +39,16 @@ const HeroBox = styled(Box)`
   ${props => props.beigeGradientBg && css`
     background-image: linear-gradient(
       to bottom,
-      rgba(222, 202, 178, 0.7),
+      rgba(222, 202, 178, 0.555),
       rgb(247, 242, 236) 70%
+    );
+  `}
+  
+  ${props => props.blueGradientBg && css`
+    background-image: linear-gradient(
+      to bottom,
+      rgba(18, 150, 222, 0.25),
+      rgba(18, 150, 222, 0.075) 70%
     );
   `}
   

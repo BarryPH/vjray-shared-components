@@ -7,6 +7,7 @@ import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from "./Hero";
 const HeroBlock = props => (
   <HeroBox 
     beigeGradientBg={props.beigeGradientBg}
+    blueGradientBg={props.blueGradientBg}
     bg={props.bg}
   >
     <Image
@@ -28,12 +29,14 @@ const HeroBlock = props => (
 
 HeroBlock.propTypes = {
   beigeGradientBg: PropTypes.bool,
+  blueGradientBg: PropTypes.bool,
   bg: PropTypes.string,
   img: PropTypes.string,
   maxWidth: PropTypes.string
 }
 
 HeroBlock.defaultProps = {
+  blueGradientBg: false,
   beigeGradientBg: false,
   maxWidth: "72em"
 }
