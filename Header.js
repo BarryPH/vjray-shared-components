@@ -52,7 +52,7 @@ const CTALink = props => (
   <Link href={props.href}>
     <a>
       <Text family="textRegular">
-        <StyledButton color="text">{props.children}</StyledButton>
+        <StyledButton textBg color="text">{props.children}</StyledButton>
       </Text>
     </a>
   </Link>

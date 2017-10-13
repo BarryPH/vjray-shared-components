@@ -2,7 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import styled from 'styled-components'
 import { Flex, Box, Banner } from 'rebass'
-import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from './Hero'
+import { HeroContainer } from './Hero'
 import Block from "./Block";
 import { PrimaryButtonText } from './Texts'
 import { Button } from './Buttons'

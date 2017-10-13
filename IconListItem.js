@@ -48,7 +48,7 @@ const IconListItem = (props) => (
       {props.item.buttonUrl &&
         <PrimaryButtonText align='left' color='white'>
           <Link href={props.item.buttonUrl}>
-            <ButtonOutline icon color='brand' children={props.item.buttonLabel} />
+            <ButtonOutline brandBg icon color='brand' children={props.item.buttonLabel} />
           </Link>
         </PrimaryButtonText>
       }

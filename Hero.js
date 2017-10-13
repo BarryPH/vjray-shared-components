@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { Box, Flex } from 'rebass';
 import Container from './Container2';
-import theme from '../theme.js';
+import theme from '../theme-new.js';
 
 /*
  * HeroFrame is an alternative to HeroBox.
@@ -39,7 +39,7 @@ const HeroBox = styled(Box)`
   ${props => props.beigeGradientBg && css`
     background-image: linear-gradient(
       to bottom,
-      rgba(222, 202, 178, 0.5),
+      rgba(222, 202, 178, 0.7),
       rgb(247, 242, 236) 70%
     );
   `}

@@ -53,6 +53,7 @@ class HeroHome extends React.Component {
               <ButtonOutline 
                 icon 
                 color="brand" 
+                brandBg
                 px={3} 
                 children="Watch video"
                 onClick={() => this.setState({ isContentVisible: false })}

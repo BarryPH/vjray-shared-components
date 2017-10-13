@@ -12,6 +12,7 @@ import {
   buttonHover,
   actionIcon
 } from "./utils";
+import theme from '../theme-new';
 
 // Buttons inherit font sizes and weights from 
 // wrapped text components.
@@ -30,6 +31,9 @@ const BaseStyles = `
   text-transform: inherit;
 `;
 
+const brandBg = `:hover { background-color: ${theme.colors.brand}; }`;
+const textBg = `:hover { background-color: ${theme.colors.text}; }`;
+
 // application
 const Button = styled(_Button)`
   ${BaseStyles}
@@ -40,8 +44,9 @@ const Button = styled(_Button)`
 const ButtonOutline = styled(_ButtonOutline)`
   ${BaseStyles}
   ${letterSpacing}
-  ${buttonHover}
   ${props => props.icon && css`${actionIcon}`}
+  ${props => props.brandBg && css`${brandBg}`}
+  ${props => props.textBg && css`${textBg}`}
 `
 
 const ButtonCircle = styled(_ButtonCircle)`
