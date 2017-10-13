@@ -61,6 +61,12 @@ const VideoIframe = styled.iframe`
 `;
 
 class VideoModal extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+  }
+
   componentWillReceiveProps(nextProps) {
     const videoRef = this.video;
     const videoIframe = ReactDOM.findDOMNode(videoRef);
@@ -69,6 +75,20 @@ class VideoModal extends React.Component {
       : '';
 
     videoIframe.setAttribute('src', videoSrc);
+  }
+
+  handleKeyDown(event) {
+    if (event.key === 'Escape' && this.props.isVisible) {
+      this.props.closeModal()
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   render() {
