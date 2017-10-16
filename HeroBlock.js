@@ -17,7 +17,7 @@ const HeroBlock = props => (
       <HeroFlex>
         <HeroTitleBox
           width={[7/12, 5/12]}
-          ml={[2, 4]}
+          ml={[2, 4] || props.ml}
           mb={[3, 4]}
         >
           {props.children}
@@ -32,7 +32,8 @@ HeroBlock.propTypes = {
   blueGradientBg: PropTypes.bool,
   bg: PropTypes.string,
   img: PropTypes.string,
-  maxWidth: PropTypes.string
+  maxWidth: PropTypes.string,
+  ml: PropTypes.array
 }
 
 HeroBlock.defaultProps = {

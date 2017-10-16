@@ -52,7 +52,7 @@ const HeroStrata = props => (
           <a>
             <PrimaryButtonText center>
               <Button bg="white" color="brandAlt" px={3} icon>
-                Visit VJ Ray Strata
+                our Strata website
               </Button>
             </PrimaryButtonText>
           </a>

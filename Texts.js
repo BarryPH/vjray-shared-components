@@ -78,7 +78,7 @@ const PrimaryButtonText = props =>
     caps
     family='textMedium'
     lh="buttonLarge"
-    ls="meta"
+    ls="touch"
     mt={3}
     {...props}
   />

@@ -84,15 +84,10 @@ const Root = props => (
           </Box>
 
           <CTABlock break={["flex", "flex", "none", "flex"]}>
-            {site === "strata" && (
-              <CTALink href={"tel:" + contactDetails.phone}>
-                <IconPhone navBar />
-                {contactDetails.phone}
-              </CTALink>
-            )}
-            {site !== "strata" && (
-              <CTALink href="vjraystrata.com.au">Visit VJ Ray Strata</CTALink>
-            )}
+            <CTALink href={"tel:" + contactDetails.phone}>
+              <IconPhone navBar />
+              {contactDetails.phone}
+            </CTALink>
           </CTABlock>
 
           <CTABlock break={[null, null, null, "none"]} hideAtDesktop p={2}>

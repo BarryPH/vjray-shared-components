@@ -28,6 +28,7 @@ const BaseStyles = `
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
+  padding: 8px 20px 7px;
   text-transform: inherit;
 `;
 

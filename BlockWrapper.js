@@ -9,6 +9,10 @@ const Root = styled(Box)`
     border-top: 1px solid ${theme.colors.text10};
   `}
 
+  ${props => props.noTopPadding && css`
+    padding-top: 0 !important;
+  `}
+
   ${props => props.noBottomPadding && css`
     padding-bottom: 0 !important;
   `}
@@ -24,6 +28,7 @@ const BlockWrapper = (props) => (
     border={props.border}
     pt={props.pt || [ 64, 64, 128, 128 ]}
     pb={props.pb || [ 64, 64, 128, 128 ]}
+    noTopPadding={props.noTopPadding}
     noBottomPadding={props.noBottomPadding}
     style={props.style}
   >
@@ -43,6 +48,7 @@ BlockWrapper.propTypes = {
   border: PropTypes.bool,
   pt: PropTypes.array,
   pb: PropTypes.array,
+  noTopPadding: PropTypes.bool,
   noBottomPadding: PropTypes.bool,
   style: PropTypes.string,
   maxWidth: PropTypes.string,
@@ -54,6 +60,7 @@ BlockWrapper.defaultProps = {
   headlineColor: "text",
   family: "displayRegular",
   border: false,
+  noTopPadding: false,
   noBottomPadding: false,
   textCenter: true,
   textLeft: false,

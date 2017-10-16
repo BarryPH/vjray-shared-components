@@ -129,7 +129,7 @@ const Footer = props => (
             <LogoBox>
               <Link href="/">
                 <a>
-                  <Icon color="text" size="80" icon={icons.logo} />
+                  <Icon color="text" size="80" icon={icons.logoGroup} />
                 </a>
               </Link>
             </LogoBox>
@@ -156,12 +156,12 @@ const Footer = props => (
                 </Link>
               </Column>
               <Column>
-                <Link href="/useful-info">
+                <Link href="/forms-and-fact-sheets">
                   <a>
                     <span>Useful Info</span>
                   </a>
                 </Link>
-                <Link href="/useful-info/forms-and-fact-sheets">
+                <Link href="/forms-and-fact-sheets">
                   <a>Facts and forms</a>
                 </Link>
               </Column>
@@ -175,7 +175,7 @@ const Footer = props => (
                   <a>Report an issue</a>
                 </Link>
                 <Link href="/emergency">
-                  <a>Emergencies</a>
+                  <a>Strata emergencies</a>
                 </Link>
               </Column>
             </Flex>

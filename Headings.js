@@ -62,7 +62,7 @@ const MetaHeading = props =>
   <Root
     center
     caps
-    family='textMedium'
+    family='textRegular'
     fontSize={[0, 0, 1]}
     ls='meta'
     lh='display'

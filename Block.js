@@ -23,6 +23,7 @@ const Block = props => (
     textCenter={props.textCenter}
     maxWidth={props.maxWidth}
     border={props.border}
+    noTopPadding={props.noTopPadding}
     noBottomPadding={props.noBottomPadding}
   >
     <Box 
@@ -71,6 +72,7 @@ Block.propTypes = {
   id: PropTypes.string,
   bg: PropTypes.string,
   border: PropTypes.bool,
+  noTopPadding: PropTypes.bool,
   noBottomPadding: PropTypes.bool,
   textCenter: PropTypes.bool,
   textLeft: PropTypes.bool,
@@ -94,6 +96,7 @@ Block.defaultProps = {
   textCenter: true,
   textLeft: false,
   border: false,
+  noTopPadding: false,
   noBottomPadding: false,
   childBoxTextCenter: false,
   subheadColor: "text",
