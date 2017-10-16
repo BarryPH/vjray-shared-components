@@ -36,6 +36,10 @@ const Root = styled("img")`
     margin-left: auto;
     margin-right: -10%;
   }
+
+  @media (max-height: 1000px) and (min-width: 1024px) {
+    margin-right: 5%;
+  }
 `;
 
 class Image extends React.Component {
