@@ -9,6 +9,12 @@ const Root = styled(Rebass.Text)`
   ${weight}
   ${lineHeight}
   ${letterSpacing}
+
+  em { 
+    color: ${theme.colors.text}; 
+    font-family: ${theme.families.textRegular}; 
+    font-style: normal;
+  }
   
   ${props => props.actionIcon && css`${actionIcon}`}
 
@@ -30,6 +36,7 @@ const Root = styled(Rebass.Text)`
 // * MediumText
 // * LargeText
 // * AuthorText
+// * PrimaryButtonText
 
 const Text = props =>
   <Root
@@ -76,9 +83,9 @@ const AuthorText = props =>
 const PrimaryButtonText = props =>
   <SmallText 
     caps
-    family='textMedium'
+    family='textRegular'
     lh="buttonLarge"
-    ls="touch"
+    ls="meta"
     mt={3}
     {...props}
   />

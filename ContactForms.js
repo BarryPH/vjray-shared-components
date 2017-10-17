@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
+import styled, { css } from "styled-components";
 import { Box } from 'rebass'
 import { Tabs, Pane } from './Tabs'
 import FormContact from './FormContact'
 import FormIssue from './FormIssue'
+import theme from '../theme-new'
 
 
 const Root = props => (
@@ -36,10 +38,12 @@ class ContactForms extends React.Component {
 }
 
 ContactForms.propTypes = {
+  border: PropTypes.bool,
   defaultForm: PropTypes.number
 }
 
 ContactForms.defaultProps = {
+  border: false,
   defaultForm: 0,
 }
 
