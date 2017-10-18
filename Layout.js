@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { ThemeProvider } from "styled-components";
-import theme from "../theme";
+import { Provider } from "rebass";
+import theme from "../theme-new";
 import globalStyles from "./global";
 
 // https://github.com/zeit/next.js/blob/master/examples/layout-component/components/layout.js
 
 export default ({ children, title = "VJ Ray Strata Management, Sydney" }) => (
-  <ThemeProvider theme={theme}>
+  <Provider theme={theme}>
     <div>
       <Head>
         <title>{title}</title>
@@ -16,5 +16,5 @@ export default ({ children, title = "VJ Ray Strata Management, Sydney" }) => (
 
       {children}
     </div>
-  </ThemeProvider>
+  </Provider>
 );
