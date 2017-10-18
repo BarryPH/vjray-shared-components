@@ -61,7 +61,7 @@ const FeatureList = (props) => (
     mx='auto' 
     mt={[ 2, 2, 3, 4 ]}
   >
-    <Flex mx={-3} wrap={[ 'wrap', 'nowrap']}>
+    <Flex mx={-3} wrap={[ 'wrap', 'nowrap']} justify='center'>
       {featuresList.map((item, i) => <Feature border item={item} key={i} />)}
     </Flex>
   </Box>
