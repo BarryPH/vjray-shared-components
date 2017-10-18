@@ -34,6 +34,7 @@ const HGroup = props => (
     )}
     {props.title && (
       <Display
+        is={props.titleIs}
         color={props.titleColor}
         family={props.titleFamily}
         dangerouslySetInnerHTML={{ __html: props.title }}
@@ -59,18 +60,21 @@ HGroup.propTypes = {
   heading: PropTypes.string,
   headingColor: PropTypes.string,
   headingFamily: PropTypes.string,
+  titleIs: PropTypes.string,
   title: PropTypes.string,
   titleColor: PropTypes.string,
   titleFamily: PropTypes.string,
   text: PropTypes.string,
   textIsLast: PropTypes.bool,
   largeTextColor: PropTypes.string,
+  children: PropTypes.element
 }
 
 HGroup.defaultProps = {
   textCenter: false,
   subheadColor: "text",
   headingColor: "text",
+  titleIs: "h2",
   titleColor: "text",
   titleFamily: "displayRegular",
   largeTextColor: "text70",
