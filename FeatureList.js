@@ -5,7 +5,6 @@ import { Heading } from './Headings'
 import { Text, SmallText } from './Texts'
 import icons from './iconConstants'
 import Icon from './Icon';
-import RespToggle from './ResponsiveToggle';
 import { featuresList } from "../constants";
 
 
