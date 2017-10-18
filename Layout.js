@@ -1,8 +1,9 @@
-import Head from "next/head";
-import PropTypes from "prop-types";
-import { Provider } from "rebass";
-import theme from "../theme-new";
-import globalStyles from "./global";
+import React from 'react';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import { Provider } from 'rebass';
+import theme from '../theme-new';
+import globalStyles from './global';
 
 // https://github.com/zeit/next.js/blob/master/examples/layout-component/components/layout.js
 // http://jxnblk.com/rebass/theming
@@ -18,17 +19,18 @@ const Layout = ({ children, title }) => (
       </Head>
 
       {children}
+
     </div>
   </Provider>
 );
 
 Layout.propsTypes = {
   title: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.element,
 };
 
 Layout.defaultProps = {
-  title: "VJ Ray Strata Management, Sydney"
+  title: 'VJ Ray Strata Management, Sydney',
 };
 
 export default Layout;
