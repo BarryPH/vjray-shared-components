@@ -60,7 +60,6 @@ const actionIcon = `
   }
 `;
 
-
 export {
   weight,
   family,

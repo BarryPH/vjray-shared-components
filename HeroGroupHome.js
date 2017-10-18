@@ -46,6 +46,7 @@ class HeroHome extends React.Component {
           img="https://res.cloudinary.com/pw-img-cdn/image/upload/v1507792017/vanessa_waedtl.png"
         >
           <HGroup
+            titleIs="h1"
             title="The Real Estate team experienced in helping people."
             titleColor="brand"
           >
