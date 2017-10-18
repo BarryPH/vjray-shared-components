@@ -90,6 +90,7 @@ Block.propTypes = {
   text: PropTypes.string,
   textIsLast: PropTypes.bool,
   largeTextColor: PropTypes.string,
+  children: PropTypes.element
 }
 
 Block.defaultProps = {
