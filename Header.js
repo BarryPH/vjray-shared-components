@@ -13,7 +13,6 @@ import Icon from './Icon';
 import { IconPhone } from './Icons'
 import { Display } from './Headings'
 import { Text } from './Texts'
-import { Divider } from './Text'
 import Container from './Container2'
 import Hamburger from './Hamburger'
 import MobileNav from './HeaderMobileNav'
