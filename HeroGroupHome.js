@@ -43,7 +43,7 @@ class HeroHome extends React.Component {
         />
         <HeroBlock
           beigeGradientBg
-          img="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507792017/vanessa_waedtl.png"
+          img="https://res.cloudinary.com/pw-img-cdn/image/upload/v1507792017/vanessa_waedtl.png"
         >
           <HGroup
             title="The Real Estate team experienced in helping people."

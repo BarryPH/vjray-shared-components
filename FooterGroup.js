@@ -172,7 +172,7 @@ const Footer = props => (
                   </a>
                 </Link>
                 <Link href="/contact?form=report#contact-forms">
-                  <a>Report an issue</a>
+                  <a>Report a repair</a>
                 </Link>
                 <Link href="/emergency">
                   <a>Strata emergencies</a>

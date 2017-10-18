@@ -36,7 +36,7 @@ const HeroStrata = props => (
   <StyledBanner
     is="section"
     py={[64, 64, 128, 128]}
-    backgroundImage="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg"
+    backgroundImage="https://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg"
   >
     <HeroContainer textCenter style={{ zIndex: 1 }}>
       <Block
