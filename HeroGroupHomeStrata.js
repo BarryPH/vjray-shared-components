@@ -1,11 +1,11 @@
 import React from 'react';
-import Link from "next/link";
-import styled from 'styled-components'
-import { Flex, Box, Banner } from 'rebass'
-import { HeroContainer } from './Hero'
-import Block from "./Block";
-import { PrimaryButtonText } from './Texts'
-import { Button } from './Buttons'
+import Link from 'next/link';
+import styled from 'styled-components';
+import { Flex, Box, Banner } from 'rebass';
+import { HeroContainer } from './Hero';
+import Block from './Block';
+import { PrimaryButtonText } from './Texts';
+import { Button } from './Buttons';
 
 
 const StyledBanner = styled(Banner)`
@@ -28,15 +28,13 @@ const StyledBanner = styled(Banner)`
     right: 0;
     top: 0;
   }
-`
-
-{/* <CoverImage who src="http://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg" /> */}
+`;
 
 const HeroStrata = props => (
   <StyledBanner
     is="section"
     py={[64, 64, 128, 128]}
-    backgroundImage="https://res.cloudinary.com/pw-img-cdn/image/upload/v1507095035/hero-cronulla-bw_glru1c.jpg"
+    backgroundImage="https://res.cloudinary.com/pw-img-cdn/image/upload/v1508484103/hero-cronulla-bw-70_nccfru.jpg"
   >
     <HeroContainer textCenter style={{ zIndex: 1 }}>
       <Block
@@ -62,4 +60,4 @@ const HeroStrata = props => (
   </StyledBanner>
 );
 
-export default HeroStrata
+export default HeroStrata;

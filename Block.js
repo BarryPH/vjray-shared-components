@@ -1,10 +1,10 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link'
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 import { Box } from 'rebass';
-import BlockWrapper from './BlockWrapper'
-import { LargeText } from './Texts'
-import { Display, Heading, Subheading } from './Headings'
+import BlockWrapper from './BlockWrapper';
+import { LargeText } from './Texts';
+import { Display, Heading, Subheading } from './Headings';
 
 const StyledBox = styled(Box)`
   text-align: left;
@@ -28,7 +28,7 @@ const Block = props => (
   >
     <Box 
       width={props.crownWidth} 
-      mx='auto'
+      mx="auto"
     >
       {props.subhead && (
         <Subheading

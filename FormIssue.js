@@ -1,9 +1,6 @@
-import React from 'react'
-import Formsy, { HOC } from 'formsy-react';
-import styled, { css } from 'styled-components'
-
-import theme from '../theme'
-import FormContainer from './FormContainer'
+import React from 'react';
+import PropTypes from 'prop-types';
+import FormContainer from './FormContainer';
 import {
   Form,
   Input,
@@ -32,8 +29,9 @@ class FormIssue extends React.Component {
 
   render() {
     return (
-      <FormContainer submit={this.submit}>
+      <FormContainer submit={this.submit} brand={this.props.brand}>
         <FormGroup>
+          <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
           <Input
             placeholder='Your name*'
             name='name'
@@ -63,12 +61,20 @@ class FormIssue extends React.Component {
           />
 
           {/* Formspree filters */}
-          <input type="text" name="_gotcha" style={{display: "none" }} />
+          <input type="text" name="_gotcha" style={{ display: 'none' }} />
           <input type="hidden" name="_subject" value="Strata website issue submission" />
         </FormGroup>
       </FormContainer>
     );
   }
 }
+
+FormIssue.propTypes = {
+  brand: PropTypes.bool,
+};
+
+FormIssue.defaultProps = {
+  brand: false,
+};
 
 export default FormIssue;

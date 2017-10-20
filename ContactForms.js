@@ -1,15 +1,14 @@
-import PropTypes from 'prop-types'
-import styled, { css } from "styled-components";
-import { Box } from 'rebass'
-import { Tabs, Pane } from './Tabs'
-import FormContact from './FormContact'
-import FormIssue from './FormIssue'
-import theme from '../theme-new'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Box } from 'rebass';
+import { Tabs, Pane } from './Tabs';
+import FormContact from './FormContact';
+import FormIssue from './FormIssue';
 
 
 const Root = props => (
   <div>
-    <Box mt={[ 3, 3, 3, 4]}>
+    <Box mt={[3, 3, 3, 4]}>
       <Tabs selected={props.defaultForm === 'report' ? 1 : 0}>
         {props.tabs.map(tab =>
           <Pane label={tab.name} key={tab._id}>{tab.content}</Pane>)
@@ -17,18 +16,18 @@ const Root = props => (
       </Tabs>
     </Box>
   </div>
-)
+);
 
-class ContactForms extends React.Component {
+class ContactForms extends React.PureComponent {
   render() {
     const tabs = [{
       _id: 0,
       name: 'Quick response',
-      content: <FormContact />
+      content: <FormContact />,
     }, {
       _id: 1,
       name: 'Report an issue',
-      content: <FormIssue />
+      content: <FormIssue />,
     }];
 
     return (
@@ -39,12 +38,12 @@ class ContactForms extends React.Component {
 
 ContactForms.propTypes = {
   border: PropTypes.bool,
-  defaultForm: PropTypes.number
-}
+  defaultForm: PropTypes.number,
+};
 
 ContactForms.defaultProps = {
   border: false,
   defaultForm: 0,
-}
+};
 
-export default ContactForms
+export default ContactForms;

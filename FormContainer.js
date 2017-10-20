@@ -77,12 +77,12 @@ class FormContainer extends React.Component {
 
             <Text right>
               { this.state.formSent &&
-                <SuccessMessage>Thanks! We'll contact you within 48 hours.</SuccessMessage>
+                <SuccessMessage>Thanks! We&apos;ll contact you within 48 hours.</SuccessMessage>
               }
-              <LaddaButton 
-                bg="brand" 
-                loading={this.state.loading} 
-                type='submit' 
+              <LaddaButton
+                bg={this.props.brand || 'brandAlt'}
+                loading={this.state.loading}
+                type="submit"
                 disabled={this.state.formSent || !this.state.canSubmit}
               >
                 { this.state.formSent ? 'Sent' : 'Send' }
@@ -99,6 +99,10 @@ FormContainer.propTypes = {
   brand: PropTypes.bool,
   children: PropTypes.element.isRequired,
   submit: PropTypes.func.isRequired,
+};
+
+FormContainer.defaultProp = {
+  brand: false,
 };
 
 export default FormContainer;

@@ -1,7 +1,7 @@
-import styled, {css} from 'styled-components';
-import { 
-  Button as _Button, 
-  ButtonOutline as _ButtonOutline, 
+import styled, { css } from 'styled-components';
+import {
+  Button as _Button,
+  ButtonOutline as _ButtonOutline,
   ButtonCircle as _ButtonCircle
 } from 'rebass';
 import {
@@ -24,6 +24,7 @@ import theme from '../theme-new';
 // If you need to change line-height, use s-c per instance.
 
 const BaseStyles = `
+  border-radius: 2px;
   font-size: initial;
   font-size: inherit;
   font-weight: inherit;
@@ -40,7 +41,7 @@ const Button = styled(_Button)`
   ${BaseStyles}
   ${letterSpacing}
   ${props => props.icon && css`${actionIcon}`}
-`
+`;
 
 const ButtonOutline = styled(_ButtonOutline)`
   ${BaseStyles}
@@ -48,13 +49,13 @@ const ButtonOutline = styled(_ButtonOutline)`
   ${props => props.icon && css`${actionIcon}`}
   ${props => props.brandBg && css`${brandBg}`}
   ${props => props.textBg && css`${textBg}`}
-`
+`;
 
 const ButtonCircle = styled(_ButtonCircle)`
   ${BaseStyles}
   ${letterSpacing}
   ${props => props.icon && css`${actionIcon}`}
-`
+`;
 
 // FAIL
 // spreadable text styling props.
@@ -70,5 +71,5 @@ const ButtonCircle = styled(_ButtonCircle)`
 export {
   Button,
   ButtonOutline,
-  ButtonCircle
+  ButtonCircle,
 };

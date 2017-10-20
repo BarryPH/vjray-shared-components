@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components'
-import Rebass from 'rebass'
-import { weight, family, lineHeight, letterSpacing, actionIcon } from "./utils";
-import theme from '../theme-new'
+import React from 'react';
+import styled, { css } from 'styled-components';
+import Rebass from 'rebass';
+import { weight, family, lineHeight, letterSpacing, actionIcon } from './utils';
+import theme from '../theme-new';
 
 
 const Root = styled(Rebass.Text)`
@@ -38,57 +39,63 @@ const Root = styled(Rebass.Text)`
 // * AuthorText
 // * PrimaryButtonText
 
-const Text = props =>
+const Text = props => (
   <Root
-    fontSize={[ 2, 2, 2, 3 ]}
+    fontSize={[2, 2, 2, 3]}
     weight={2}
     {...props}
   />
+);
 
-const SmallText = props =>
+const SmallText = props => (
   <Root
-    fontSize={[ 1, 1, 2 ]}
+    fontSize={[1, 1, 2]}
     weight={2}
     {...props}
   />
+);
 
-const MediumText = props =>
+const MediumText = props => (
   <Root
-    fontSize={[ 3, 3, 4 ]}
+    fontSize={[3, 3, 4]}
     weight={2}
     {...props}
   />
+);
 
-const LargeText = props =>
+const LargeText = props => (
   <Root
-    fontSize={[ 3, 3, 4, 5 ]}
+    fontSize={[3, 3, 4, 5]}
     weight={2}
-    lh='subheadline'
-    ls='text'
+    lh="subheadline"
+    ls="text"
     {...props}
   />
+);
 
-const AuthorText = props =>
+const AuthorText = props => (
   <Root
-    is='span'
+    is="span"
     caps
-    color='inherit'
-    fontSize={[ 2, 2, 2, 3 ]}
-    family='textBook'
+    color="inherit"
+    fontSize={[2, 2, 2, 3]}
+    family="textBook"
     weight={3}
-    ls='touch'
+    ls="touch"
     {...props}
   />
+);
 
-const PrimaryButtonText = props =>
+const PrimaryButtonText = props => (
   <SmallText 
     caps
-    family='textRegular'
+    family="textMedium"
     lh="buttonLarge"
     ls="meta"
-    mt={3}
+    mt={4}
     {...props}
   />
+);
 
 const Divider = styled.span`
   --spacing: 0.75rem;
@@ -109,7 +116,7 @@ const Divider = styled.span`
 // Find another way…
 // 
 
-const TextBlock = styled("div")`
+const TextBlock = styled('div')`
   h1 {
     font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[5]}px;
@@ -163,11 +170,11 @@ const TextBlock = styled("div")`
   p + p,
   p + h2,
   ul + p {
-    margin-top: 2em;
+    margin-top: 1.5rem;
   }
 
   ul {
-    margin: 2em 0;
+    margin: 1.5rem 0;
   }
 
   li {
@@ -192,7 +199,7 @@ const DangerouslyResetTextBlock = styled(TextBlock)`
       font-size: 19px;
     }
   }
-`
+`;
 
 export {
   Text,
@@ -203,5 +210,5 @@ export {
   PrimaryButtonText,
   Divider,
   TextBlock,
-  DangerouslyResetTextBlock
-}
+  DangerouslyResetTextBlock,
+};
