@@ -1,18 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { Box } from 'rebass';
-import BlockWrapper from './BlockWrapper';
-import { LargeText } from './Texts';
-import { Display, Heading, Subheading } from './Headings';
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import { Box } from "rebass";
+import BlockWrapper from "./BlockWrapper";
+import { LargeText } from "./Texts";
+import { Display, Heading, Subheading } from "./Headings";
 
 const StyledBox = styled(Box)`
   text-align: left;
 
-  ${props => props.childBoxTextCenter && css`
-    text-align: center;
-  `}
-`
+  ${props => props.childBoxTextCenter && css`text-align: center;`};
+`;
 
 // p?
 const Block = props => (
@@ -26,15 +24,9 @@ const Block = props => (
     noTopPadding={props.noTopPadding}
     noBottomPadding={props.noBottomPadding}
   >
-    <Box 
-      width={props.crownWidth} 
-      mx="auto"
-    >
+    <Box width={props.crownWidth} mx="auto">
       {props.subhead && (
-        <Subheading
-          color={props.subheadColor}
-          children={props.subhead}
-        />
+        <Subheading color={props.subheadColor} children={props.subhead} />
       )}
       {props.heading && (
         <Heading
@@ -49,7 +41,7 @@ const Block = props => (
           color={props.titleColor}
           family={props.titleFamily}
           dangerouslySetInnerHTML={{ __html: props.title }}
-          mb={3}
+          mb={4}
         />
       )}
       {props.text && (
@@ -60,11 +52,7 @@ const Block = props => (
         />
       )}
     </Box>
-    {props.children && (
-      <StyledBox>
-        {props.children}
-      </StyledBox>
-    )}
+    {props.children && <StyledBox>{props.children}</StyledBox>}
   </BlockWrapper>
 );
 
@@ -90,10 +78,11 @@ Block.propTypes = {
   text: PropTypes.string,
   textIsLast: PropTypes.bool,
   largeTextColor: PropTypes.string,
-  children: PropTypes.element
-}
+  children: PropTypes.element,
+};
 
 Block.defaultProps = {
+  bg: "",
   textCenter: true,
   textLeft: false,
   border: false,

@@ -92,7 +92,7 @@ const PrimaryButtonText = props => (
     family="textMedium"
     lh="buttonLarge"
     ls="meta"
-    mt={4}
+    mt={3}
     {...props}
   />
 );

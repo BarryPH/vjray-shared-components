@@ -1,18 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 import {
   Button as _Button,
   ButtonOutline as _ButtonOutline,
   ButtonCircle as _ButtonCircle
-} from 'rebass';
-import {
-  weight,
-  family,
-  lineHeight,
-  letterSpacing,
-  buttonHover,
-  actionIcon
-} from "./utils";
-import theme from '../theme-new';
+} from "rebass";
+import { letterSpacing, actionIcon } from "./utils";
+import theme from "../theme-new";
 
 // Buttons inherit font sizes and weights from 
 // wrapped text components.
@@ -25,11 +18,11 @@ import theme from '../theme-new';
 
 const BaseStyles = `
   border-radius: 2px;
-  font-size: initial;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  padding: 8px 20px 7px;
+  font-size: initial !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  padding: 8px 22px 7px 24px !important;
   text-transform: inherit;
 `;
 
@@ -57,8 +50,8 @@ const ButtonCircle = styled(_ButtonCircle)`
   ${props => props.icon && css`${actionIcon}`}
 `;
 
-// FAIL
 // spreadable text styling props.
+// FAIL
 // these can be overriden per button instance
 // via the 4 base utility styles: 
 // family, weight, lh & ls

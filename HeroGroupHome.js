@@ -50,7 +50,7 @@ class HeroHome extends React.Component {
             title="The Real Estate team experienced in helping people."
             titleColor="brand"
           >
-            <PrimaryButtonText>
+            <PrimaryButtonText mt={4}>
               <ButtonOutline 
                 icon 
                 color="brand" 

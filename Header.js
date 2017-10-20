@@ -27,7 +27,7 @@ const StyledFlex = styled(Flex)`
 `
   
 const StyledButton = styled(ButtonOutline)`
-  box-shadow: inset 0 0 0 1px;
+  box-shadow: inset 0 0 0 1px !important;
 `;
   
   // ref for the CTA btn in case there's a problem
