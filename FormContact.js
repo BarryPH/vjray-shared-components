@@ -1,20 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import FormContainer from "./FormContainer";
+import React from "react"
+import PropTypes from "prop-types"
+import FormContainer from "./FormContainer"
 import {
-  Form,
   Input,
-  Select,
   Textarea,
   FormGroup,
   FormGroupHeadline,
-} from "./Form";
+} from "./Form"
 
 class FormContact extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   async submit(model) {
     const response = await fetch("https://formspree.io/xgaewyjx", {
       method: "POST",
@@ -23,18 +17,24 @@ class FormContact extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(model),
-    });
+    })
   }
 
-  render() {
+  render(props) {
     return (
-      <FormContainer submit={this.submit} brand={this.props.brand}>
+      <FormContainer submit={this.submit} brandColor={this.props.brandColor}>
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
-          <Input placeholder="Your name*" name="name" required />
+          <Input
+            placeholder="Your name*"
+            name="name"
+            brandColor={this.brandColor}
+            required
+          />
           <Input
             placeholder="Your email*"
             name="email"
+            brandColor={this.brandColor}
             validations={{
               isEmail: true,
             }}
@@ -46,10 +46,16 @@ class FormContact extends React.Component {
           <Input
             placeholder="Your phone number*"
             name="phoneNumber"
+            brandColor={this.brandColor}
             validations="isExisty"
             required
           />
-          <Textarea placeholder="Add your comments…" name="comments" rows="7" />
+          <Textarea
+            placeholder="Add your comments…"
+            name="comments"
+            brandColor={this.brandColor}
+            rows="7"
+          />
 
           {/* Formspree filters */}
           <input type="text" name="_gotcha" style={{ display: "none" }} />
@@ -60,16 +66,16 @@ class FormContact extends React.Component {
           />
         </FormGroup>
       </FormContainer>
-    );
+    )
   }
 }
 
 FormContact.propTypes = {
-  brand: PropTypes.bool,
-};
+  brandColor: PropTypes.bool,
+}
 
 FormContact.defaultProps = {
-  brand: false,
-};
+  brandColor: false,
+}
 
-export default FormContact;
+export default FormContact

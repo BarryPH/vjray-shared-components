@@ -1,47 +1,54 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components'
-import { Flex } from 'rebass'
-import { FormHeader } from './Form.js'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { Flex } from "rebass"
+import { FormHeader } from "./Form"
 
 const Label = styled.a`
   flex-grow: 1;
   flex-basis: 0;
-`;
+`
 
 class Tabs extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      selected: this.props.selected
-    };
+      selected: this.props.selected,
+    }
   }
 
-  _renderTitles() {
+  _renderTitles(props) {
     function labels(child, idx) {
-      const isSelected = this.state.selected === idx;
+      const isSelected = this.state.selected === idx
 
       return (
         <Label onClick={this.onClick.bind(this, idx)} href='#' key={idx}>
-          <FormHeader role='tab' aria-controls={`panel${idx}`} inactive={!isSelected}>{child.props.label}</FormHeader>
+          <FormHeader
+            role='tab'
+            aria-controls={`panel${idx}`}
+            brandColor={this.props.brandColor}
+            inactive={!isSelected}
+          >
+            {child.props.label}
+          </FormHeader>
         </Label>
-      );
+      )
     }
 
    return (
       <Flex role='tablist'>
         {this.props.children.map(labels.bind(this))}
       </Flex>
-    );
+    )
   }
 
   onClick(index, event) {
-    event.preventDefault();
+    event.preventDefault()
 
     this.setState({
-      selected: index
-    });
+      selected: index,
+    })
   }
 
   render() {
@@ -52,24 +59,28 @@ class Tabs extends React.Component {
         <div>
           {this.props.children[this.state.selected]}
         </div>
-      </div>);
+      </div>)
   }
 }
 
-const Pane = (props) => {
-  return <div>{props.children}</div>;
-}
+const Pane = props => <div>{props.children}</div>
 
 Tabs.propTypes = {
   selected: PropTypes.number,
-  chlidren: PropTypes.element,
-};
+  brandColor: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+}
 
 Tabs.defaultProps = {
   selected: 0,
-};
+  brandColor: false,
+}
+
+Pane.propTypes = {
+  children: PropTypes.element.isRequired,
+}
 
 export {
   Tabs,
   Pane,
-};
+}

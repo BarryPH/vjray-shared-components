@@ -1,9 +1,9 @@
-import React from 'react'
-import Formsy, { HOC } from 'formsy-react'
-import styled, { css } from 'styled-components'
-import theme from '../theme'
-import { Text } from './Text'
-import { Display, BoxedSubheadline, HeadlineDetail } from './Headline'
+import React from "react"
+import Formsy, { HOC } from "formsy-react"
+import styled, { css } from "styled-components"
+import theme from "../theme-new"
+import { Text } from "./Texts"
+import { BoxedSubheadline, HeadlineDetail } from "./Headline"
 
 
 const Form = styled(Formsy.Form)`
@@ -60,40 +60,55 @@ const Form = styled(Formsy.Form)`
     border-radius: 0;
     cursor: pointer;
   }
-`;
 
-const FormHeader = props =>
-  <BoxedSubheadline bg='brandAlt' color='white' {...props} />
+  ${props => props.brandColor && css`
+    input,
+    select,
+    textarea {
+      &:focus {
+        border-color: ${theme.colors.brand};
+      }
+    }
+  `}
+`
+
+const FormHeader = props => (
+  <BoxedSubheadline
+    bg={props.brandColor ? "brand" : "brandAlt"}
+    color="white"
+    {...props}
+  />
+)
 
 const FormGroup = styled.div`
   & + & {
     margin-top: 3rem;
   }
-`;
+`
 
 const FormGroupHeadline = styled(HeadlineDetail)`
   margin-left: 1rem;
-`;
+`
 
 const SuccessMessage = styled.span`
   color: ${theme.colors.text70};
   margin-right: 1em;
-`;
+`
 
-const ErrorMessage = props =>
+const ErrorMessage = props => (
   <Text
-    color='#f23030'
-    fontSize={[ 0, 1 ]}
-    lineHeight='feedback'
+    color="#f23030"
+    fontSize={[0, 1]}
+    lineHeight="feedback"
     {...props}
   />
+)
 
 const StyledSelect = styled.select`
   ${props => props.unselected && css `
-    color: #B7B7BB !important;
+    color: ${theme.colors.text40} !important;
   `}
 `
-
 
 class InputRoot extends React.Component {
   render() {
@@ -102,6 +117,7 @@ class InputRoot extends React.Component {
         <input
           onChange={(e) => this.props.setValue(e.target.value)}
           placeholder={this.props.placeholder}
+          brandColor={this.props.brandColor}
         />
         <ErrorMessage>{this.props.getErrorMessage()}</ErrorMessage>
       </div>
@@ -135,6 +151,7 @@ class SelectRoot extends React.Component {
         <StyledSelect
           onChange={this.handleChange}
           placeholder={this.props.placeholder}
+          brandColor={this.props.brandColor}
           unselected={!this.state.selected}
         >
           {this.props.children}
@@ -143,7 +160,7 @@ class SelectRoot extends React.Component {
       </div>
     )
   }
-};
+}
 
 class TextareaRoot extends React.Component {
   render() {
@@ -152,6 +169,7 @@ class TextareaRoot extends React.Component {
         <textarea
           onChange={(e) => this.props.setValue(e.target.value)}
           placeholder={this.props.placeholder}
+          brandColor={this.props.brandColor}
           rows={this.props.rows}
           cols={this.props.cols}
         />
@@ -159,11 +177,11 @@ class TextareaRoot extends React.Component {
       </div>
     )
   }
-};
+}
 
-const Input = HOC(InputRoot);
-const Select = HOC(SelectRoot);
-const Textarea = HOC(TextareaRoot);
+const Input = HOC(InputRoot)
+const Select = HOC(SelectRoot)
+const Textarea = HOC(TextareaRoot)
 
 export {
   Form,
@@ -174,4 +192,4 @@ export {
   FormGroupHeadline,
   SuccessMessage,
   FormHeader,
-};
+}

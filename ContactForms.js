@@ -1,49 +1,75 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box } from 'rebass';
-import { Tabs, Pane } from './Tabs';
-import FormContact from './FormContact';
-import FormIssue from './FormIssue';
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
+import { Box } from "rebass"
+import { Tabs, Pane } from "./Tabs"
+import FormContact from "./FormContact"
+import FormIssue from "./FormIssue"
+import theme from "../theme-new"
 
+
+// const StyledBox = styled(Box)`
+//   ${props => props.brandColor && css`
+//     input,
+//     select,
+//     textarea {
+//       &:focus {
+//         border-color: ${theme.colors.brand} !important;
+//       }
+//     }
+
+//     [role="ta"] {
+//       background-color: ${theme.colors.brand} !important;
+//     }
+//   `}
+// `
 
 const Root = props => (
-  <div>
-    <Box mt={[3, 3, 3, 4]}>
-      <Tabs selected={props.defaultForm === 'report' ? 1 : 0}>
-        {props.tabs.map(tab =>
-          <Pane label={tab.name} key={tab._id}>{tab.content}</Pane>)
-        }
-      </Tabs>
-    </Box>
-  </div>
+  <Box mt={[3, 3, 3, 4]}>
+    <Tabs selected={props.defaultForm === "report" ? 1 : 0} brandColor={props.brandColor}>
+      {props.tabs.map(tab => (
+        <Pane label={tab.name} key={tab._id}>
+          {tab.content}
+        </Pane>
+      ))}
+    </Tabs>
+  </Box>
 );
 
 class ContactForms extends React.PureComponent {
   render() {
     const tabs = [{
       _id: 0,
-      name: 'Quick response',
-      content: <FormContact />,
+      name: "Quick response",
+      content: <FormContact brandColor />,
     }, {
       _id: 1,
-      name: 'Report an issue',
-      content: <FormIssue />,
-    }];
+      name: "Report an issue",
+      content: <FormIssue brandColor />,
+    }]
 
     return (
-      <Root tabs={tabs} {...this.props} />
+      <Root tabs={tabs} brandColor {...this.props} />
     )
   }
 }
 
+Root.propTypes = {
+  brandColor: PropTypes.bool,
+}
+
+Root.defaultProps = {
+  brandColor: false,
+}
+
 ContactForms.propTypes = {
-  border: PropTypes.bool,
+  brandColor: PropTypes.bool,
   defaultForm: PropTypes.number,
-};
+}
 
 ContactForms.defaultProps = {
-  border: false,
+  brandColor: false,
   defaultForm: 0,
-};
+}
 
-export default ContactForms;
+export default ContactForms
