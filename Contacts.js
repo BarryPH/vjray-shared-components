@@ -1,46 +1,47 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link'
-import styled, { css } from 'styled-components'
-import theme from '../theme'
-import { contactLocationsForPathnames } from '../constants'
-import { Box, Flex } from 'rebass'
-import { Text, SmallText } from './Text'
+import React from "react"
+import PropTypes from "prop-types"
+import Link from "next/link"
+import { Box, Flex } from "rebass"
+import styled from "styled-components"
+import theme from "../theme-new"
+import { contactLocationsForPathnames } from "../constants"
+import { Text, SmallText } from "./Text"
 import {
   IconPhone,
   IconEmail,
   IconAddress,
   IconOpen,
-} from './Icons'
+} from "./Icons"
 
 
 const locationList = [{
-  name: 'Campsie Head Office',
-  subOne: '8 Anglo Road',
-  subTwo: 'Campsie, NSW 2194',
-  openOne: 'Monday-Thursday 9-5.30pm',
-  openTwo: 'Friday 9-5pm',
-  openThree: 'Saturday 9-4pm',
-  phoneNumber: '02 9784 7900',
-  faxNumber: '02 9787 2952',
-  email: 'campsie@vjray.com.au',
-  poBox: 'PO Box 369 Campsie, NSW 2194',
-  emergencyPhoneNumber: '1300 073 405',
-  googleMapsUrl: 'https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z',
-  imageName: 'map-campsie.jpg',
+  name: "Campsie Head Office",
+  subOne: "8 Anglo Road",
+  subTwo: "Campsie, NSW 2194",
+  openOne: "Monday-Thursday 9-5.30pm",
+  openTwo: "Friday 9-5pm",
+  openThree: "Saturday 9-4pm",
+  phoneNumber: "02 9784 7900",
+  faxNumber: "02 9787 2952",
+  email: "campsie@vjray.com.au",
+  poBox: "PO Box 369 Campsie, NSW 2194",
+  emergencyPhoneNumber: "1300 073 405",
+  googleMapsUrl: "https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z",
+  imageName: "campsie.jpg",
 }, {
-  name: 'Caringbah Office',
-  subOne: '18 President Avenue',
-  subTwo: 'Caringbah, NSW 2229',
-  openOne: 'Monday-Thursday 9-5.30pm',
-  openTwo: 'Friday 9-5pm',
-  openThree: 'Saturday 9-2pm',
-  phoneNumber: '02 9541 3300',
-  faxNumber: '02 9643 2220',
-  email: 'caringbah@vjray.com.au',
-  poBox: 'PO Box 369 Campsie, NSW 2194',
-  emergencyPhoneNumber: '1300 073 405',
-  googleMapsUrl: 'https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z',
-  imageName: 'map-carringbah.jpg',
+  name: "Caringbah Office",
+  subOne: "18 President Avenue",
+  subTwo: "Caringbah, NSW 2229",
+  openOne: "Monday-Thursday 9-5.30pm",
+  openTwo: "Friday 9-5pm",
+  openThree: "Saturday 9-2pm",
+  phoneNumber: "02 9541 3300",
+  faxNumber: "02 9643 2220",
+  email: "caringbah@vjray.com.au",
+  poBox: "PO Box 369 Campsie, NSW 2194",
+  emergencyPhoneNumber: "1300 073 405",
+  googleMapsUrl: "https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z",
+  imageName: "caringbah.jpg",
 }];
 
 const LocationRoot = styled(Box)`
@@ -52,12 +53,13 @@ const LocationRoot = styled(Box)`
       margin-top: 3rem;
     }
   }
-`;
+`
+
 const ItemsBox = styled(Box)`
   --Item-rule: ${theme.colors.text20};
   border-bottom: 1px solid var(--Item-rule);
   border-top: 1px solid var(--Item-rule);
-`;
+`
 
 const Item = styled(Flex)`
   align-items: flex-start;
@@ -68,78 +70,93 @@ const Item = styled(Flex)`
   @media (max-width: 700px) {
     font-size: 14px;
   }
-
-  ${props => props.borderTop && css``};
-`;
+`
 
 const ItemBody = styled("div")`
   color: ${theme.colors.text70} !important;
   flex: 1;
-`;
+`
 
-// width={[ 9/10, 1/3 ]}
-const Location = (props) => (
-  <LocationRoot px={[ 3, 2 ]} width={props.width}>
+const Location = props => (
+  <LocationRoot px={[4, 3]} width={props.width}>
     <Link href={props.location.googleMapsUrl}>
       <a>
-        <img src={'/static/img/' + props.location.imageName} />
+        <img src={`/static/img/${props.location.imageName}`} alt="map" />
       </a>
     </Link>
 
-    <Box my={2}>
+    <Box my={3}>
       <Link href={props.location.googleMapsUrl}>
-        <a><Text color='text' align='left' font='textRegular'>{props.location.name}</Text></a>
+        <a>
+          <Text color="text" align="left" font="textRegular">
+            {props.location.name}
+          </Text>
+          <Text color="text70" align="left">
+            {props.location.subOne}
+          </Text>
+          <Text color="text70" align="left">
+            {props.location.subTwo}
+          </Text>
+        </a>
       </Link>
-      <Text color='text70' align='left'>{props.location.subOne}</Text>
-      <Text color='text70' align='left'>{props.location.subTwo}</Text>
     </Box>
 
     <ItemsBox py={1}>
-      <Link href={`tel:${props.location.phoneNumber}`}><a>
-        <Item borderTop>
-          <div><IconPhone contact /></div>
-          {props.location.phoneNumber}
-        </Item>
-      </a></Link>
+      <Link href={`tel:${props.location.phoneNumber}`}>
+        <a>
+          <Item borderTop>
+            <div>
+              <IconPhone contact />
+            </div>
+            {props.location.phoneNumber}
+          </Item>
+        </a>
+      </Link>
 
-      <Link href={`mailto:${props.location.email}`}><a>
-        <Item>
-          <div><IconEmail contact /></div>
-          {props.location.email}
-        </Item>
-      </a></Link>
+      <Link href={`mailto:${props.location.email}`}>
+        <a>
+          <Item>
+            <div>
+              <IconEmail contact />
+            </div>
+            {props.location.email}
+          </Item>
+        </a>
+      </Link>
 
       <Item>
-        <div><IconOpen contact /></div>
+        <div>
+          <IconOpen contact />
+        </div>
         <ItemBody>
-          <SmallText color='text70'>{props.location.openOne}</SmallText>
-          <SmallText color='text70'>{props.location.openTwo}</SmallText>
-          <SmallText color='text70'>{props.location.openThree}</SmallText>
+          <SmallText color="text70">{props.location.openOne}</SmallText>
+          <SmallText color="text70">{props.location.openTwo}</SmallText>
+          <SmallText color="text70">{props.location.openThree}</SmallText>
         </ItemBody>
       </Item>
 
       <Item>
-        <div><IconAddress contact /></div>
+        <div>
+          <IconAddress contact />
+        </div>
         {props.location.poBox}
       </Item>
-
     </ItemsBox>
   </LocationRoot>
-);
+)
 
 Location.propTypes = {
   location: PropTypes.object.isRequired,
   width: PropTypes.string
-};
+}
 
-const Contact = (props) => (
+const Contact = props => (
   <Flex
     direction={[ 'column', 'row' ]}
     justify='center'
     mt={[ 3, 3, 4 ]}
-    mx={-2}
+    mx={-3}
   >
-
     {locationList
       // Only show locations configured for the current page in constants.js
       .filter(location => contactLocationsForPathnames[props.pathname].locations.includes(location.name))
@@ -148,15 +165,15 @@ const Contact = (props) => (
       )
     }
   </Flex>
-);
+)
 
 Contact.propTypes = {
   pathname: PropTypes.string,
   maxWidth: PropTypes.string,
-};
+}
 
 Contact.defaultProps = {
-  pathname: '/',
-};
+  pathname: "/",
+}
 
-export default Contact;
+export default Contact

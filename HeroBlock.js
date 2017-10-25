@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Flex, Box } from "rebass";
-import Image from "./HeroImage";
-import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from "./Hero";
+import React from "react"
+import PropTypes from "prop-types"
+import Image from "./HeroImage"
+import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from "./Hero"
 
 const HeroBlock = props => (
-  <HeroBox 
+  <HeroBox
     beigeGradientBg={props.beigeGradientBg}
     blueGradientBg={props.blueGradientBg}
+    bluegreyGradientBg={props.bluegreyGradientBg}
     bg={props.bg}
   >
     <Image
@@ -17,7 +17,7 @@ const HeroBlock = props => (
       <HeroFlex>
         <HeroTitleBox
           width={[7/12, 5/12]}
-          ml={[2, 4] || props.ml}
+          ml={[3, 5] || props.ml}
           mb={[3, 4]}
         >
           {props.children}
@@ -25,21 +25,23 @@ const HeroBlock = props => (
       </HeroFlex>
     </HeroContainer>
   </HeroBox>
-);
+)
 
 HeroBlock.propTypes = {
   beigeGradientBg: PropTypes.bool,
   blueGradientBg: PropTypes.bool,
+  bluegreyGradientBg: PropTypes.bool,
   bg: PropTypes.string,
   img: PropTypes.string,
   maxWidth: PropTypes.string,
-  ml: PropTypes.array
+  ml: PropTypes.object,
 }
 
 HeroBlock.defaultProps = {
   blueGradientBg: false,
   beigeGradientBg: false,
-  maxWidth: "72em"
+  bluegreyGradientBg: false,
+  maxWidth: "72em",
 }
 
-export default HeroBlock;
+export default HeroBlock

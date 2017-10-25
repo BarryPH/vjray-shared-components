@@ -1,11 +1,13 @@
-import styled from 'styled-components'
-import Link from "next/link";
-import { Box, Flex, Border, Arrow } from 'rebass'
-import { Heading } from './Headings'
-import { Text, SmallText } from './Texts'
-import icons from './iconConstants'
-import Icon from './Icon';
-import { featuresList } from "../constants";
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import Link from "next/link"
+import { Box, Flex, Border } from "rebass"
+import { Heading } from "./Headings"
+import { SmallText } from "./Texts"
+import icons from "./iconConstants"
+import Icon from "./Icon"
+import { featuresList } from "../constants"
 
 
 const Cell = styled(Box)`
@@ -36,35 +38,40 @@ const Feature = props => (
                 {props.item.headline}
               </Heading>
             </Box>
+            <SmallText color="text70" m={3} mt={0}>
+              {props.item.lede}
+            </SmallText>
           </Border>
         </Box>
-        <SmallText color="text70">
-          {props.item.lede}
-          {props.item.link && (
-            <SmallText
-              is="span"
-              color="brand"
-              actionIcon
-              ml={2}
-              children="Find out more"
-            />
-          )}
-        </SmallText>
       </a>
     </Link>
   </Cell>
-);
+)
 
-const FeatureList = (props) => (
-  <Box 
-    w={[ 5/6, 5/6, 5/6, 1 ]} 
-    mx='auto' 
-    mt={[ 2, 2, 3, 4 ]}
-  >
-    <Flex mx={-3} wrap={[ 'wrap', 'nowrap']} justify='center'>
+const FeatureList = props => (
+  <Box w={[5 / 6, 5 / 6, 5 / 6, 1]} mx="auto" mt={[2, 2, 3, 4]}>
+    <Flex mx={-3} wrap={["wrap", "nowrap"]} justify="center">
       {featuresList.map((item, i) => <Feature border item={item} key={i} />)}
     </Flex>
   </Box>
-);
+)
+
+Feature.PropTypes = {
+  item: React.PropTypes.shape({
+    link: PropTypes.string,
+    border: PropTypes.bool,
+    icon: PropTypes.string.isRequired,
+    headline: PropTypes.string.isRequired,
+    lede: PropTypes.string,
+  }),
+}
+
+Feature.defaultProps = {
+  link: " ",
+  border: false,
+  icon: " ",
+  headline: " ",
+  lede: " ",
+}
 
 export default FeatureList

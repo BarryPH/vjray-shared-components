@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import Rebass from 'rebass';
-import { weight, family, lineHeight, letterSpacing, actionIcon } from './utils';
-import theme from '../theme-new';
+import React from "react"
+import styled, { css } from "styled-components"
+import Rebass from "rebass"
+import { weight, family, lineHeight, letterSpacing, actionIcon } from "./utils"
+import theme from "../theme-new"
 
 
 const Root = styled(Rebass.Text)`
@@ -45,7 +45,7 @@ const Text = props => (
     weight={2}
     {...props}
   />
-);
+)
 
 const SmallText = props => (
   <Root
@@ -53,7 +53,7 @@ const SmallText = props => (
     weight={2}
     {...props}
   />
-);
+)
 
 const MediumText = props => (
   <Root
@@ -61,17 +61,18 @@ const MediumText = props => (
     weight={2}
     {...props}
   />
-);
+)
 
 const LargeText = props => (
   <Root
     fontSize={[3, 3, 4, 5]}
-    weight={2}
+    family="textLight"
+    weight={1}
     lh="subheadline"
     ls="text"
     {...props}
   />
-);
+)
 
 const AuthorText = props => (
   <Root
@@ -84,18 +85,17 @@ const AuthorText = props => (
     ls="touch"
     {...props}
   />
-);
+)
 
 const PrimaryButtonText = props => (
-  <SmallText 
+  <SmallText
     caps
     family="textMedium"
     lh="buttonLarge"
     ls="meta"
-    mt={3}
     {...props}
   />
-);
+)
 
 const Divider = styled.span`
   --spacing: 0.75rem;
@@ -107,16 +107,14 @@ const Divider = styled.span`
     color: inherit;
     content: '•';
   }
-`;
-
-
+`
 
 // 
 // Markdown Text blocks
 // Find another way…
 // 
 
-const TextBlock = styled('div')`
+const TextBlock = styled("div")`
   h1 {
     font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[5]}px;
@@ -183,7 +181,7 @@ const TextBlock = styled('div')`
     padding-left: 8px;
     width: auto;
   }
-`;
+`
 
 const DangerouslyResetTextBlock = styled(TextBlock)`
   > div,
@@ -199,7 +197,7 @@ const DangerouslyResetTextBlock = styled(TextBlock)`
       font-size: 19px;
     }
   }
-`;
+`
 
 export {
   Text,
@@ -211,4 +209,4 @@ export {
   Divider,
   TextBlock,
   DangerouslyResetTextBlock,
-};
+}

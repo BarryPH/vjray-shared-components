@@ -42,20 +42,23 @@ class HeroHome extends React.Component {
           closeModal={() => this.setState({ isContentVisible: true })}
         />
         <HeroBlock
-          beigeGradientBg
+          bluegreyGradientBg
           img="https://res.cloudinary.com/pw-img-cdn/image/upload/v1507792017/vanessa_waedtl.png"
         >
           <HGroup
             titleIs="h1"
-            title="The Real Estate team experienced in helping people."
-            titleColor="brand"
+            title="The Real Estate Managers who focus on people."
+            titleFamily="displayMedium"
+            text="At VJ Ray, we know property. And we also know property serves people. That's why our focus is on serving you."
+            textColor="text70"
+            textIsLast
           >
-            <PrimaryButtonText mt={4}>
-              <ButtonOutline 
-                icon 
-                color="brand" 
+            <PrimaryButtonText mt={3}>
+              <ButtonOutline
+                icon
+                color="brand"
                 brandBg
-                px={3} 
+                px={3}
                 children="Watch video"
                 onClick={() => this.setState({ isContentVisible: false })}
               />

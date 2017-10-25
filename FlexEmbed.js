@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { Box } from 'rebass';
+import styled, { css } from 'styled-components'
+import { Box } from 'rebass'
 
 const Root = styled(Box)`
   overflow: hidden;
@@ -36,4 +36,4 @@ const FlexEmbed = props => (
   </Root>
 )
 
-export { FlexEmbed }
+export default FlexEmbed

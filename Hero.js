@@ -52,6 +52,14 @@ const HeroBox = styled(Box)`
     );
   `}
   
+  ${props => props.bluegreyGradientBg && css`
+    background-image: linear-gradient(
+      to bottom,
+      rgba(188, 230, 255, 0.5),
+      rgb(247, 242, 236) 100%
+    );
+  `}
+  
   ${props => props.showAfterScreen && css`
     @media (max-width: 1024px) {
       &:after {

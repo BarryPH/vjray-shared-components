@@ -1,16 +1,19 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import Rebass from "rebass";
-import { weight, family, lineHeight, letterSpacing } from "./utils";
-import theme from "../theme-new";
+import React from "react"
+import styled, { css } from "styled-components"
+import Rebass from "rebass"
+import { weight, family, lineHeight, letterSpacing } from "./utils"
+import theme from "../theme-new"
 
 //
 // Heading
 //
 
 const Root = styled(Rebass.Heading)`
-  ${weight} ${family} ${lineHeight} ${letterSpacing};
-`;
+  ${weight} 
+  ${family} 
+  ${lineHeight} 
+  ${letterSpacing}
+`
 
 const Heading = props => (
   <Root
@@ -21,7 +24,7 @@ const Heading = props => (
     mb={3}
     {...props}
   />
-);
+)
 
 //
 // Display
@@ -32,11 +35,8 @@ const Heading = props => (
 
 // 1.
 const DisplayRoot = styled(Root)`
-  line-height: 1.05 !important;
-
-  ${props =>
-    props.reverseShadow && css`text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);`};
-`;
+  ${props => props.reverseShadow && css`text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);`}
+`
 
 // 2.
 const Display = props => (
@@ -50,7 +50,7 @@ const Display = props => (
     mb={[2, 2, 2, 3]}
     {...props}
   />
-);
+)
 
 //
 // Meta Headlines
@@ -67,16 +67,21 @@ const MetaHeading = props => (
     is="h3"
     {...props}
   />
-);
+)
 
 const SubheadingRoot = styled(MetaHeading)`
   border-bottom: 1px solid currentColor;
   display: inline-block;
-`;
+`
 
 const Subheading = props => (
-  <SubheadingRoot mb={3} mx="auto" pb={[2, 3]} {...props} />
-);
+  <SubheadingRoot
+    mb={3}
+    mx="auto"
+    pb={2}
+    {...props}
+  />
+)
 
 const HeadingDetail = props => (
   <MetaHeading
@@ -87,7 +92,7 @@ const HeadingDetail = props => (
     is="h5"
     {...props}
   />
-);
+)
 
 const BoxedSubheading = styled(MetaHeading)`
   --Header-height: 48px;

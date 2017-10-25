@@ -1,11 +1,11 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components"
 import {
   Button as _Button,
   ButtonOutline as _ButtonOutline,
   ButtonCircle as _ButtonCircle
-} from "rebass";
-import { letterSpacing, actionIcon } from "./utils";
-import theme from "../theme-new";
+} from "rebass"
+import { letterSpacing, actionIcon } from "./utils"
+import theme from "../theme-new"
 
 // Buttons inherit font sizes and weights from 
 // wrapped text components.
@@ -17,7 +17,7 @@ import theme from "../theme-new";
 // If you need to change line-height, use s-c per instance.
 
 const BaseStyles = `
-  border-radius: 2px;
+  border-radius: 3px;
   font-size: initial !important;
   font-size: inherit !important;
   font-weight: inherit !important;
@@ -26,8 +26,8 @@ const BaseStyles = `
   text-transform: inherit;
 `;
 
-const brandBg = `:hover { background-color: ${theme.colors.brand}; }`;
-const textBg = `:hover { background-color: ${theme.colors.text}; }`;
+const brandBg = `:hover { background-color: ${theme.colors.brand} !important; }`;
+const textBg = `:hover { background-color: ${theme.colors.text} !important; }`;
 
 // application
 const Button = styled(_Button)`

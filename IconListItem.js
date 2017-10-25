@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import styled from "styled-components";
-import { Flex, Box } from "rebass";
-import { LargeText, Text, PrimaryButtonText } from "./Texts";
-import { ButtonOutline } from "./Buttons";
-import Icon from "./Icon";
-import icons from "./iconConstants";
+import React from "react"
+import PropTypes from "prop-types"
+import Link from "next/link"
+import styled from "styled-components"
+import { Flex, Box } from "rebass"
+import { LargeText, Text, PrimaryButtonText } from "./Texts"
+import { ButtonOutline } from "./Buttons"
+import Icon from "./Icon"
+import icons from "./iconConstants"
 
 const ItemRoot = styled(Flex)`
   &:last-child {
@@ -21,16 +21,16 @@ const ItemIcon = styled(Icon)`
 `
 
 const IconListItem = props => (
-  <ItemRoot direction={["column", "row"]} mx={-3} mb={[4, 5]}>
+  <ItemRoot direction={["column", "row"]} mx={-3} mb={props.smallSpace ? [3, 4] : [4, 5] }>
     <Box px={3}>
-      <ItemIcon color="brand" size="90" icon={icons[props.item.icon]} />
+      <ItemIcon color="text" size="90" icon={icons[props.item.icon]} />
     </Box>
     <Box px={3}>
       <LargeText
         as="h4"
-        color="brand"
-        family="displayMedium"
-        mb={1}
+        color="text"
+        family="displayRegular"
+        mb={2}
         children={props.item.headline}
       />
       <Text color="text70">
@@ -42,7 +42,7 @@ const IconListItem = props => (
         )}
       </Text>
       {props.item.buttonUrl && (
-        <PrimaryButtonText align="left" color="white">
+        <PrimaryButtonText align="left" color="white" mt={3}>
           <Link href={props.item.buttonUrl}>
             <ButtonOutline
               brandBg
@@ -55,15 +55,20 @@ const IconListItem = props => (
       )}
     </Box>
   </ItemRoot>
-)
+);
 
 IconListItem.PropTypes = {
-  item.icon: PropTypes.string,
-  item.headline: PropTypes.string,
-  item.text: PropTypes.string,
-  item.link: PropTypes.bool,
-  item.buttonUrl: PropTypes.string,
-  item.buttonLabel: PropTypes.string,
+  smallSpace: PropTypes.bool,
+  icon: PropTypes.string,
+  headline: PropTypes.string,
+  text: PropTypes.string,
+  link: PropTypes.bool,
+  buttonUrl: PropTypes.string,
+  buttonLabel: PropTypes.string,
+}
+
+IconListItem.PropTypes = {
+  smallSpace: true
 }
 
 export default IconListItem

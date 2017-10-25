@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-
-import styled, { css } from 'styled-components';
-import { Flex, Overlay } from 'rebass';
-import { FlexEmbed } from './FlexEmbed';
-import theme from '../theme';
-import Container from './Container2';
+import styled, { css } from 'styled-components'
+import { Flex, Overlay } from 'rebass'
+import FlexEmbed from './FlexEmbed'
+import theme from '../theme'
+import Container from './Container2'
 
 const transition = {
   duration: 0.7,

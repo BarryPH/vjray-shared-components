@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components'
-import { Box } from 'rebass';
-import BlockWrapper from './BlockWrapper'
-import { LargeText } from './Texts'
-import { Display, Heading, Subheading } from './Headings'
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
+import { Box } from "rebass"
+import { LargeText } from "./Texts"
+import { Display, Heading, Subheading } from "./Headings"
 
 
 const StyledBox = styled(Box)`
@@ -11,16 +11,16 @@ const StyledBox = styled(Box)`
   ${props => props.textCenter && css`
     text-align: center;
   `}
-`;
+`
 
 const HGroup = props => (
-  <StyledBox 
-    width={props.width} 
+  <StyledBox
+    maxWidth={props.width}
     mx="auto"
   >
     {props.subhead && (
-      <Subheading 
-        color={props.subheadColor} 
+      <Subheading
+        color={props.subheadColor}
         children={props.subhead} 
       />
     )}
@@ -29,7 +29,7 @@ const HGroup = props => (
         color={props.headingColor}
         family={props.headingFamily}
         children={props.heading}
-        mb={3}
+        mb={2}
       />
     )}
     {props.title && (
@@ -38,19 +38,19 @@ const HGroup = props => (
         color={props.titleColor}
         family={props.titleFamily}
         dangerouslySetInnerHTML={{ __html: props.title }}
-        mb={3}
+        mb={props.text ? 2 : 2}
       />
     )}
     {props.text && (
       <LargeText
-        color={props.largeTextColor}
+        color={props.textColor}
         mb={props.textIsLast ? 0 : 4}
         children={props.text}
       />
     )}
     {props.children}
   </StyledBox>
-);
+)
 
 HGroup.propTypes = {
   textCenter: PropTypes.bool,
@@ -66,7 +66,7 @@ HGroup.propTypes = {
   titleFamily: PropTypes.string,
   text: PropTypes.string,
   textIsLast: PropTypes.bool,
-  largeTextColor: PropTypes.string,
+  textColor: PropTypes.string,
   children: PropTypes.element
 }
 
@@ -76,9 +76,8 @@ HGroup.defaultProps = {
   headingColor: "text",
   titleIs: "h2",
   titleColor: "text",
-  titleFamily: "displayRegular",
-  largeTextColor: "text70",
+  textColor: "text70",
   textIsLast: false,
-};
+}
 
-export default HGroup;
+export default HGroup

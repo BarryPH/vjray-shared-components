@@ -15,20 +15,24 @@ const Pin = styled(Box)`
   bottom: 0;
   display: flex;
   left: 50%;
-  width: 100%;
   position: absolute;
   right: 0;
   top: 0;
   transform: translateX(-50%);
+  width: 100%;
+  
+  @media (max-width: 72em) {
+    overflow: hidden;
+  }
 
   @media (min-width: 72em) {
     width: 72em;
   }
-`;
+`
 
 const Root = styled("img")`
   height: 100%;
-  margin-left: -10%;
+  margin-left: -20%;
   margin-right: auto;
   max-width: initial;
 
@@ -40,14 +44,14 @@ const Root = styled("img")`
   @media (max-height: 1000px) and (min-width: 1024px) {
     margin-right: 5%;
   }
-`;
+`
 
 class Image extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      url: '',
+      url: "",
     }
   }
 
@@ -68,7 +72,7 @@ class Image extends React.Component {
 
     this.setState({
       url: url,
-    });
+    })
   }
 
   render() {
@@ -87,10 +91,10 @@ class Image extends React.Component {
 Image.propTypes = {
   img: PropTypes.string.isRequired,
   face: PropTypes.bool,
-};
+}
 
 Image.defaultProps = {
   face: false,
-};
+}
 
-export default Image;
+export default Image

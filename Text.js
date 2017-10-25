@@ -1,3 +1,4 @@
+import React from "react"
 import styled, { css } from 'styled-components'
 import hoc from './hoc'
 import theme from '../theme.js'
