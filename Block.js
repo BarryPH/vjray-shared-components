@@ -1,18 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { Box } from "rebass";
-import BlockWrapper from "./BlockWrapper";
-import { LargeText } from "./Texts";
-import { Display, Heading, Subheading } from "./Headings";
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
+import { Box } from "rebass"
+
+import Container from "./Container2"
+import BlockWrapper from "./BlockWrapper"
+import { LargeText } from "./Texts"
+import { Display, Heading, Subheading } from "./Headings"
 
 const StyledBox = styled(Box)`
   text-align: left;
 
-  ${props => props.childBoxTextCenter && css`text-align: center;`};
-`;
+  ${props => props.childBoxTextCenter && css`text-align: center;`}
+`
 
-// p?
 const Block = props => (
   <BlockWrapper
     id={props.id}
@@ -24,16 +25,24 @@ const Block = props => (
     noTopPadding={props.noTopPadding}
     noBottomPadding={props.noBottomPadding}
   >
-    <Box width={props.crownWidth} mx="auto">
+    <Container
+      maxWidth={props.crownWidth}
+      w={1}
+      mx="auto"
+      px={0}
+    >
       {props.subhead && (
-        <Subheading color={props.subheadColor} children={props.subhead} />
+        <Subheading
+          color={props.subheadColor}
+          children={props.subhead} 
+        />
       )}
       {props.heading && (
         <Heading
           color={props.headingColor}
           family={props.headingFamily}
           children={props.heading}
-          mb={3}
+          mb={2}
         />
       )}
       {props.title && (
@@ -41,20 +50,21 @@ const Block = props => (
           color={props.titleColor}
           family={props.titleFamily}
           dangerouslySetInnerHTML={{ __html: props.title }}
-          mb={4}
+          mb={props.text ? 2 : 2}
         />
       )}
       {props.text && (
         <LargeText
-          color={props.largeTextColor}
+          color={props.textColor}
+          family={props.textFamily}
           mb={props.textIsLast ? 0 : 4}
           children={props.text}
         />
       )}
-    </Box>
+    </Container>
     {props.children && <StyledBox>{props.children}</StyledBox>}
   </BlockWrapper>
-);
+)
 
 Block.propTypes = {
   id: PropTypes.string,
@@ -77,11 +87,13 @@ Block.propTypes = {
   titleFamily: PropTypes.string,
   text: PropTypes.string,
   textIsLast: PropTypes.bool,
-  largeTextColor: PropTypes.string,
+  textColor: PropTypes.string,
+  textFamily: PropTypes.string,
   children: PropTypes.element,
-};
+}
 
 Block.defaultProps = {
+  id: "",
   bg: "",
   textCenter: true,
   textLeft: false,
@@ -92,9 +104,10 @@ Block.defaultProps = {
   subheadColor: "text",
   headingColor: "text",
   titleColor: "text",
-  titleFamily: "displayRegular",
-  largeTextColor: "text70",
+  titleFamily: "displayMedium",
+  textColor: "text70",
+  textFamily: "textLight",
   textIsLast: false,
-};
+}
 
-export default Block;
+export default Block

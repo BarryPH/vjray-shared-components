@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import styled, {css} from 'styled-components'
-import { Box } from 'rebass'
-import Container from './Container2'
-import theme from '../theme-new.js'
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
+import { Box } from "rebass"
+import Container from "./Container2"
+import theme from "../theme-new"
 
 const Root = styled(Box)`
   ${props => props.border && css`
