@@ -57,7 +57,7 @@ const FeatureList = props => (
 )
 
 Feature.PropTypes = {
-  item: React.PropTypes.shape({
+  item: PropTypes.shape({
     link: PropTypes.string,
     border: PropTypes.bool,
     icon: PropTypes.string.isRequired,
