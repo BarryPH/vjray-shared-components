@@ -3,36 +3,65 @@ import PropTypes from "prop-types"
 import Link from "next/link"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
+import { Display } from "./Headings"
 import { LargeText, Text, PrimaryButtonText } from "./Texts"
 import { ButtonOutline } from "./Buttons"
 import Icon from "./Icon"
 import icons from "./iconConstants"
+import theme from "../theme-new"
 
-const ItemRoot = styled(Flex)`
+const ItemRoot = styled(Flex) `
   &:last-child {
     margin-bottom: 0;
   }
 `
 
-const ItemIcon = styled(Icon)`
+const ItemIcon = styled(Icon) `
   @media (min-width: 768px) {
     transform: translateY(-20px);
   }
 `
 
+const ItemNumber = styled(Display) `
+  --space: 60px;
+  height: var(--space);
+  margin: 0;
+  padding-top: 9px;
+  position: relative;
+  text-align: center;
+  transform: translateY(-6px);
+  width: var(--space);
+
+  &:before {
+    border: 1px solid ${theme.colors.text};
+    border-radius: 999px;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+`
+
 const IconListItem = props => (
-  <ItemRoot direction={["column", "row"]} mx={-3} mb={props.smallSpace ? [3, 4] : [4, 5] }>
+  <ItemRoot direction={["column", "row"]} mx={-3} mb={props.smallSpace ? [3, 4] : [4, 5]}>
+    {props.item.icon && (
+      <Box px={3}>
+        <ItemIcon color="text" size="90" icon={icons[props.item.icon]} />
+      </Box>
+    )}
+    {props.item.number && (
+      <Box px={3}>
+        <ItemNumber family="displayRegular" color="text" m={0}>
+          {props.item.number}
+        </ItemNumber>
+      </Box>
+    )}
     <Box px={3}>
-      <ItemIcon color="text" size="90" icon={icons[props.item.icon]} />
-    </Box>
-    <Box px={3}>
-      <LargeText
-        as="h4"
-        color="text"
-        family="displayRegular"
-        mb={2}
-        children={props.item.headline}
-      />
+      <LargeText as="h4" color="text" family="displayRegular" mb={2}>
+        {props.item.headline}
+      </LargeText>
       <Text color="text70">
         {props.item.text}
         {props.item.link && (
@@ -44,31 +73,30 @@ const IconListItem = props => (
       {props.item.buttonUrl && (
         <PrimaryButtonText align="left" color="white" mt={3}>
           <Link href={props.item.buttonUrl}>
-            <ButtonOutline
-              brandBg
-              icon
-              color="brand"
-              children={props.item.buttonLabel}
-            />
+            <ButtonOutline brandBg icon color="brand">
+              {props.item.buttonLabel}
+            </ButtonOutline>
           </Link>
         </PrimaryButtonText>
       )}
     </Box>
   </ItemRoot>
-);
+)
 
 IconListItem.PropTypes = {
-  smallSpace: PropTypes.bool,
-  icon: PropTypes.string,
-  headline: PropTypes.string,
-  text: PropTypes.string,
-  link: PropTypes.bool,
-  buttonUrl: PropTypes.string,
-  buttonLabel: PropTypes.string,
+  item: React.PropTypes.shape({
+    smallSpace: PropTypes.bool,
+    icon: PropTypes.string,
+    headline: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    link: PropTypes.string,
+    buttonUrl: PropTypes.string,
+    buttonLabel: PropTypes.string,
+  }),
 }
 
 IconListItem.PropTypes = {
-  smallSpace: true
+  smallSpace: true,
 }
 
 export default IconListItem

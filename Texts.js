@@ -5,7 +5,7 @@ import { weight, family, lineHeight, letterSpacing, actionIcon } from "./utils"
 import theme from "../theme-new"
 
 
-const Root = styled(Rebass.Text)`
+const Root = styled(Rebass.Text) `
   ${family}
   ${weight}
   ${lineHeight}
@@ -89,6 +89,7 @@ const AuthorText = props => (
 
 const PrimaryButtonText = props => (
   <SmallText
+    noUnderline
     caps
     family="textMedium"
     lh="buttonLarge"
@@ -114,7 +115,7 @@ const Divider = styled.span`
 // Find another way…
 // 
 
-const TextBlock = styled("div")`
+const TextBlock = styled("div") `
   h1 {
     font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[5]}px;
@@ -183,7 +184,7 @@ const TextBlock = styled("div")`
   }
 `
 
-const DangerouslyResetTextBlock = styled(TextBlock)`
+const DangerouslyResetTextBlock = styled(TextBlock) `
   > div,
   > div div {
     font-size: 16px;

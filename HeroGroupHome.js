@@ -1,32 +1,13 @@
-import Link from 'next/link'
-import React from 'react';
-import styled from 'styled-components'
-import { Box, Arrow } from 'rebass'
-import theme from '../theme-new'
-import {
-  HeroBox,
-  HeroContainer,
-  HeroFlex,
-  HeroTitleBox,
-} from './Hero'
-import { PrimaryButtonText } from "./Texts";
-import { ButtonOutline } from "./Buttons";
-import VideoModal from './VideoModal';
-import HeroBlock from "./HeroBlock";
-import HGroup from "./HGroup";
-
-
-const StyledHeroBox = styled(HeroBox)`
-  background-image: linear-gradient(
-    to bottom,
-    rgba(222, 202, 178, 0.4),
-    ${theme.colors.beige} 70%
-  );
-`;
+import React from 'react'
+import { PrimaryButtonText } from "./Texts"
+import { ButtonOutline } from "./Buttons"
+import VideoModal from './VideoModal'
+import HeroBlock from "./HeroBlock"
+import HGroup from "./HGroup"
 
 class HeroHome extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       isContentVisible: true,

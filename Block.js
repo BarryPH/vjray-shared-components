@@ -2,16 +2,18 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 import { Box } from "rebass"
-
 import Container from "./Container2"
 import BlockWrapper from "./BlockWrapper"
+import HGroup from "./HGroup"
 import { LargeText } from "./Texts"
 import { Display, Heading, Subheading } from "./Headings"
 
-const StyledBox = styled(Box)`
+const StyledBox = styled(Box) `
   text-align: left;
 
-  ${props => props.childBoxTextCenter && css`text-align: center;`}
+  ${props => props.childBoxTextCenter && css`
+    text-align: center;
+  `}
 `
 
 const Block = props => (
@@ -25,43 +27,23 @@ const Block = props => (
     noTopPadding={props.noTopPadding}
     noBottomPadding={props.noBottomPadding}
   >
-    <Container
-      maxWidth={props.crownWidth}
-      w={1}
-      mx="auto"
-      px={0}
-    >
-      {props.subhead && (
-        <Subheading
-          color={props.subheadColor}
-          children={props.subhead} 
-        />
-      )}
-      {props.heading && (
-        <Heading
-          color={props.headingColor}
-          family={props.headingFamily}
-          children={props.heading}
-          mb={2}
-        />
-      )}
-      {props.title && (
-        <Display
-          color={props.titleColor}
-          family={props.titleFamily}
-          dangerouslySetInnerHTML={{ __html: props.title }}
-          mb={props.text ? 2 : 2}
-        />
-      )}
-      {props.text && (
-        <LargeText
-          color={props.textColor}
-          family={props.textFamily}
-          mb={props.textIsLast ? 0 : 4}
-          children={props.text}
-        />
-      )}
-    </Container>
+    <HGroup
+      crownWidth={props.crownWidth}
+      textCenter={props.textCenter}
+      subhead={props.subhead}
+      subheadColor={props.subheadColor}
+      heading={props.heading}
+      headingFamily={props.headingFamily}
+      headingColor={props.headingColor}
+      title={props.title}
+      titleIs={props.titleIs}
+      titleFamily={props.titleFamily}
+      titleColor={props.titleColor}
+      text={props.text}
+      textColor={props.textColor}
+      textFamily={props.textFamily}
+      textIsLast={props.textIsLast}
+    />
     {props.children && <StyledBox>{props.children}</StyledBox>}
   </BlockWrapper>
 )
@@ -83,6 +65,7 @@ Block.propTypes = {
   headingColor: PropTypes.string,
   headingFamily: PropTypes.string,
   title: PropTypes.string,
+  titleIs: PropTypes.string,
   titleColor: PropTypes.string,
   titleFamily: PropTypes.string,
   text: PropTypes.string,
@@ -95,11 +78,13 @@ Block.propTypes = {
 Block.defaultProps = {
   id: "",
   bg: "",
+  border: false,
   textCenter: true,
   textLeft: false,
-  border: false,
   noTopPadding: false,
   noBottomPadding: false,
+  maxWidth: "80em",
+  crownWidth: "48em",
   childBoxTextCenter: false,
   subheadColor: "text",
   headingColor: "text",

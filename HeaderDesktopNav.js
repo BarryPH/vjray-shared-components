@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types'
-import Link from 'next/link'
-import styled, { css } from 'styled-components'
-import { Absolute, Flex } from 'rebass'
-import theme from '../theme'
-import { Text } from './Texts'
-import { displayBreakPoint } from "./utils";
+import React from "react"
+import PropTypes from "prop-types"
+import Link from "next/link"
+import styled, { css } from "styled-components"
+import { Absolute, Flex } from "rebass"
+import theme from "../theme"
+import { Text } from "./Texts"
+import { displayBreakPoint } from "./utils"
 
 const Wrapper = styled(Absolute)`
   ${displayBreakPoint}
@@ -36,16 +37,19 @@ const LinkText = props => (
     isActive={props.isActive}
     children={props.children}
   />
-);
+)
 
 const HeaderDesktopNav = props => (
-  <Wrapper 
+  <Wrapper
     break={["none", "none", "block"]}
-    top right bottom left
+    top
+    right
+    bottom
+    left
   >
     <StyledFlex justify="center">
       {props.navItems
-        .filter(item => item.label !== 'Home')
+        .filter(item => item.label !== "Home")
         .map(item => {
           return (
             <Link href={item.href}>
@@ -61,11 +65,11 @@ const HeaderDesktopNav = props => (
 HeaderDesktopNav.propTypes = {
   navItems: PropTypes.array,
   pathname: PropTypes.string,
-};
+}
 
 HeaderDesktopNav.defaultProps = {
   navItems: [],
-  pathname: '',
-};
+  pathname: "",
+}
 
 export default HeaderDesktopNav

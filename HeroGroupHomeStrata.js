@@ -3,12 +3,11 @@ import Link from "next/link"
 import styled from "styled-components"
 import { Banner } from "rebass"
 import { HeroContainer } from "./Hero"
-import Block from "./Block"
 import HGroup from "./HGroup"
 import { PrimaryButtonText } from "./Texts"
 import { Button } from "./Buttons"
 
-const StyledBanner = styled(Banner)`
+const StyledBanner = styled(Banner) `
   height: 70vh;
   position: relative;
 
@@ -35,11 +34,11 @@ const HeroStrata = props => (
     py={[64, 64, 128, 128]}
     backgroundImage="https://res.cloudinary.com/pw-img-cdn/image/upload/v1508816606/hero-cronulla-bw_blem85.jpg"
   >
-    <HeroContainer textCenter maxWidth="42em" w={1} style={{ zIndex: 1 }}>
-      <Block
+    <HeroContainer textCenter maxWidth="44em" w={1} style={{ zIndex: 1 }}>
+      <HGroup
         noTopPadding
         noBottomPadding
-        crownWidth="42em"
+        crownWidth="null"
         subhead={props.subhead}
         subheadColor="white"
         title={props.title}
@@ -48,18 +47,18 @@ const HeroStrata = props => (
         textFamily="textLight"
         textColor="white"
       >
-        <Link href="https://vjraystrata.com.au">
-          <a>
-            <PrimaryButtonText center>
+        <PrimaryButtonText center>
+          <Link href="https://vjraystrata.com.au">
+            <a>
               <Button bg="white" color="brand" px={3} icon>
                 our Strata website
               </Button>
-            </PrimaryButtonText>
-          </a>
-        </Link>
-      </Block>
+            </a>
+          </Link>
+        </PrimaryButtonText>
+      </HGroup>
     </HeroContainer>
   </StyledBanner>
-);
+)
 
 export default HeroStrata

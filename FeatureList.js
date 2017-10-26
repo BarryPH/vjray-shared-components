@@ -9,7 +9,6 @@ import icons from "./iconConstants"
 import Icon from "./Icon"
 import { featuresList } from "../constants"
 
-
 const Cell = styled(Box)`
   text-align: center;
 
@@ -17,13 +16,14 @@ const Cell = styled(Box)`
     :not(first-child) {
       margin-top: 1.5rem;
     }
-  }`
+  }
+`
 
 const Feature = props => (
   <Cell w={[1, 1 / 2, 1 / 2, 1 / 4]} px={3}>
     <Link href={props.item.link}>
       <a>
-        <Box w={[1, 11 / 12]} mx="auto" mb={2}>
+        <Box w={[1, 11 / 12]} mx="auto" mb={[2, 2, 0]}>
           <Border borderWidth={props.item.border ? "1px" : "0"} color="brand">
             <Box p={2}>
               <Icon color="brand" size="90" icon={icons[props.item.icon]} />

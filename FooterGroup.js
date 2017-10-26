@@ -9,9 +9,9 @@ import { Divider } from "./Text";
 import { site } from "../constants";
 import theme from "../theme-new";
 
-const Root = styled(Box)`border-top: 1px solid ${theme.colors.text20};`;
+const Root = styled(Box) `border-top: 1px solid ${theme.colors.text20};`;
 
-const Nav = styled(Flex)`
+const Nav = styled(Flex) `
   color: ${theme.colors.text40};
 
   p,
@@ -30,7 +30,7 @@ const Nav = styled(Flex)`
   }
 `
 
-const Column = styled(Box)`
+const Column = styled(Box) `
   @media (max-width: 767px) {
     margin-top: 2rem;
 
@@ -66,12 +66,12 @@ const Column = styled(Box)`
  * -------------
  */
 
-const RuledBox = styled(Box)`
+const RuledBox = styled(Box) `
   border-top: 1px solid ${theme.colors.text20};
   padding-top: ${theme.space[3]}px;
 `;
 
-const SecondNav = styled(Flex)`
+const SecondNav = styled(Flex) `
   color: ${theme.colors.text40};
 
   @media (max-width: 512px) {
@@ -89,7 +89,7 @@ const SecondNav = styled(Flex)`
   }
 `;
 
-const StyledDivider = styled(Divider)`--spacing: 0.75rem;`;
+const StyledDivider = styled(Divider) `--spacing: 0.75rem;`;
 
 const Footer = props => (
   <Root bg={props.bg}>
@@ -148,7 +148,7 @@ const Footer = props => (
                 link="/rental-property-management"
                 label="Property Management"
               />
-              <FooterItem link="/real-estate-valuations" label="Valuations" />
+              <FooterItem link="/property-valuations" label="Valuations" />
             </Column>
             <Column tapSpace>
               <FooterItem

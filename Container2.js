@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components';
-import { Container as _Container } from 'rebass';
-import theme from '../theme.js';
+import styled, { css } from "styled-components"
+import { Container as _Container } from "rebass"
 
-const Container = styled(_Container)`
+const Container = styled(_Container) `
   position: relative;
   
   ${props => props.textCenter && css`
@@ -19,6 +18,6 @@ const Container = styled(_Container)`
       padding-right: 0;
     }
   `}
-`;
+`
 
-export default Container;
+export default Container
