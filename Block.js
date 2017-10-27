@@ -1,12 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
-import { Box } from "rebass"
-import Container from "./Container2"
-import BlockWrapper from "./BlockWrapper"
-import HGroup from "./HGroup"
-import { LargeText } from "./Texts"
-import { Display, Heading, Subheading } from "./Headings"
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import { Box } from "rebass";
+import BlockWrapper from "./BlockWrapper";
+import HGroup from "./HGroup";
 
 const StyledBox = styled(Box) `
   text-align: left;
@@ -14,7 +11,7 @@ const StyledBox = styled(Box) `
   ${props => props.childBoxTextCenter && css`
     text-align: center;
   `}
-`
+`;
 
 const Block = props => (
   <BlockWrapper
@@ -46,7 +43,7 @@ const Block = props => (
     />
     {props.children && <StyledBox>{props.children}</StyledBox>}
   </BlockWrapper>
-)
+);
 
 Block.propTypes = {
   id: PropTypes.string,
@@ -73,7 +70,7 @@ Block.propTypes = {
   textColor: PropTypes.string,
   textFamily: PropTypes.string,
   children: PropTypes.element,
-}
+};
 
 Block.defaultProps = {
   id: "",
@@ -93,6 +90,6 @@ Block.defaultProps = {
   textColor: "text70",
   textFamily: "textLight",
   textIsLast: false,
-}
+};
 
-export default Block
+export default Block;

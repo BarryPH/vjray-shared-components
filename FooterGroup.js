@@ -5,12 +5,15 @@ import { Box, Flex } from "rebass";
 import Container from "./Container2";
 import FooterItem from "./FooterItem";
 import { Divider } from "./Text";
-
 import { site } from "../constants";
 import theme from "../theme-new";
 
-const Root = styled(Box) `border-top: 1px solid ${theme.colors.text20};`;
+// prettier-ignore
+const Root = styled(Box) `
+  border-top: 1px solid ${theme.colors.text20};
+`;
 
+// prettier-ignore
 const Nav = styled(Flex) `
   color: ${theme.colors.text40};
 
@@ -28,8 +31,9 @@ const Nav = styled(Flex) `
     font-family: ${theme.families.textRegular};
     font-style: normal;
   }
-`
+`;
 
+// prettier-ignore
 const Column = styled(Box) `
   @media (max-width: 767px) {
     margin-top: 2rem;
@@ -58,7 +62,7 @@ const Column = styled(Box) `
       }
     `};
   }
-`
+`;
 
 /*
  * -------------
@@ -66,12 +70,12 @@ const Column = styled(Box) `
  * -------------
  */
 
-const RuledBox = styled(Box) `
+const RuledBox = styled(Box)`
   border-top: 1px solid ${theme.colors.text20};
   padding-top: ${theme.space[3]}px;
 `;
 
-const SecondNav = styled(Flex) `
+const SecondNav = styled(Flex)`
   color: ${theme.colors.text40};
 
   @media (max-width: 512px) {
@@ -89,14 +93,17 @@ const SecondNav = styled(Flex) `
   }
 `;
 
-const StyledDivider = styled(Divider) `--spacing: 0.75rem;`;
+// prettier-ignore
+const StyledDivider = styled(Divider)`
+  --spacing: 0.75rem;
+`;
 
 const Footer = props => (
   <Root bg={props.bg}>
     <Container maxWidth="72em" py={5}>
       <Flex direction={["column", "row"]} justify="space-between">
         <Nav is="nav">
-          <Flex direction={["column", "row"]} >
+          <Flex direction={["column", "row"]}>
             <Column>
               <FooterItem
                 link="https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z"

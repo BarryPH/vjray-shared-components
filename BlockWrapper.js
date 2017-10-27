@@ -1,23 +1,24 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
-import { Box } from "rebass"
-import Container from "./Container2"
-import theme from "../theme-new"
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import { Box } from "rebass";
+import Container from "./Container2";
+import theme from "../theme-new";
 
+// prettier-ignore
 const Root = styled(Box) `
   ${props => props.border && css`
-    border-top: 1px solid ${theme.colors.text10};
+      border-top: 1px solid ${theme.colors.text10};
   `}
-
+  
   ${props => props.noTopPadding && css`
     padding-top: 0 !important;
   `}
-
+  
   ${props => props.noBottomPadding && css`
     padding-bottom: 0 !important;
   `}
-`
+`;
 
 // pt={props.pt || [ 4, 4, 5, 5 ]}
 
@@ -42,7 +43,7 @@ const BlockWrapper = props => (
       {props.children}
     </Container>
   </Root>
-)
+);
 
 BlockWrapper.propTypes = {
   id: PropTypes.string,
@@ -58,7 +59,7 @@ BlockWrapper.propTypes = {
   textLeft: PropTypes.bool,
   mobileBleed: PropTypes.bool,
   children: PropTypes.element,
-}
+};
 
 BlockWrapper.defaultProps = {
   id: null,
@@ -72,6 +73,6 @@ BlockWrapper.defaultProps = {
   textLeft: false,
   mobileBleed: false,
   children: null,
-}
+};
 
-export default BlockWrapper
+export default BlockWrapper;

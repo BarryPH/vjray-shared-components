@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components';
-import { Button as foo } from 'rebass';
-import theme from '../theme.js';
+import styled, { css } from "styled-components";
+import { Button as foo } from "rebass";
+import theme from "../theme";
 
 // Using the SuitCSS button
 // https://github.com/suitcss/components-button/blob/master/lib/button.css
@@ -8,7 +8,7 @@ import theme from '../theme.js';
 // letter-spacing: var(--Button-letter-spacing);
 // --Button-height: calc(54px - calc( 2 * var(--Button-border-width)) );
 
-const Button = styled(foo)`
+const Button = styled(foo) `
   font-family: inherit;
   font-size: inherit;
   letter-spacing: inherit;
@@ -79,6 +79,6 @@ const Button = styled(foo)`
       top: -1px;
     }
   `}
-`
+`;
 
 export default Button;

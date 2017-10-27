@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import styled, { css } from 'styled-components'
-import { Box } from 'rebass';
-import theme from '../theme.js';
+import PropTypes from "prop-types";
+import React from "react";
+import ReactDOM from "react-dom";
+import styled, { css } from "styled-components";
+import { Box } from "rebass";
+import theme from "../theme";
 
-
+// prettier-ignore
 const Root = styled(Box)`
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -60,31 +60,34 @@ const Root = styled(Box)`
     max-width: none;
     @media (min-width: 1536px) { background-position: 30% 100%; }
   `}
-`
+`;
 
 class CoverImage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      url: '',
-    }
+      url: "",
+    };
   }
 
   componentDidMount() {
-    const baseUrl = 'https://res.cloudinary.com/pw-img-cdn/image/fetch'
-    const calcImageDimension = (length, pixelRatio) => 100 * Math.round(length * pixelRatio / 100)
+    const baseUrl = "https://res.cloudinary.com/pw-img-cdn/image/fetch";
+    const calcImageDimension = (length, pixelRatio) =>
+      100 * Math.round(length * pixelRatio / 100);
 
-    const image = ReactDOM.findDOMNode(this._image)
-    const { clientWidth, clientHeight } = image
-    const pixelRatio = window.devicePixelRatio || 1.0
+    const image = ReactDOM.findDOMNode(this._image);
+    const { clientWidth, clientHeight } = image;
+    const pixelRatio = window.devicePixelRatio || 1.0;
 
-    const imageWidth = calcImageDimension(clientWidth, pixelRatio)
-    const imageHeight = this.props.square ? imageWidth : calcImageDimension(clientHeight, pixelRatio)
+    const imageWidth = calcImageDimension(clientWidth, pixelRatio);
+    const imageHeight = this.props.square
+      ? imageWidth
+      : calcImageDimension(clientHeight, pixelRatio);
 
-    const gPosition = this.props.face ? 'g_face' : 'g_center'
-    const imageParams = `w_${imageWidth},h_${imageHeight},c_fill,${gPosition},f_auto`
-    const url = `${baseUrl}/${imageParams}/${this.props.src}`
+    const gPosition = this.props.face ? "g_face" : "g_center";
+    const imageParams = `w_${imageWidth},h_${imageHeight},c_fill,${gPosition},f_auto`;
+    const url = `${baseUrl}/${imageParams}/${this.props.src}`;
 
     this.setState({
       url: `url('${url}')`,
@@ -94,14 +97,14 @@ class CoverImage extends React.Component {
   render() {
     return (
       <Root
-        ref={(ref) => this._image = ref}
+        ref={ref => (this._image = ref)}
         url={this.state.url}
         style={{
-          backgroundImage: this.state.url
+          backgroundImage: this.state.url,
         }}
         {...this.props}
       />
-    )
+    );
   }
 }
 

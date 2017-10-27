@@ -1,6 +1,7 @@
-import styled, { css } from "styled-components"
-import { Container as _Container } from "rebass"
+import styled, { css } from "styled-components";
+import { Container as _Container } from "rebass";
 
+// prettier-ignore
 const Container = styled(_Container) `
   position: relative;
   
@@ -18,6 +19,6 @@ const Container = styled(_Container) `
       padding-right: 0;
     }
   `}
-`
+`;
 
-export default Container
+export default Container;

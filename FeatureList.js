@@ -1,14 +1,15 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import Link from "next/link"
-import { Box, Flex, Border } from "rebass"
-import { Heading } from "./Headings"
-import { SmallText } from "./Texts"
-import icons from "./iconConstants"
-import Icon from "./Icon"
-import { featuresList } from "../constants"
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import Link from "next/link";
+import { Box, Flex, Border } from "rebass";
+import { Heading } from "./Headings";
+import { SmallText } from "./Texts";
+import icons from "./iconConstants";
+import Icon from "./Icon";
+import { featuresList } from "../constants";
 
+// prettier-ignore
 const Cell = styled(Box)`
   text-align: center;
 
@@ -17,7 +18,7 @@ const Cell = styled(Box)`
       margin-top: 1.5rem;
     }
   }
-`
+`;
 
 const Feature = props => (
   <Cell w={[1, 1 / 2, 1 / 2, 1 / 4]} px={3}>
@@ -46,7 +47,7 @@ const Feature = props => (
       </a>
     </Link>
   </Cell>
-)
+);
 
 const FeatureList = props => (
   <Box w={[5 / 6, 5 / 6, 5 / 6, 1]} mx="auto" mt={[2, 2, 3, 4]}>
@@ -54,7 +55,7 @@ const FeatureList = props => (
       {featuresList.map((item, i) => <Feature border item={item} key={i} />)}
     </Flex>
   </Box>
-)
+);
 
 Feature.PropTypes = {
   item: PropTypes.shape({
@@ -64,7 +65,7 @@ Feature.PropTypes = {
     headline: PropTypes.string.isRequired,
     lede: PropTypes.string,
   }),
-}
+};
 
 Feature.defaultProps = {
   link: " ",
@@ -72,6 +73,6 @@ Feature.defaultProps = {
   icon: " ",
   headline: " ",
   lede: " ",
-}
+};
 
-export default FeatureList
+export default FeatureList;

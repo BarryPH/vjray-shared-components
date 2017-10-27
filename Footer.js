@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types'
-import Link from 'next/link'
-import styled, { css } from 'styled-components'
-import { Box, Flex } from 'rebass'
-
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import styled, { css } from "styled-components";
+import { Box, Flex } from "rebass";
 import { site } from "../constants";
-import theme from '../theme'
-import icons from './iconConstants'
-import hoc from './hoc'
-import Container from './Container2'
-import { Divider } from './Text'
-import Icon from './Icon';
-import ResponsiveToggle from './ResponsiveToggle';
+import theme from "../theme";
+import icons from "./iconConstants";
+import hoc from "./hoc";
+import Container from "./Container2";
+import { Divider } from "./Text";
+import Icon from "./Icon";
+import ResponsiveToggle from "./ResponsiveToggle";
 
-
+// prettier-ignore
 const Root = hoc(Box).extend`
   border-top: 1px solid ${theme.colors.text20};
   font-family: inherit;
@@ -22,19 +22,18 @@ const Root = hoc(Box).extend`
   `}
 `;
 
-// `
-
+// prettier-ignore
 const LogoBox = styled(Box)`
   @media (max-width: 512px) {
     margin-top: 12px;
     transform: translateX(-6px);
   }
-`
+`;
 
 // as soon as you extend it, you lose the hoc()
 // so I'm assigning margins manually…
 // this is why proper Rebass is so good…
-const Nav = Flex.withComponent('nav').extend`
+const Nav = Flex.withComponent("nav").extend`
   color: ${theme.colors.text40};
   margin-top: ${theme.space[2]}px;
 
@@ -97,7 +96,7 @@ const RuledBox = styled(Box)`
   }
 `;
 
-const SecondNav = Flex.withComponent('nav').extend`
+const SecondNav = Flex.withComponent("nav").extend`
   color: ${theme.colors.text40};
 
   @media (max-width: 512px) {
@@ -115,10 +114,7 @@ const SecondNav = Flex.withComponent('nav').extend`
   }
 `;
 
-const StyledDivider = styled(Divider)`
-  --spacing: 0.5rem;
-`
-
+const StyledDivider = styled(Divider)`--spacing: 0.5rem;`;
 
 const Footer = props => (
   <Root bg={props.bg}>

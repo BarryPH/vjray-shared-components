@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { Box } from 'rebass';
-import theme from '../theme.js';
+import styled, { css } from "styled-components";
+import { Box } from "rebass";
+import theme from "../theme";
 
 // https://www.styled-components.com/docs/basics#extending-styles?
 // const ContainerSm = Container.extend` <= NAH
@@ -9,6 +9,7 @@ import theme from '../theme.js';
 //   max-width: 100%;
 // }
 
+// prettier-ignore
 const Root = styled(Box)`
   margin-left: auto;
   margin-right: auto;
@@ -52,11 +53,6 @@ const Root = styled(Box)`
   `}
 `;
 
-const Container = props =>
-  <Root
-    px={3}
-    mx='auto'
-    {...props}
-  />
+const Container = props => <Root px={3} mx="auto" {...props} />;
 
-export default Container
+export default Container;

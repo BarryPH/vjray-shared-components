@@ -1,48 +1,47 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Link from "next/link"
-import { Box, Flex } from "rebass"
-import styled from "styled-components"
-import theme from "../theme-new"
-import { contactLocationsForPathnames } from "../constants"
-import { Text, SmallText } from "./Text"
-import {
-  IconPhone,
-  IconEmail,
-  IconAddress,
-  IconOpen,
-} from "./Icons"
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import { Box, Flex } from "rebass";
+import styled from "styled-components";
+import theme from "../theme-new";
+import { contactLocationsForPathnames } from "../constants";
+import { Text, SmallText } from "./Text";
+import { IconPhone, IconEmail, IconAddress, IconOpen } from "./Icons";
 
-
-const locationList = [{
-  name: "Campsie Head Office",
-  subOne: "8 Anglo Road",
-  subTwo: "Campsie, NSW 2194",
-  openOne: "Monday-Thursday 9-5.30pm",
-  openTwo: "Friday 9-5pm",
-  openThree: "Saturday 9-4pm",
-  phoneNumber: "02 9784 7900",
-  faxNumber: "02 9787 2952",
-  email: "campsie@vjray.com.au",
-  poBox: "PO Box 369 Campsie, NSW 2194",
-  emergencyPhoneNumber: "1300 073 405",
-  googleMapsUrl: "https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z",
-  imageName: "campsie.jpg",
-}, {
-  name: "Caringbah Office",
-  subOne: "18 President Avenue",
-  subTwo: "Caringbah, NSW 2229",
-  openOne: "Monday-Thursday 9-5.30pm",
-  openTwo: "Friday 9-5pm",
-  openThree: "Saturday 9-2pm",
-  phoneNumber: "02 9541 3300",
-  faxNumber: "02 9643 2220",
-  email: "caringbah@vjray.com.au",
-  poBox: "PO Box 369 Campsie, NSW 2194",
-  emergencyPhoneNumber: "1300 073 405",
-  googleMapsUrl: "https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z",
-  imageName: "caringbah.jpg",
-}];
+const locationList = [
+  {
+    name: "Campsie Head Office",
+    subOne: "8 Anglo Road",
+    subTwo: "Campsie, NSW 2194",
+    openOne: "Monday-Thursday 9-5.30pm",
+    openTwo: "Friday 9-5pm",
+    openThree: "Saturday 9-4pm",
+    phoneNumber: "02 9784 7900",
+    faxNumber: "02 9787 2952",
+    email: "campsie@vjray.com.au",
+    poBox: "PO Box 369 Campsie, NSW 2194",
+    emergencyPhoneNumber: "1300 073 405",
+    googleMapsUrl:
+      "https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z",
+    imageName: "campsie.jpg",
+  },
+  {
+    name: "Caringbah Office",
+    subOne: "18 President Avenue",
+    subTwo: "Caringbah, NSW 2229",
+    openOne: "Monday-Thursday 9-5.30pm",
+    openTwo: "Friday 9-5pm",
+    openThree: "Saturday 9-2pm",
+    phoneNumber: "02 9541 3300",
+    faxNumber: "02 9643 2220",
+    email: "caringbah@vjray.com.au",
+    poBox: "PO Box 369 Campsie, NSW 2194",
+    emergencyPhoneNumber: "1300 073 405",
+    googleMapsUrl:
+      "https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z",
+    imageName: "caringbah.jpg",
+  },
+];
 
 const LocationRoot = styled(Box)`
   @media (max-width: 700px) {
@@ -53,13 +52,13 @@ const LocationRoot = styled(Box)`
       margin-top: 3rem;
     }
   }
-`
+`;
 
 const ItemsBox = styled(Box)`
   --Item-rule: ${theme.colors.text20};
   border-bottom: 1px solid var(--Item-rule);
   border-top: 1px solid var(--Item-rule);
-`
+`;
 
 const Item = styled(Flex)`
   align-items: flex-start;
@@ -70,12 +69,12 @@ const Item = styled(Flex)`
   @media (max-width: 700px) {
     font-size: 14px;
   }
-`
+`;
 
 const ItemBody = styled("div")`
   color: ${theme.colors.text70} !important;
   flex: 1;
-`
+`;
 
 const Location = props => (
   <LocationRoot px={[4, 3]} width={props.width}>
@@ -143,37 +142,35 @@ const Location = props => (
       </Item>
     </ItemsBox>
   </LocationRoot>
-)
+);
 
 Location.propTypes = {
   location: PropTypes.object.isRequired,
-  width: PropTypes.string
-}
+  width: PropTypes.string,
+};
 
 const Contact = props => (
-  <Flex
-    direction={[ 'column', 'row' ]}
-    justify='center'
-    mt={[ 3, 3, 4 ]}
-    mx={-3}
-  >
+  <Flex direction={["column", "row"]} justify="center" mt={[3, 3, 4]} mx={-3}>
     {locationList
       // Only show locations configured for the current page in constants.js
-      .filter(location => contactLocationsForPathnames[props.pathname].locations.includes(location.name))
-      .map((location, i) =>
-        <Location location={location} key={i} width={props.width} />
+      .filter(location =>
+        contactLocationsForPathnames[props.pathname].locations.includes(
+          location.name,
+        ),
       )
-    }
+      .map((location, i) => (
+        <Location location={location} key={i} width={props.width} />
+      ))}
   </Flex>
-)
+);
 
 Contact.propTypes = {
   pathname: PropTypes.string,
   maxWidth: PropTypes.string,
-}
+};
 
 Contact.defaultProps = {
   pathname: "/",
-}
+};
 
-export default Contact
+export default Contact;

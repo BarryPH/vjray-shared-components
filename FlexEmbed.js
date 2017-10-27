@@ -1,11 +1,13 @@
-import styled, { css } from 'styled-components'
-import { Box } from 'rebass'
+import React from "react";
+import styled, { css } from "styled-components";
+import { Box } from "rebass";
 
 const Root = styled(Box)`
   overflow: hidden;
   position: relative;
-`
+`;
 
+// prettier-ignore
 const Ratio = styled(Box)`
   --ratio: 1;
   padding-bottom: calc(100% * var(--ratio));
@@ -14,7 +16,7 @@ const Ratio = styled(Box)`
   ${props => props.ratio && css`
     --ratio: ${props.ratio};
   `}
-`
+`;
 
 const Content = styled(Box)`
   bottom: 0;
@@ -29,11 +31,9 @@ const Content = styled(Box)`
 const FlexEmbed = props => (
   <Root>
     <Ratio ratio={props.ratio}>
-      <Content>
-        { props.children }
-      </Content>
+      <Content>{props.children}</Content>
     </Ratio>
   </Root>
-)
+);
 
-export default FlexEmbed
+export default FlexEmbed;
