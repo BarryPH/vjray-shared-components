@@ -1,39 +1,38 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Link from "next/link"
-import styled from "styled-components"
-import { Flex, Box } from "rebass"
-import { Display } from "./Headings"
-import { LargeText, Text, PrimaryButtonText } from "./Texts"
-import { ButtonOutline } from "./Buttons"
-import Icon from "./Icon"
-import icons from "./iconConstants"
-import theme from "../theme-new"
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import styled from "styled-components";
+import { Flex, Box } from "rebass";
+import { Display } from "./Headings";
+import { LargeText, Text, PrimaryButtonText } from "./Texts";
+import { ButtonOutline } from "./Buttons";
+import Icon from "./Icon";
+import icons from "./iconConstants";
+import theme from "../theme-new";
 
 const ItemRoot = styled(Flex) `
   &:last-child {
     margin-bottom: 0;
   }
-`
+`;
 
 const ItemIcon = styled(Icon) `
   @media (min-width: 768px) {
     transform: translateY(-20px);
   }
-`
+`;
 
 const ItemNumber = styled(Display) `
-  --space: 60px;
-  height: var(--space);
+  height: 50px;
   margin: 0;
-  padding-top: 9px;
+  padding-top: 4px;
   position: relative;
   text-align: center;
   transform: translateY(-6px);
-  width: var(--space);
+  width: 50px;
 
   &:before {
-    border: 1px solid ${theme.colors.text};
+    border: 2px solid ${theme.colors.text};
     border-radius: 999px;
     content: "";
     position: absolute;
@@ -42,9 +41,9 @@ const ItemNumber = styled(Display) `
     bottom: 0;
     left: 0;
   }
-`
+`;
 
-const IconListItem = props => (
+const ListItem = props => (
   <ItemRoot direction={["column", "row"]} mx={-3} mb={props.smallSpace ? [3, 4] : [4, 5]}>
     {props.item.icon && (
       <Box px={3}>
@@ -81,11 +80,11 @@ const IconListItem = props => (
       )}
     </Box>
   </ItemRoot>
-)
+);
 
-IconListItem.PropTypes = {
+ListItem.propTypes = {
+  smallSpace: PropTypes.bool,
   item: React.PropTypes.shape({
-    smallSpace: PropTypes.bool,
     icon: PropTypes.string,
     headline: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -93,10 +92,10 @@ IconListItem.PropTypes = {
     buttonUrl: PropTypes.string,
     buttonLabel: PropTypes.string,
   }),
-}
+};
 
-IconListItem.PropTypes = {
+ListItem.defaultProps = {
   smallSpace: true,
-}
+};
 
-export default IconListItem
+export default ListItem;

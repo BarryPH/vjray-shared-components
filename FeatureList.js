@@ -10,7 +10,7 @@ import Icon from "./Icon";
 import { featuresList } from "../constants";
 
 // prettier-ignore
-const Cell = styled(Box)`
+const Cell = styled(Box) `
   text-align: center;
 
   @media (max-width: 1024px) {
@@ -20,12 +20,16 @@ const Cell = styled(Box)`
   }
 `;
 
+const StyledBorder = styled(Border) `
+  border-radius: 4px;
+`;
+
 const Feature = props => (
   <Cell w={[1, 1 / 2, 1 / 2, 1 / 4]} px={3}>
     <Link href={props.item.link}>
       <a>
         <Box w={[1, 11 / 12]} mx="auto" mb={[2, 2, 0]}>
-          <Border borderWidth={props.item.border ? "1px" : "0"} color="brand">
+          <StyledBorder borderWidth={props.item.border ? "2px" : "0"} color="brand">
             <Box p={2}>
               <Icon color="brand" size="90" icon={icons[props.item.icon]} />
               <Heading
@@ -42,7 +46,7 @@ const Feature = props => (
             <SmallText color="text70" m={3} mt={0}>
               {props.item.lede}
             </SmallText>
-          </Border>
+          </StyledBorder>
         </Box>
       </a>
     </Link>
@@ -50,7 +54,7 @@ const Feature = props => (
 );
 
 const FeatureList = props => (
-  <Box w={[5 / 6, 5 / 6, 5 / 6, 1]} mx="auto" mt={[2, 2, 3, 4]}>
+  <Box w={[5 / 6, 5 / 6, 5 / 6, 1]} mx="auto" mt={[3, 3, 4, 5]}>
     <Flex mx={-3} wrap={["wrap", "nowrap"]} justify="center">
       {featuresList.map((item, i) => <Feature border item={item} key={i} />)}
     </Flex>
