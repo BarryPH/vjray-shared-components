@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FormContainer from './FormContainer';
+import React from "react";
+import PropTypes from "prop-types";
+import FormContainer from "./FormContainer";
 import {
   Form,
   Input,
@@ -8,8 +8,8 @@ import {
   Textarea,
   FormGroup,
   FormGroupHeadline,
-} from './Form';
-
+} from "./Form";
+import { site } from "../constants";
 
 class FormIssue extends React.Component {
   constructor(props) {
@@ -17,11 +17,11 @@ class FormIssue extends React.Component {
   }
 
   async submit(model) {
-    const response = await fetch('https://formspree.io/xgaewyjx', {
-      method: 'POST',
+    const response = await fetch("https://formspree.io/xgaewyjx", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(model),
     });
@@ -33,36 +33,40 @@ class FormIssue extends React.Component {
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
           <Input
-            placeholder='Your name*'
-            name='name'
+            placeholder="Your name*"
+            name="name"
             required
           />
           <Input
-            placeholder='Your email*'
-            name='email'
+            placeholder="Your email*"
+            name="email"
             validations={{
-              isEmail: true
+              isEmail: true,
             }}
             validationErrors={{
-              isEmail: 'Not a valid email'
+              isEmail: "Not a valid email",
             }}
             required
           />
           <Input
-            placeholder='Your phone number*'
-            name='phoneNumber'
-            validations='isExisty'
+            placeholder="Your phone number*"
+            name="phoneNumber"
+            validations="isExisty"
             required
           />
           <Textarea
-            placeholder='Please describe your issue…'
-            name='comments'
-            rows='7'
+            placeholder="Please describe your issue…"
+            name="comments"
+            rows="7"
           />
 
           {/* Formspree filters */}
-          <input type="text" name="_gotcha" style={{ display: 'none' }} />
-          <input type="hidden" name="_subject" value="Strata website issue submission" />
+          <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <input
+            type="hidden"
+            name="_subject"
+            value={site === "strata" ? "Strata website issue submission" : "Group website issue submission"}
+          />
         </FormGroup>
       </FormContainer>
     );

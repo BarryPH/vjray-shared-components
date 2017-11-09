@@ -1,12 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
-import FormContainer from "./FormContainer"
+import React from "react";
+import PropTypes from "prop-types";
+import FormContainer from "./FormContainer";
 import {
   Input,
   Textarea,
   FormGroup,
   FormGroupHeadline,
-} from "./Form"
+} from "./Form";
+import { site } from "../constants";
 
 class FormContact extends React.Component {
   async submit(model) {
@@ -17,7 +18,7 @@ class FormContact extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(model),
-    })
+    });
   }
 
   render(props) {
@@ -62,20 +63,20 @@ class FormContact extends React.Component {
           <input
             type="hidden"
             name="_subject"
-            value="Strata website contact submission"
+            value={site === "strata" ? "Strata website contact submission" : "Group website contact submission"}
           />
         </FormGroup>
       </FormContainer>
-    )
+    );
   }
 }
 
 FormContact.propTypes = {
   brandColor: PropTypes.bool,
-}
+};
 
 FormContact.defaultProps = {
   brandColor: false,
-}
+};
 
-export default FormContact
+export default FormContact;
