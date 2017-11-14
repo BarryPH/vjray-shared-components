@@ -15,16 +15,18 @@ const Layout = ({ children, title }) => (
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="google-site-verification" content="JizkFkWaLwMcZOtA0K-Mpo3iwamP4eYMmruKSGnpB6o" />
+        <meta
+          name="google-site-verification"
+          content="JizkFkWaLwMcZOtA0K-Mpo3iwamP4eYMmruKSGnpB6o"
+        />
       </Head>
 
       {children}
-
     </div>
   </Provider>
 );
 
-Layout.propsTypes = {
+Layout.propTypes = {
   title: PropTypes.string,
   children: PropTypes.element,
 };

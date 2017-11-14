@@ -10,9 +10,7 @@ const HeroBlock = props => (
     bluegreyGradientBg={props.bluegreyGradientBg}
     bg={props.bg}
   >
-    <Image
-      img={props.img}
-    />
+    <Image img={props.img} />
     <HeroContainer maxWidth={props.maxWidth}>
       <HeroFlex>
         <HeroTitleBox
