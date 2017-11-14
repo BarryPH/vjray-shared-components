@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components'
-import { Box, Flex } from 'rebass';
-import Container from './Container2';
-import theme from '../theme-new.js';
+import React from "react";
+import styled, { css } from "styled-components";
+import { Box, Flex } from "rebass";
+import Container from "./Container2";
+import theme from "../theme-new";
 
 /*
  * HeroFrame is an alternative to HeroBox.
@@ -9,31 +10,24 @@ import theme from '../theme-new.js';
  */
 
 const HeroFrame = styled(Box)`
-  --Header-height: ${theme.blockHeights.navBar};
   height: auto;
-  padding-top: var(--Header-height);
+  padding-top: ${theme.blockHeights.navBar};
   position: relative;
-`
+`;
 
 /*
  * HeroBox, HeroContainer, and HeroFlex or HeroTitleBox work together.
- 
- --Hero-height: 50vh;
-  --Hero-height-mobile: 50vh;
-  --Hero-height-tablet: 40vh;
-  --Hero-height-laptop: 66vh;
- 
-  */
+ */
 
+// prettier-ignore
 const HeroBox = styled(Box)`
-  --Header-height: ${theme.blockHeights.navBar};
   align-items: center;
-  height: calc(var(--Header-height) + 50vh);
-  padding-top: var(--Header-height);
+  height: calc(${theme.blockHeights.navBar} + 50vh);
+  padding-top: ${theme.blockHeights.navBar};
   position: relative;
 
   @media (min-width: 512px) and (max-height: 800px) {
-    min-height: calc(var(--Header-height) + 70vh) !important;
+    min-height: calc(${theme.blockHeights.navBar} + 70vh) !important;
   }
 
   ${props => props.beigeGradientBg && css`
@@ -71,20 +65,21 @@ const HeroBox = styled(Box)`
         right: 0;
       }
   `}
-`
+`;
 
 const HeroContainer = styled(Container)`
   height: 100%;
   position: relative;
-`
+`;
 
 const HeroFlex = styled(Flex)`
   align-items: center;
   height: inherit;
   position: relative;
   z-index: 1;
-`
+`;
 
+// prettier-ignore
 const HeroTitleBoxRoot = styled(Box)`
   ${props => props.invertTextOnMobile && css`
     @media (max-width: 512px) {
@@ -93,15 +88,8 @@ const HeroTitleBoxRoot = styled(Box)`
       p { color: ${theme.colors.text20}; }
     }
   `}
-`
+`;
 
-const HeroTitleBox = props =>
-  <HeroTitleBoxRoot ml={[ 0, 0, 4, 0 ]} {...props} />
+const HeroTitleBox = props => <HeroTitleBoxRoot ml={[0, 0, 4, 0]} {...props} />;
 
-export {
-  HeroBox,
-  HeroFrame,
-  HeroContainer,
-  HeroFlex,
-  HeroTitleBox
-}
+export { HeroBox, HeroFrame, HeroContainer, HeroFlex, HeroTitleBox };

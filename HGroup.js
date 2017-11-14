@@ -1,12 +1,14 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Container from "./Container2"
-import { LargeText } from "./Texts"
-import { Display, Heading, Subheading } from "./Headings"
+import React from "react";
+import PropTypes from "prop-types";
+import Container from "./Container2";
+import { LargeText } from "./Texts";
+import { Display, Heading, Subheading } from "./Headings";
 
 const HGroup = props => (
   <Container maxWidth={props.crownWidth} w={1} mx="auto" px={0}>
-    {props.subhead && <Subheading color={props.subheadColor}>{props.subhead}</Subheading>}
+    {props.subhead && (
+      <Subheading color={props.subheadColor}>{props.subhead}</Subheading>
+    )}
     {props.heading && (
       <Heading color={props.headingColor} family={props.headingFamily} mb={3}>
         {props.heading}
@@ -23,13 +25,17 @@ const HGroup = props => (
       </Display>
     )}
     {props.text && (
-      <LargeText color={props.textColor} family={props.textFamily} mb={props.textIsLast ? 0 : 4}>
+      <LargeText
+        color={props.textColor}
+        family={props.textFamily}
+        mb={props.textIsLast ? 0 : 4}
+      >
         {props.text}
       </LargeText>
     )}
     {props.children}
   </Container>
-)
+);
 
 HGroup.propTypes = {
   crownWidth: PropTypes.string,
@@ -47,7 +53,7 @@ HGroup.propTypes = {
   textIsLast: PropTypes.bool,
   textColor: PropTypes.string,
   children: PropTypes.node,
-}
+};
 
 HGroup.defaultProps = {
   crownWidth: "44em",
@@ -66,6 +72,6 @@ HGroup.defaultProps = {
   textFamily: "textBook",
   textIsLast: false,
   children: null,
-}
+};
 
-export default HGroup
+export default HGroup;
