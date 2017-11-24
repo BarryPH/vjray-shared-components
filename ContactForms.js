@@ -35,7 +35,7 @@ class ContactForms extends React.PureComponent {
       },
     ];
 
-    return <Root tabs={tabs} brandColor {...this.props} />;
+    return <Root {...this.props} tabs={tabs} brandColor />;
   }
 }
 
