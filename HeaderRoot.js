@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import { Flex } from 'rebass'
-import theme from '../theme'
-import { headerFade } from './animationConstants'
+import styled, { css } from "styled-components";
+import { Flex } from "rebass";
+import theme from "../theme";
+import { headerFade } from "./animationConstants";
 
 const HeaderRoot = styled(({
   isHidden,
@@ -10,14 +10,12 @@ const HeaderRoot = styled(({
   children,
   ...rest
 }) => (
-  <Flex is="header" {...rest}>{children}</Flex>
-))`
-  --Header-background-color: rbga(255, 255, 255, 1);
-  --Header-border-color: rgba(88, 88, 112, 0.15);
-  background-color: var(--Header-background-color);
+  <Flex {...rest}>{children}</Flex>
+)) `
+  background-color: rbga(255, 255, 255, 1);
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--Header-border-color);
+  border-bottom-color: rgba(88, 88, 112, 0.15);
   height: ${theme.blockHeights.navBar};
   opacity: 1;
   position: fixed;
@@ -48,11 +46,11 @@ const HeaderRoot = styled(({
   `}
 
   ${props => props.clear && css`
-    --Header-background-color: rbga(255, 255, 255, 0);
+    background-color: rbga(255, 255, 255, 0);
   `}
 
   ${props => props.reverseBorder && css`
-    --Header-border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.15);
   `}
 
   ${props => props.isHidden && css`
@@ -66,8 +64,8 @@ const HeaderRoot = styled(({
   `}
 
   ${props => props.isWindowScrolled && css`
-    --Header-border-color: transparent;
-    background-color: ${theme.colors[props.bg] || 'rgba(255, 255, 255, 1)'};
+    background-color: ${theme.colors[props.bg] || "rgba(255, 255, 255, 1)"};
+    border-color: transparent;
     box-shadow:
       0 16px 24px 2px rgba(0,0,0,0.03),
       0 6px 30px 5px rgba(0,0,0,0.03);
@@ -80,10 +78,8 @@ const HeaderRoot = styled(({
   `}
 
   ${props => props.isModalVisible && css`
-    --Header-background-color: ${theme.colors.offWhite};
-    --Header-border-color: rgba(88, 88, 112, 0.15);
-    background-color: var(--Header-background-color);
-    border-bottom: 1px solid var(--Header-border-color);
+    background-color: ${theme.colors.offWhite};
+    border-bottom: 1px solid rgba(88, 88, 112, 0.15);
     transition:
       opacity ${headerFade.duration}s ease-in-out,
       transform ${headerFade.duration}s ease-in-out,
@@ -93,15 +89,13 @@ const HeaderRoot = styled(({
 
   ${props => props.invertTextOnMobile && css`
     @media (max-width: 512px) {
-      --Header-border-color: rgba(255, 255, 255, 0.15);
-
       a,
       span {
         color: ${theme.colors.text20} !important;
       }
 
       button {
-        border-color: --Header-border-color;
+        border-color: rgba(255, 255, 255, 0.15);
       }
     }
   `}

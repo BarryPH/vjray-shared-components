@@ -1,29 +1,25 @@
-import PropTypes from 'prop-types'
-import Link from 'next/link'
-import styled, { css } from 'styled-components'
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import styled, { css } from "styled-components";
+import { Box, Flex } from "rebass";
 
-import theme from '../theme'
-import { headerFade } from './animationConstants'
+import { site } from "../constants";
+import theme from "../theme";
+import { headerFade } from "./animationConstants";
 
-import { Flex } from 'rebass'
-import Container from './Container'
-import { Display } from './Headline'
-import Button from './Button'
-import { ButtonOutline } from './Buttons'
-import { Text } from './Text'
+import Container from "./Container";
+import { Display } from "./Headings";
+import { ButtonOutline } from "./Buttons";
+import { Text } from "./Text";
 
-const MobileNav = styled(Container)`
+const StyledBox = styled(Box) `
   a {
     margin: 0.5rem 0;
   }
+`;
 
-  @media (max-width: ${theme.breakpoints[1]}em) {
-    padding: 0;
-  }
-`
-
-const MobileNavFlex = Flex.extend`
-  align-content: flex-end;
+const StyledFlex = styled(Flex) `
   opacity: 0;
   transform: translateY(-32px);
 
@@ -34,9 +30,9 @@ const MobileNavFlex = Flex.extend`
       opacity ${headerFade.duration}s ease-in-out,
       transform ${headerFade.duration}s ease-in-out;
   `}
-`
+`;
 
-const MobileModal = Flex.extend`
+const StyledModal = styled(Flex) `
   opacity: 1;
   transform: translateY(0);
   transition:
@@ -58,45 +54,47 @@ const MobileModal = Flex.extend`
       opacity ${headerFade.duration}s ease-in-out,
       transform 0s ease-in-out ${headerFade.duration}s;
   `}
-`
+`;
 
-const LinkText = props =>
+const LinkText = props => (
   <Display
-    align='left'
-    color='text'
+    color="text"
+    family="displayMedium"
     isActive={props.isActive}
-    children={props.children}
-  />
+  >
+    {props.children}
+  </Display>
+);
 
 
 const HeaderMobileNav = props => (
-  <MobileModal
+  <StyledModal
     onClick={props.handleModalClick}
     isVisible={props.isVisible}
     column
   >
-    <MobileNav textCenter>
-      <MobileNavFlex column isVisible={props.isVisible}>
-        {props.navItems.map((item) => {
-          return (
-            <Link href={item.href}>
-              <a><LinkText>{item.label}</LinkText></a>
-            </Link>
-          )
-        })}
+    <StyledBox>
+      <StyledFlex is="nav" column isVisible={props.isVisible}>
+        {props.navItems.map(item => (
+          <Link href={item.href}>
+            <a><LinkText>{item.label}</LinkText></a>
+          </Link>
+        ))}
 
-        <Link href='/let-us-help-you'>
-          <a>
-            <Text align='left' font='textRegular' mt={1}>
-              <ButtonOutline icon children='Get a fast quote' />
-            </Text>
-          </a>
-        </Link>
+        {site === "strata" && (
+          <Link href="/let-us-help-you">
+            <a>
+              <Display mt={1}>
+                <ButtonOutline icon color="brand" children="Get a fast quote" />
+              </Display>
+            </a>
+          </Link>
+        )}
 
-      </MobileNavFlex>
-    </MobileNav>
-  </MobileModal>
-)
+      </StyledFlex>
+    </StyledBox>
+  </StyledModal>
+);
 
 HeaderMobileNav.propTypes = {
   navItems: PropTypes.array,
@@ -108,4 +106,4 @@ HeaderMobileNav.defaultProps = {
   navItems: [],
 };
 
-export default HeaderMobileNav
+export default HeaderMobileNav;

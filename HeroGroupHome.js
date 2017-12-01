@@ -1,17 +1,17 @@
-import React from 'react'
-import { PrimaryButtonText } from "./Texts"
-import { ButtonOutline } from "./Buttons"
-import VideoModal from './VideoModal'
-import HeroBlock from "./HeroBlock"
-import HGroup from "./HGroup"
+import React from "react";
+import { PrimaryButtonText } from "./Texts";
+import { ButtonOutline } from "./Buttons";
+import VideoModal from "./VideoModal";
+import HeroBlock from "./HeroBlock";
+import HGroup from "./HGroup";
 
 class HeroHome extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isContentVisible: true,
-    }
+    };
   }
 
   render() {
@@ -30,7 +30,7 @@ class HeroHome extends React.Component {
             titleIs="h1"
             title="The Real Estate Managers who focus on people."
             titleFamily="displayMedium"
-            text="At VJ Ray, we know property. And we also know property serves people. That's why our focus is on serving you."
+            text="At VJ Ray, we know property. And we also know people. That's why our focus is on serving you."
             textColor="text70"
             textIsLast
           >
@@ -47,8 +47,8 @@ class HeroHome extends React.Component {
           </HGroup>
         </HeroBlock>
       </div>
-    )
+    );
   }
 }
 
-export default HeroHome
+export default HeroHome;

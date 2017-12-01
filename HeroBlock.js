@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Image from "./HeroImage";
+import HeroImage from "./HeroImage";
 import { HeroBox, HeroContainer, HeroFlex, HeroTitleBox } from "./Hero";
 
 const HeroBlock = props => (
   <HeroBox
+    is="header"
     beigeGradientBg={props.beigeGradientBg}
     blueGradientBg={props.blueGradientBg}
     bluegreyGradientBg={props.bluegreyGradientBg}
     bg={props.bg}
   >
-    <Image img={props.img} />
+    <HeroImage img={props.img} />
     <HeroContainer maxWidth={props.maxWidth}>
       <HeroFlex>
         <HeroTitleBox
-          width={[7 / 12, 5 / 12]}
-          ml={[3, 5] || props.ml}
+          width={[13 / 24, 5 / 12]}
+          ml={[0, 3, 4, 5] || props.ml}
           mb={[3, 4]}
         >
           {props.children}

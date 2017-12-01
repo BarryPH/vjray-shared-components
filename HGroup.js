@@ -10,7 +10,7 @@ const HGroup = props => (
       <Subheading color={props.subheadColor}>{props.subhead}</Subheading>
     )}
     {props.heading && (
-      <Heading color={props.headingColor} family={props.headingFamily} mb={3}>
+      <Heading color={props.headingColor} family={props.headingFamily}>
         {props.heading}
       </Heading>
     )}
@@ -19,7 +19,6 @@ const HGroup = props => (
         is={props.titleIs}
         color={props.titleColor}
         family={props.titleFamily}
-        mb={3}
       >
         {props.title}
       </Display>

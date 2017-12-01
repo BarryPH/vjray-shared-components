@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components';
-import theme from '../theme.js';
+import styled, { css } from "styled-components";
+import theme from "../theme-new";
 
 const Hamburger = styled.div`
   --bar-height: 3px;
@@ -59,4 +59,4 @@ const Hamburger = styled.div`
   `}
 `;
 
-export default Hamburger
+export default Hamburger;

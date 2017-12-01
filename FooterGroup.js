@@ -17,6 +17,12 @@ const Root = styled(Box) `
 const Nav = styled(Flex) `
   color: ${theme.colors.text40};
 
+  @media (max-width: 767px) {
+    :not(:first-child) {
+      margin-top: 2rem;
+    }
+  }
+
   p,
   em,
   a {
@@ -36,10 +42,8 @@ const Nav = styled(Flex) `
 // prettier-ignore
 const Column = styled(Box) `
   @media (max-width: 767px) {
-    margin-top: 2rem;
-
-    :first-child {
-      margin-top: 1.5rem;
+    :not(:first-child) {
+      margin-top: 2rem;
     }
   }
 
@@ -70,12 +74,12 @@ const Column = styled(Box) `
  * -------------
  */
 
-const RuledBox = styled(Box)`
+const RuledBox = styled(Box) `
   border-top: 1px solid ${theme.colors.text20};
   padding-top: ${theme.space[3]}px;
 `;
 
-const SecondNav = styled(Flex)`
+const SecondNav = styled(Flex) `
   color: ${theme.colors.text40};
 
   @media (max-width: 512px) {
@@ -94,12 +98,12 @@ const SecondNav = styled(Flex)`
 `;
 
 // prettier-ignore
-const StyledDivider = styled(Divider)`
+const StyledDivider = styled(Divider) `
   --spacing: 0.75rem;
 `;
 
 const Footer = props => (
-  <Root bg={props.bg}>
+  <Root is="footer" bg={props.bg}>
     <Container maxWidth="72em" py={5}>
       <Flex direction={["column", "row"]} justify="space-between">
         <Nav is="nav">

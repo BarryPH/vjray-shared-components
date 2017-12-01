@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
-import { Flex, Overlay } from 'rebass'
-import FlexEmbed from './FlexEmbed'
-import theme from '../theme'
-import Container from './Container2'
+import React from "react";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import { Flex, Overlay } from "rebass";
+import FlexEmbed from "./FlexEmbed";
+import theme from "../theme";
+import Container from "./Container2";
 
 const transition = {
   duration: 0.7,
   delay: 0.4,
-  type: 'ease-in-out'
+  type: "ease-in-out",
 };
 
 const Modal = styled.div`
@@ -42,11 +42,9 @@ const Modal = styled.div`
 `;
 
 const ModalClose = styled.a`
-  --Close-space: 3rem;
-
   position: fixed;
-  right: var(--Close-space);
-  top: calc( 0.7 * var(--Close-space));
+  right: 3rem;
+  top: calc( 0.7 * 3rem);
   color: #fff;
   cursor: pointer;
   font-size: 5rem;
@@ -61,62 +59,62 @@ const VideoIframe = styled.iframe`
 
 class VideoModal extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     const videoRef = this.video;
     const videoIframe = ReactDOM.findDOMNode(videoRef);
     const videoSrc = nextProps.isVisible
-      ? videoRef.props['data-src']
-      : '';
+      ? videoRef.props["data-src"]
+      : "";
 
-    videoIframe.setAttribute('src', videoSrc);
+    videoIframe.setAttribute("src", videoSrc);
   }
 
   handleKeyDown(event) {
-    if (event.key === 'Escape' && this.props.isVisible) {
-      this.props.closeModal()
+    if (event.key === "Escape" && this.props.isVisible) {
+      this.props.closeModal();
     }
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
+    document.addEventListener("keydown", this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown);
+    document.removeEventListener("keydown", this.handleKeyDown);
   }
 
   render() {
     return (
       <Modal isVisible={this.props.isVisible} >
         <ModalClose onClick={this.props.closeModal}>&times;</ModalClose>
-        <Flex align='center' style={{ height: '100vh' }}>
-          <Container maxWidth='72em' w={1}>
-            <FlexEmbed ratio='9/16'>
+        <Flex align="center" style={{ height: "100vh" }}>
+          <Container maxWidth="72em" w={1}>
+            <FlexEmbed ratio="9/16">
               <VideoIframe
-                ref={(ref) => this.video = ref}
-                data-src='https://www.youtube.com/embed/1QJBUBemFKI?autoplay=1'
-                frameborder='0'
-                allowtransparency='true'
-                webkitallowfullscreen=''
-                mozallowfullscreen=''
-                allowfullscreen=''
+                ref={ref => this.video = ref}
+                data-src="https://www.youtube.com/embed/1QJBUBemFKI?autoplay=1"
+                frameborder="0"
+                allowtransparency="true"
+                webkitallowfullscreen=""
+                mozallowfullscreen=""
+                allowfullscreen=""
               />
             </FlexEmbed>
           </Container>
         </Flex>
       </Modal>
-    )
+    );
   }
 }
 
 VideoModal.propsTypes = {
   isVisible: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-}
+};
 
-export default VideoModal
+export default VideoModal;

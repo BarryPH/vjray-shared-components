@@ -1,19 +1,19 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import Rebass from "rebass"
-import { weight, family, lineHeight, letterSpacing } from "./utils"
-import theme from "../theme-new"
+import React from "react";
+import styled, { css } from "styled-components";
+import Rebass from "rebass";
+import { weight, family, lineHeight, letterSpacing } from "./utils";
+import theme from "../theme-new";
 
 //
 // Heading
 //
 
-const Root = styled(Rebass.Heading)`
+const Root = styled(Rebass.Heading) `
   ${weight} 
   ${family} 
   ${lineHeight} 
   ${letterSpacing}
-`
+`;
 
 const Heading = props => (
   <Root
@@ -21,10 +21,10 @@ const Heading = props => (
     family="displayMedium"
     weight={4}
     lh="headline"
-    mb={3}
+    mb={[1, 2, 3]}
     {...props}
   />
-)
+);
 
 //
 // Display
@@ -34,9 +34,9 @@ const Heading = props => (
 // 2. Then wrap this root component with any base responsive styles, and apply base Rebass props.
 
 // 1.
-const DisplayRoot = styled(Root)`
+const DisplayRoot = styled(Root) `
   ${props => props.reverseShadow && css`text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);`}
-`
+`;
 
 // 2.
 const Display = props => (
@@ -47,10 +47,10 @@ const Display = props => (
     weight={4}
     lh="display"
     mt={[0, 1]}
-    mb={[2, 2, 2, 3]}
+    mb={[1, 2, 2, 3]}
     {...props}
   />
-)
+);
 
 //
 // Meta Headlines
@@ -67,12 +67,12 @@ const MetaHeading = props => (
     is="h3"
     {...props}
   />
-)
+);
 
-const SubheadingRoot = styled(MetaHeading)`
+const SubheadingRoot = styled(MetaHeading) `
   border-bottom: 1px solid currentColor;
   display: inline-block;
-`
+`;
 
 const Subheading = props => (
   <SubheadingRoot
@@ -81,7 +81,7 @@ const Subheading = props => (
     pb={2}
     {...props}
   />
-)
+);
 
 const HeadingDetail = props => (
   <MetaHeading
@@ -92,9 +92,9 @@ const HeadingDetail = props => (
     is="h5"
     {...props}
   />
-)
+);
 
-const BoxedSubheading = styled(MetaHeading)`
+const BoxedSubheading = styled(MetaHeading) `
   --Header-height: 48px;
   align-items: center;
   display: flex;
@@ -112,7 +112,7 @@ const BoxedSubheading = styled(MetaHeading)`
   `};
 `;
 
-export { 
+export {
   Display,
   Heading,
   Subheading,
