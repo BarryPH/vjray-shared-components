@@ -24,6 +24,16 @@ const StyledBorder = styled(Border) `
   border-radius: 4px;
 `;
 
+const StyledHeading = styled(Heading) `
+  :after {
+      content: '►';
+      font-size: 55%;
+      margin-left: 8px;
+      position: relative;
+      top: -1px;
+    }
+`;
+
 const Feature = props => (
   <Cell w={[1, 1 / 2, 1 / 2, 1 / 4]} px={3}>
     <Link href={props.item.link}>
@@ -32,7 +42,7 @@ const Feature = props => (
           <StyledBorder borderWidth={props.item.border ? "2px" : "0"} color="brand">
             <Box p={2}>
               <Icon color="brand" size="90" icon={icons[props.item.icon]} />
-              <Heading
+              <StyledHeading
                 center
                 color="brand"
                 family="displayMedium"
@@ -41,7 +51,7 @@ const Feature = props => (
                 mb={[1, 2]}
               >
                 {props.item.headline}
-              </Heading>
+              </StyledHeading>
             </Box>
             <SmallText color="text70" m={3} mt={0}>
               {props.item.lede}

@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Box } from "rebass";
 import Container from "./Container2";
 import { LargeText } from "./Texts";
 import { Display, Heading, Subheading } from "./Headings";
 
 const HGroup = props => (
-  <Container maxWidth={props.crownWidth} w={1} mx="auto" px={0}>
+  <Box maxWidth={props.crownWidth} w={1} mx="auto" px={0}>
     {props.subhead && (
       <Subheading color={props.subheadColor}>{props.subhead}</Subheading>
     )}
@@ -33,7 +34,7 @@ const HGroup = props => (
       </LargeText>
     )}
     {props.children}
-  </Container>
+  </Box>
 );
 
 HGroup.propTypes = {

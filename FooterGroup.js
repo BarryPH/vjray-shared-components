@@ -14,6 +14,15 @@ const Root = styled(Box) `
 `;
 
 // prettier-ignore
+const StyledFlex = styled(Flex) `
+  @media (max-width: 1023px) {
+    nav + nav {
+      margin-top: 2rem;
+    }
+  }
+`;
+
+// prettier-ignore
 const Nav = styled(Flex) `
   color: ${theme.colors.text40};
 
@@ -61,8 +70,10 @@ const Column = styled(Box) `
     }
 
     ${props => props.tapSpace && css`
-      &:not(:first-child) {
-        margin-top: 0.5rem;
+      @media (max-width: 767px) {
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
       }
     `};
   }
@@ -105,7 +116,7 @@ const StyledDivider = styled(Divider) `
 const Footer = props => (
   <Root is="footer" bg={props.bg}>
     <Container maxWidth="72em" py={5}>
-      <Flex direction={["column", "row"]} justify="space-between">
+      <StyledFlex direction={["column", "column", "column", "row"]} justify="space-between">
         <Nav is="nav">
           <Flex direction={["column", "row"]}>
             <Column>
@@ -185,7 +196,7 @@ const Footer = props => (
             </Column>
           </Flex>
         </Nav>
-      </Flex>
+      </StyledFlex>
 
       <RuledBox mt={[4, 5]}>
         <Flex direction={["column", "row"]} justify="space-between">

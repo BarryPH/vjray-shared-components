@@ -72,7 +72,7 @@ const Root = props => (
             </Link>
           </Box>
 
-          <CTABlock break={["flex", "flex", "flex", "none"]}>
+          <CTABlock>
             <CTALink href={`tel:${contactDetails.phone}`}>
               <IconPhone navBar />
               {contactDetails.phone}

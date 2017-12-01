@@ -20,7 +20,7 @@ const HeroFrame = styled(Box)`
  */
 
 // prettier-ignore
-const HeroBox = styled(Box)`
+const HeroBox = styled(Box) `
   align-items: center;
   height: calc(${theme.blockHeights.navBar} + 50vh);
   padding-top: ${theme.blockHeights.navBar};
@@ -80,7 +80,7 @@ const HeroFlex = styled(Flex)`
 `;
 
 // prettier-ignore
-const HeroTitleBoxRoot = styled(Box)`
+const HeroTitleBoxRoot = styled(Box) `
   ${props => props.invertTextOnMobile && css`
     @media (max-width: 512px) {
       h4 { color: ${theme.colors.text7}; }

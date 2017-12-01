@@ -3,6 +3,8 @@ import { Container as _Container } from "rebass";
 
 // prettier-ignore
 const Container = styled(_Container) `
+  padding-left: 24px !important;
+  padding-right: 24px !important;
   position: relative;
   
   ${props => props.textCenter && css`
