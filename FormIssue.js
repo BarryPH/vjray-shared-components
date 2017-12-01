@@ -17,7 +17,8 @@ class FormIssue extends React.Component {
   }
 
   async submit(model) {
-    const response = await fetch("https://formspree.io/xgaewyjx", {
+    const formspreeId = site === "strata" ? "strata_id" : "group_id";
+    const response = await fetch(`https://formspree.io/${formspreeId}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
