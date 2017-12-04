@@ -9,7 +9,7 @@ import {
   FormGroup,
   FormGroupHeadline,
 } from "./Form";
-import { site } from "../constants";
+import { site, groupId } from "../constants";
 
 class FormIssue extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class FormIssue extends React.Component {
   }
 
   async submit(model) {
-    const formspreeId = site === "strata" ? "strata_id" : "group_id";
+    const formspreeId = site === "strata" ? "strataId" : "groupId";
     const response = await fetch(`https://formspree.io/${formspreeId}`, {
       method: "POST",
       headers: {
@@ -33,11 +33,7 @@ class FormIssue extends React.Component {
       <FormContainer submit={this.submit} brand={this.props.brand}>
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
-          <Input
-            placeholder="Your name*"
-            name="name"
-            required
-          />
+          <Input placeholder="Your name*" name="name" required />
           <Input
             placeholder="Your email*"
             name="email"
@@ -66,7 +62,11 @@ class FormIssue extends React.Component {
           <input
             type="hidden"
             name="_subject"
-            value={site === "strata" ? "Strata website issue submission" : "Group website issue submission"}
+            value={
+              site === "strata"
+                ? "Strata website issue submission"
+                : "Group website issue submission"
+            }
           />
         </FormGroup>
       </FormContainer>

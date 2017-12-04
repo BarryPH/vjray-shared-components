@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormContainer from "./FormContainer";
-import {
-  Input,
-  Textarea,
-  FormGroup,
-  FormGroupHeadline,
-} from "./Form";
-import { site } from "../constants";
+import { Input, Textarea, FormGroup, FormGroupHeadline } from "./Form";
+import { site, groupId } from "../constants";
 
 class FormContact extends React.Component {
   async submit(model) {
-    const formspreeId = site === "strata" ? "strata_id" : "group_id";
+    const formspreeId = site === "strata" ? "strataId" : "groupId";
     const response = await fetch(`https://formspree.io/${formspreeId}`, {
       method: "POST",
       headers: {
@@ -64,7 +59,11 @@ class FormContact extends React.Component {
           <input
             type="hidden"
             name="_subject"
-            value={site === "strata" ? "Strata website contact submission" : "Group website contact submission"}
+            value={
+              site === "strata"
+                ? "Strata website contact submission"
+                : "Group website contact submission"
+            }
           />
         </FormGroup>
       </FormContainer>

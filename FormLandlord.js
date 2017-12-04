@@ -1,16 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormContainer from "./FormContainer";
-import {
-  Input,
-  Textarea,
-  FormGroup,
-  FormGroupHeadline,
-} from "./Form";
+import { Input, Textarea, FormGroup, FormGroupHeadline } from "./Form";
+import { site, groupId } from "../constants";
 
 class FormLandlord extends React.Component {
   async submit(model) {
-    const response = await fetch("https://formspree.io/xgaewyjx", {
+    const formspreeId = site === "strata" ? "strataId" : "groupId";
+    const response = await fetch(`https://formspree.io/${formspreeId}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
