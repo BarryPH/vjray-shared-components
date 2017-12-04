@@ -10,19 +10,19 @@ import Icon from "./Icon";
 import icons from "./iconConstants";
 import theme from "../theme-new";
 
-const ItemRoot = styled(Flex) `
+const ItemRoot = styled(Flex)`
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
-const ItemIcon = styled(Icon) `
+const ItemIcon = styled(Icon)`
   @media (min-width: 768px) {
     transform: translateY(-20px);
   }
 `;
 
-const ItemNumber = styled(Display) `
+const ItemNumber = styled(Display)`
   height: 50px;
   margin: 0;
   padding-top: 4px;
@@ -44,7 +44,11 @@ const ItemNumber = styled(Display) `
 `;
 
 const ListItem = props => (
-  <ItemRoot direction={["column", "row"]} mx={-3} mb={props.smallSpace ? [3, 4] : [4, 5]}>
+  <ItemRoot
+    direction={["column", "row"]}
+    mx={-3}
+    mb={props.smallSpace ? [3, 4] : [4, 5]}
+  >
     {props.item.icon && (
       <Box px={3}>
         <ItemIcon color="text" size="90" icon={icons[props.item.icon]} />
@@ -71,10 +75,12 @@ const ListItem = props => (
       </Text>
       {props.item.buttonUrl && (
         <PrimaryButtonText align="left" color="white" mt={3}>
-          <Link href={props.item.buttonUrl}>
-            <ButtonOutline brandBg icon color="brand">
-              {props.item.buttonLabel}
-            </ButtonOutline>
+          <Link href={props.item.buttonUrl} passHref>
+            <a>
+              <ButtonOutline brandBg icon color="brand">
+                {props.item.buttonLabel}
+              </ButtonOutline>
+            </a>
           </Link>
         </PrimaryButtonText>
       )}

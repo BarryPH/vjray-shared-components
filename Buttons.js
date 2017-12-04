@@ -1,19 +1,19 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
 import {
   Button as _Button,
   ButtonOutline as _ButtonOutline,
-  ButtonCircle as _ButtonCircle
-} from "rebass"
-import { letterSpacing, actionIcon } from "./utils"
-import theme from "../theme-new"
+  ButtonCircle as _ButtonCircle,
+} from "rebass";
+import { letterSpacing, actionIcon } from "./utils";
+import theme from "../theme-new";
 
-// Buttons inherit font sizes and weights from 
+// Buttons inherit font sizes and weights from
 // wrapped text components.
-// 
+//
 // Two font-size rules in specific order:
 // 1. resets the rebass button font-size.
 // 2. sets it to inherit from the Text wrapper.
-// 
+//
 // If you need to change line-height, use s-c per instance.
 
 const BaseStyles = `
@@ -26,34 +26,61 @@ const BaseStyles = `
   text-transform: inherit;
 `;
 
-const brandBg = `:hover { background-color: ${theme.colors.brand} !important; }`;
-const textBg = `:hover { background-color: ${theme.colors.text} !important; }`;
+// prettier-ignore
+const brandBg = `
+  :hover, 
+  :active { 
+    background-color: ${theme.colors.brand} !important;
+  }
+
+  :active {
+    box-shadow: 
+      inset 0 0 0 2px ${theme.colors.brand}, 
+      inset 0 0 8px rgba(0,0,0,0.25) !important;
+  }
+`;
+
+const textBg = `
+  :hover, 
+  :active { 
+    background-color: ${theme.colors.text} !important;
+  }
+
+  :active {
+    box-shadow: 
+      inset 0 0 0 2px ${theme.colors.text}, 
+      inset 0 0 8px rgba(0,0,0,0.25) !important;
+  }
+`;
 
 // application
+// prettier-ignore
 const Button = styled(_Button)`
-  ${BaseStyles}
-  ${letterSpacing}
-  ${props => props.icon && css`${actionIcon}`}
+  ${BaseStyles} 
+  ${letterSpacing} 
+  ${props => props.icon && css`${actionIcon};`};
 `;
 
+// prettier-ignore
 const ButtonOutline = styled(_ButtonOutline)`
-  ${BaseStyles}
-  ${letterSpacing}
-  ${props => props.icon && css`${actionIcon}`}
-  ${props => props.brandBg && css`${brandBg}`}
-  ${props => props.textBg && css`${textBg}`}
+  ${BaseStyles} 
+  ${letterSpacing} 
+  ${props => props.icon && css`${actionIcon};`} 
+  ${props => props.brandBg && css`${brandBg};`} 
+  ${props => props.textBg && css`${textBg};`};
 `;
 
+// prettier-ignore
 const ButtonCircle = styled(_ButtonCircle)`
-  ${BaseStyles}
-  ${letterSpacing}
-  ${props => props.icon && css`${actionIcon}`}
+  ${BaseStyles} 
+  ${letterSpacing} 
+  ${props => props.icon && css`${actionIcon};`};
 `;
 
 // spreadable text styling props.
 // FAIL
 // these can be overriden per button instance
-// via the 4 base utility styles: 
+// via the 4 base utility styles:
 // family, weight, lh & ls
 // const Primary = {
 //   fontSize: [0, 0, 1],
@@ -61,8 +88,4 @@ const ButtonCircle = styled(_ButtonCircle)`
 //   lineHeight: "button"
 // };
 
-export {
-  Button,
-  ButtonOutline,
-  ButtonCircle,
-};
+export { Button, ButtonOutline, ButtonCircle };
