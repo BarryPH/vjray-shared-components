@@ -1,15 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormContainer from "./FormContainer";
-import {
-  Form,
-  Input,
-  Select,
-  Textarea,
-  FormGroup,
-  FormGroupHeadline,
-} from "./Form";
-import { site, groupId } from "../constants";
+import { Input, Textarea, FormGroup, FormGroupHeadline } from "./Form";
+import { site, formspreeId } from "../constants";
 
 class FormIssue extends React.Component {
   constructor(props) {
@@ -17,7 +10,6 @@ class FormIssue extends React.Component {
   }
 
   async submit(model) {
-    const formspreeId = site === "strata" ? "strataId" : "groupId";
     const response = await fetch(`https://formspree.io/${formspreeId}`, {
       method: "POST",
       headers: {
