@@ -21,6 +21,19 @@ class FormContact extends React.Component {
       <FormContainer submit={this.submit} brandColor={this.props.brandColor}>
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
+
+          {/* Formspree filters */}
+          <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <input
+            type="hidden"
+            name="_subject"
+            value={
+              site === "strata"
+                ? "Strata website contact submission"
+                : "Group website contact submission"
+            }
+          />
+
           <Input
             placeholder="Your name*"
             name="name"
@@ -51,18 +64,6 @@ class FormContact extends React.Component {
             name="comments"
             brandColor={this.brandColor}
             rows="7"
-          />
-
-          {/* Formspree filters */}
-          <input type="text" name="_gotcha" style={{ display: "none" }} />
-          <input
-            type="hidden"
-            name="_subject"
-            value={
-              site === "strata"
-                ? "Strata website contact submission"
-                : "Group website contact submission"
-            }
           />
         </FormGroup>
       </FormContainer>

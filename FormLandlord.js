@@ -21,6 +21,15 @@ class FormLandlord extends React.Component {
       <FormContainer submit={this.submit} brandColor={this.props.brandColor}>
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
+
+          {/* Formspree filters */}
+          <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Group website landlord appraisal submission"
+          />
+
           <Input
             placeholder="Your name*"
             name="name"
@@ -31,12 +40,8 @@ class FormLandlord extends React.Component {
             placeholder="Your email*"
             name="email"
             brandColor={this.brandColor}
-            validations={{
-              isEmail: true,
-            }}
-            validationErrors={{
-              isEmail: "Not a valid email",
-            }}
+            validations={{ isEmail: true }}
+            validationErrors={{ isEmail: "Not a valid email" }}
             required
           />
           <Input
@@ -51,14 +56,6 @@ class FormLandlord extends React.Component {
             name="comments"
             brandColor={this.brandColor}
             rows="7"
-          />
-
-          {/* Formspree filters */}
-          <input type="text" name="_gotcha" style={{ display: "none" }} />
-          <input
-            type="hidden"
-            name="_subject"
-            value="Group website landlord appraisal submission"
           />
         </FormGroup>
       </FormContainer>

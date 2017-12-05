@@ -22,9 +22,26 @@ class FormIssue extends React.Component {
 
   render() {
     return (
-      <FormContainer submit={this.submit} brand={this.props.brand} brandColor={this.props.brandColor}>
+      <FormContainer
+        submit={this.submit}
+        brand={this.props.brand}
+        brandColor={this.props.brandColor}
+      >
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
+
+          {/* Formspree filters */}
+          <input type="text" name="_gotcha" style={{ display: "none" }} />
+          <input
+            type="hidden"
+            name="_subject"
+            value={
+              site === "strata"
+                ? "Strata website issue submission"
+                : "Group website issue submission"
+            }
+          />
+
           <Input placeholder="Your name*" name="name" required />
           <Input
             placeholder="Your email*"
@@ -47,18 +64,6 @@ class FormIssue extends React.Component {
             placeholder="Please describe your issue…"
             name="comments"
             rows="7"
-          />
-
-          {/* Formspree filters */}
-          <input type="text" name="_gotcha" style={{ display: "none" }} />
-          <input
-            type="hidden"
-            name="_subject"
-            value={
-              site === "strata"
-                ? "Strata website issue submission"
-                : "Group website issue submission"
-            }
           />
         </FormGroup>
       </FormContainer>
