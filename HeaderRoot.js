@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 import { Flex } from "rebass";
-import theme from "../theme";
+import theme from "../theme-new";
 import { headerFade } from "./animationConstants";
 
+// prettier-ignore
 const HeaderRoot = styled(({
   isHidden,
   isWindowScrolled,

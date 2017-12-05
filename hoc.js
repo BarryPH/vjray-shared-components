@@ -1,15 +1,12 @@
-const styled = require('styled-components').default
-const css = require('styled-components').css
-const { fontSize } = require('styled-system')
-const {
-  width,
-  space,
-  color,
-} = require('styled-system')
-const theme = require ('../theme').default
+const styled = require("styled-components").default;
+const css = require("styled-components").css;
+const { fontSize } = require("styled-system");
+const { width, space, color } = require("styled-system");
+const theme = require("../theme-new").default;
 
 // stolen from: https://github.com/jxnblk/styled-system/blob/master/docs/styled-components/hoc.js
 
+// prettier-ignore
 module.exports = (Component, props) => {
   const SystemComponent = styled(Component)`
     ${fontSize}
@@ -22,7 +19,7 @@ module.exports = (Component, props) => {
     `}
 
     ${props => props.font && css`
-      font-family: ${theme.fonts[props.font] || theme.fonts.textLight};
+      font-family: ${theme.families[props.font] || theme.families.textLight};
     `}
 
     ${props => props.inlineBlock && css`
@@ -30,17 +27,17 @@ module.exports = (Component, props) => {
     `}
 
     ${props => props.letterSpacing && css`
-      letter-spacing: ${theme.letterSpacing[props.letterSpacing] || theme.letterSpacing.text};
+      letter-spacing: ${theme.letterSpacings[props.letterSpacing] || theme.letterSpacings.text};
     `}
 
     ${props => props.lineHeight && css`
-      line-height: ${theme.lineHeight[props.lineHeight] || theme.lineHeight.text};
+      line-height: ${theme.lineHeights[props.lineHeight] || theme.lineHeights.text};
     `}
 
     ${props => props.uppercase && css`
       text-transform: uppercase;
     `}
-  `
+  `;
 
-  return SystemComponent
-}
+  return SystemComponent;
+};

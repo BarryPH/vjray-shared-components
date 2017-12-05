@@ -5,38 +5,35 @@ import styled, { css } from "styled-components";
 import { Box, Flex } from "rebass";
 
 import { site } from "../constants";
-import theme from "../theme";
+import theme from "../theme-new";
 import { headerFade } from "./animationConstants";
-
-import Container from "./Container";
 import { Display } from "./Headings";
 import { ButtonOutline } from "./Buttons";
-import { Text } from "./Text";
 
-const StyledBox = styled(Box) `
+const StyledBox = styled(Box)`
   a {
     margin: 0.5rem 0;
   }
 `;
 
-const StyledFlex = styled(Flex) `
+// prettier-ignore
+const StyledFlex = styled(Flex)`
   opacity: 0;
   transform: translateY(-32px);
 
   ${props => props.isVisible && css`
     opacity: 1;
     transform: translateY(0);
-    transition:
+    transition: 
       opacity ${headerFade.duration}s ease-in-out,
       transform ${headerFade.duration}s ease-in-out;
-  `}
+  `};
 `;
 
-const StyledModal = styled(Flex) `
+const StyledModal = styled(Flex)`
   opacity: 1;
   transform: translateY(0);
-  transition:
-    opacity ${headerFade.duration}s ease-in-out,
+  transition: opacity ${headerFade.duration}s ease-in-out,
     transform 0s ease-in-out 0s;
   background-color: ${theme.colors.offWhite};
   bottom: 0;
@@ -47,25 +44,21 @@ const StyledModal = styled(Flex) `
   top: ${theme.blockHeights.navBar};
   z-index: 15;
 
-  ${props => !props.isVisible && css`
-    opacity: 0;
-    transform: translateY(100vh);
-    transition:
-      opacity ${headerFade.duration}s ease-in-out,
-      transform 0s ease-in-out ${headerFade.duration}s;
-  `}
+  ${props =>
+    !props.isVisible &&
+    css`
+      opacity: 0;
+      transform: translateY(100vh);
+      transition: opacity ${headerFade.duration}s ease-in-out,
+        transform 0s ease-in-out ${headerFade.duration}s;
+    `};
 `;
 
 const LinkText = props => (
-  <Display
-    color="text"
-    family="displayMedium"
-    isActive={props.isActive}
-  >
+  <Display color="text" family="displayMedium" isActive={props.isActive}>
     {props.children}
   </Display>
 );
-
 
 const HeaderMobileNav = props => (
   <StyledModal
@@ -77,7 +70,9 @@ const HeaderMobileNav = props => (
       <StyledFlex is="nav" column isVisible={props.isVisible}>
         {props.navItems.map(item => (
           <Link href={item.href}>
-            <a><LinkText>{item.label}</LinkText></a>
+            <a>
+              <LinkText>{item.label}</LinkText>
+            </a>
           </Link>
         ))}
 
@@ -90,7 +85,6 @@ const HeaderMobileNav = props => (
             </a>
           </Link>
         )}
-
       </StyledFlex>
     </StyledBox>
   </StyledModal>

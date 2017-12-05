@@ -2,22 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { Box } from "rebass";
-import theme from "../theme-new";
+import theme from "../theme";
 import LaddaButton from "./LaddaButton";
 import { Text } from "./Texts";
-import {
-  Form,
-  SuccessMessage,
-} from "./Form";
+import { Form, SuccessMessage } from "./Form";
 
-
-const Root = styled(Box) `
+const Root = styled(Box)`
   background-color: white;
   border: 1px solid ${theme.colors.brandAlt};
 
-  ${props => props.brandColor && css`
-    border-color: ${theme.colors.brand} !important;
-  `}
+  ${props =>
+    props.brandColor &&
+    css`
+      border-color: ${theme.colors.brand} !important;
+    `};
 `;
 
 class FormContainer extends React.Component {
@@ -75,9 +73,11 @@ class FormContainer extends React.Component {
             {this.props.children}
 
             <Text right>
-              {this.state.formSent &&
-                <SuccessMessage>Thanks! We&apos;ll contact you within 48 hours.</SuccessMessage>
-              }
+              {this.state.formSent && (
+                <SuccessMessage>
+                  Thanks! We&apos;ll contact you within 48 hours.
+                </SuccessMessage>
+              )}
               <LaddaButton
                 bg={this.props.brandColor ? "brand" : "brandAlt"}
                 loading={this.state.loading}

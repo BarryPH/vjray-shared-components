@@ -1,10 +1,10 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import Rebass from "rebass"
-import { weight, family, lineHeight, letterSpacing, actionIcon } from "./utils"
-import theme from "../theme-new"
+import React from "react";
+import styled, { css } from "styled-components";
+import Rebass from "rebass";
+import { weight, family, lineHeight, letterSpacing, actionIcon } from "./utils";
+import theme from "../theme-new";
 
-
+// prettier-ignore
 const Root = styled(Rebass.Text) `
   ${family}
   ${weight}
@@ -22,15 +22,15 @@ const Root = styled(Rebass.Text) `
   ${props => props.noUnderline && css`
     a { background-image: initial; }
   `}
-`
+`;
 
-// Rebass uses: 
+// Rebass uses:
 // * <Heading />
 // * <Subhead />
 // * <Text />
-// * <Lead /> 
+// * <Lead />
 // * <Small />
-// 
+//
 // Our API:
 // * Text
 // * SmallText
@@ -39,29 +39,11 @@ const Root = styled(Rebass.Text) `
 // * AuthorText
 // * PrimaryButtonText
 
-const Text = props => (
-  <Root
-    fontSize={[2, 2, 2, 3]}
-    weight={2}
-    {...props}
-  />
-)
+const Text = props => <Root fontSize={[2, 2, 2, 3]} weight={2} {...props} />;
 
-const SmallText = props => (
-  <Root
-    fontSize={[1, 1, 2]}
-    weight={2}
-    {...props}
-  />
-)
+const SmallText = props => <Root fontSize={[1, 1, 2]} weight={2} {...props} />;
 
-const MediumText = props => (
-  <Root
-    fontSize={[3, 3, 4]}
-    weight={2}
-    {...props}
-  />
-)
+const MediumText = props => <Root fontSize={[3, 3, 4]} weight={2} {...props} />;
 
 const LargeText = props => (
   <Root
@@ -72,7 +54,7 @@ const LargeText = props => (
     ls="text"
     {...props}
   />
-)
+);
 
 const AuthorText = props => (
   <Root
@@ -85,7 +67,7 @@ const AuthorText = props => (
     ls="touch"
     {...props}
   />
-)
+);
 
 const PrimaryButtonText = props => (
   <SmallText
@@ -96,26 +78,25 @@ const PrimaryButtonText = props => (
     ls="meta"
     {...props}
   />
-)
+);
 
 const Divider = styled.span`
-  --spacing: 0.75rem;
   color: inherit;
-  margin-left: var(--spacing);
-  margin-right: var(--spacing);
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
 
   :after {
     color: inherit;
-    content: '•';
+    content: "•";
   }
-`
+`;
 
-// 
+//
 // Markdown Text blocks
 // Find another way…
-// 
+//
 
-const TextBlock = styled("div") `
+const TextBlock = styled("div")`
   h1 {
     font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[5]}px;
@@ -182,9 +163,9 @@ const TextBlock = styled("div") `
     padding-left: 8px;
     width: auto;
   }
-`
+`;
 
-const DangerouslyResetTextBlock = styled(TextBlock) `
+const DangerouslyResetTextBlock = styled(TextBlock)`
   > div,
   > div div {
     font-size: 16px;
@@ -198,7 +179,7 @@ const DangerouslyResetTextBlock = styled(TextBlock) `
       font-size: 19px;
     }
   }
-`
+`;
 
 export {
   Text,
@@ -210,4 +191,4 @@ export {
   Divider,
   TextBlock,
   DangerouslyResetTextBlock,
-}
+};

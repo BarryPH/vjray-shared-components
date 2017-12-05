@@ -16,23 +16,21 @@ import { displayBreakPoint } from "./utils";
 import { ButtonOutline } from "./Buttons";
 
 import { site, navItems, contactDetails } from "../constants";
-import theme from "../theme";
+import theme from "../theme-new";
 import icons from "./iconConstants";
 import { headerFade } from "./animationConstants";
 
-
-const StyledFlex = styled(Flex) `
+const StyledFlex = styled(Flex)`
   height: ${theme.blockHeights.navBar};
   position: relative;
 `;
 
-const StyledButton = styled(ButtonOutline) `
+const StyledButton = styled(ButtonOutline)`
   box-shadow: inset 0 0 0 1px !important;
 `;
 
-const CTABlock = styled(Box) `
-  ${displayBreakPoint}
-  justify-content: center;
+const CTABlock = styled(Box)`
+  ${displayBreakPoint} justify-content: center;
   position: relative;
 `;
 
@@ -40,7 +38,9 @@ const CTALink = props => (
   <Link href={props.href}>
     <a>
       <Text family="textRegular">
-        <StyledButton textBg color="text">{props.children}</StyledButton>
+        <StyledButton textBg color="text">
+          {props.children}
+        </StyledButton>
       </Text>
     </a>
   </Link>
@@ -55,7 +55,6 @@ const Root = props => (
     >
       <Container px={[1, 2, 2, 3]} maxWidth="72em" w={1}>
         <StyledFlex align="center" justify="space-between">
-
           {/* MENU */}
           <DesktopNav navItems={navItems} pathname={props.pathname} />
 
@@ -102,7 +101,6 @@ const Root = props => (
   </div>
 );
 
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -140,7 +138,8 @@ class Header extends React.Component {
     // The cause is believed to be that it's possible to scroll a little below
     // 0 on the Y axis with a bounce back animation which scrolls back to 0.
     // scollPos is checked to be above 0 to exclude scroll events caused by the bounce back animation
-    const scrolledDown = window.scrollY > previousScrollPos && window.scrollY > 0;
+    const scrolledDown =
+      window.scrollY > previousScrollPos && window.scrollY > 0;
 
     this.setState({
       previousScrollPos: window.scrollY,
@@ -161,7 +160,8 @@ class Header extends React.Component {
 
     this.setState({
       isVisible: true,
-      isWindowScrolled: !willHideModal || !(willHideModal && window.scrollY <= 200),
+      isWindowScrolled:
+        !willHideModal || !(willHideModal && window.scrollY <= 200),
       isModalVisible: !this.state.isModalVisible,
     });
   }
@@ -171,7 +171,6 @@ class Header extends React.Component {
       <Root
         handleModalClick={this.handleModalClick}
         handleModalTriggerClick={this.handleModalTriggerClick}
-
         {...this.state}
         {...this.props}
       />

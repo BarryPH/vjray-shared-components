@@ -1,83 +1,78 @@
-import React from "react"
-import styled, { css } from 'styled-components'
-import hoc from './hoc'
-import theme from '../theme.js'
+import React from "react";
+import styled, { css } from "styled-components";
+import hoc from "./hoc";
+import theme from "../theme-new";
 
-
-const Root = hoc('p').extend`
+const Root = hoc("p").extend`
   a {
-    ${props => props.noUnderline && css`
-      background-image: initial;
-    `}
+    ${props =>
+    props.noUnderline &&
+      css`
+        background-image: initial;
+      `}
   }
 
-  ${props => props.hideAtDesktop && css`
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  `}
+  ${props =>
+    props.hideAtDesktop &&
+    css`
+      @media (min-width: 1024px) {
+        display: none;
+      }
+    `}
 
-  ${props => props.hideAtTablet && css`
-    @media (max-width: 768px) {
-      display: none;
-    }
-  `}
+  ${props =>
+    props.hideAtTablet &&
+    css`
+      @media (max-width: 768px) {
+        display: none;
+      }
+    `}
 
-  ${props => props.hideAtMobile && css`
-    @media (max-width: 512px) {
-      display: none;
-    }
-  `}
-`
+  ${props =>
+    props.hideAtMobile &&
+    css`
+      @media (max-width: 512px) {
+        display: none;
+      }
+    `}
+`;
 
-const Text = props =>
-  <Root
-    color='text'
-    font='textLight'
-    fontSize={[ 2, 2, 2, 3 ]}
-    {...props}
-  />
+const Text = props => (
+  <Root color="text" font="textLight" fontSize={[2, 2, 2, 3]} {...props} />
+);
 
-const TinyText = props =>
+const TinyText = props => (
+  <Text fontSize={[0, 0, 1]} letterSpacing="body" {...props} />
+);
+
+const SmallText = props => (
+  <Text fontSize={[1, 1, 2]} letterSpacing="body" {...props} />
+);
+
+const MediumText = props => <Text fontSize={[3, 3, 4]} {...props} />;
+
+const LargeText = props => (
   <Text
-    fontSize={[ 0, 0, 1 ]}
-    letterSpacing='body'
+    font="displayLight"
+    fontSize={[3, 3, 4, 5]}
+    letterSpacing="text"
+    lineHeight="subheadline"
     {...props}
   />
+);
 
-const SmallText = props =>
-  <Text
-    fontSize={[ 1, 1, 2 ]}
-    letterSpacing='body'
-    {...props}
-  />
+const AuthorRoot = hoc("span").extend``;
 
-const MediumText = props =>
-  <Text
-    fontSize={[ 3, 3, 4 ]}
-    {...props}
-  />
-
-const LargeText = props =>
-  <Text
-    font='displayLight'
-    fontSize={[ 3, 3, 4, 5 ]}
-    letterSpacing='text'
-    lineHeight='subheadline'
-    {...props}
-  />
-
-const AuthorRoot = hoc('span').extend``
-
-const AuthorText = props =>
+const AuthorText = props => (
   <AuthorRoot
-    color='inherit'
-    font='textBook'
-    fontSize={[ 2, 2, 2, 3, 4 ]}
-    letterSpacing='touch'
+    color="inherit"
+    font="textBook"
+    fontSize={[2, 2, 2, 3, 4]}
+    letterSpacing="touch"
     uppercase
     {...props}
   />
+);
 
 const Divider = styled.span`
   --spacing: 0.75rem;
@@ -87,7 +82,7 @@ const Divider = styled.span`
 
   :after {
     color: inherit;
-    content: '•';
+    content: "•";
   }
 `;
 
@@ -96,11 +91,11 @@ const Divider = styled.span`
 // Find another way…
 //
 
-const TextBlock = styled('div')`
+const TextBlock = styled("div")`
   h1 {
-    font-family: ${theme.fonts.displayRegular};
+    font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[5]}px;
-    line-height: ${theme.lineHeight.display};
+    line-height: ${theme.lineHeights.display};
     margin-bottom: ${theme.space[2]}px;
 
     @media (min-width: ${theme.breakpoints[0]}em) {
@@ -117,10 +112,10 @@ const TextBlock = styled('div')`
   }
 
   h2 {
-    font-family: ${theme.fonts.displayRegular};
+    font-family: ${theme.families.displayRegular};
     font-size: ${theme.fontSizes[3]}px;
-    letterSpacing: ${theme.letterSpacing.text};
-    line-height: ${theme.lineHeight.subheadline};
+    letterspacing: ${theme.letterSpacings.text};
+    line-height: ${theme.lineHeights.subheadline};
     margin-bottom: ${theme.space[1]}px;
 
     @media (min-width: ${theme.breakpoints[2]}em) {
@@ -135,13 +130,13 @@ const TextBlock = styled('div')`
   p,
   li {
     font-size: 16px;
-    font-family: ${theme.fonts.textLight};
+    font-family: ${theme.families.textLight};
     margin: 0;
     order: initial;
     padding: 0;
     width: 100%;
 
-    @media (min-width: ${theme.containers.sm}) {
+    @media (min-width: ${theme.breakpoints[1]}em) {
       font-size: 19px;
     }
   }
@@ -162,24 +157,23 @@ const TextBlock = styled('div')`
     padding-left: 8px;
     width: auto;
   }
-`
+`;
 
 const DangerouslyResetTextBlock = styled(TextBlock)`
   > div,
   > div div {
     font-size: 16px;
-    font-family: ${theme.fonts.textLight};
+    font-family: ${theme.families.textLight};
     margin: 0;
     order: initial;
     padding: 0;
     width: 100%;
 
-    @media (min-width: ${theme.containers.sm}) {
+    @media (min-width: ${theme.breakpoints[1]}em) {
       font-size: 19px;
     }
   }
-`
-
+`;
 
 /*
  * ------
@@ -187,44 +181,46 @@ const DangerouslyResetTextBlock = styled(TextBlock)`
  * ------
  */
 
-const LineBreak = hoc('span').extend`
+const LineBreak = hoc("span").extend`
   font: inherit;
 
   @media (min-width: ${theme.breakpoints[2]}em) {
       display: table !important;
   }
 
-  ${props => props.bp && css`
-    @media (min-width: ${theme.breakpoints[props.bp]}em) {
+  ${props =>
+    props.bp &&
+    css`
+      @media (min-width: ${theme.breakpoints[props.bp]}em) {
         display: table !important;
-    }
-  `}
-`
+      }
+    `}
+`;
 
-const LineBreakMax = hoc('span').extend`
+const LineBreakMax = hoc("span").extend`
   font: inherit;
 
   @media (max-width: ${theme.breakpoints[1]}em) {
       display: table !important;
   }
 
-  ${props => props.bp && css`
-    @media (max-width: ${theme.breakpoints[props.bp]}em) {
+  ${props =>
+    props.bp &&
+    css`
+      @media (max-width: ${theme.breakpoints[props.bp]}em) {
         display: table !important;
-    }
-  `}
-`
+      }
+    `}
+`;
 
-const LineBreakAll = hoc('span').extend`
+const LineBreakAll = hoc("span").extend`
   font: inherit;
   display: table;
-`
+`;
 
-const InlineText = Root.withComponent('span').extend`
+const InlineText = Root.withComponent("span").extend`
   display: inline-block;
-`
-
-
+`;
 
 export {
   Text,
@@ -238,5 +234,5 @@ export {
   InlineText,
   TextBlock,
   DangerouslyResetTextBlock,
-  Divider
-}
+  Divider,
+};

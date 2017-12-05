@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { Flex, Overlay } from "rebass";
 import FlexEmbed from "./FlexEmbed";
-import theme from "../theme";
+import theme from "../theme-new";
 import Container from "./Container2";
 
 const transition = {
@@ -13,6 +13,7 @@ const transition = {
   type: "ease-in-out",
 };
 
+// prettier-ignore
 const Modal = styled.div`
   position: fixed;
   top: 0;
@@ -44,11 +45,11 @@ const Modal = styled.div`
 const ModalClose = styled.a`
   position: fixed;
   right: 3rem;
-  top: calc( 0.7 * 3rem);
+  top: calc(0.7 * 3rem);
   color: #fff;
   cursor: pointer;
   font-size: 5rem;
-  font-family: ${theme.fonts.displayThin};
+  font-family: ${theme.families.displayThin};
   line-height: 1;
 `;
 
@@ -67,9 +68,7 @@ class VideoModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     const videoRef = this.video;
     const videoIframe = ReactDOM.findDOMNode(videoRef);
-    const videoSrc = nextProps.isVisible
-      ? videoRef.props["data-src"]
-      : "";
+    const videoSrc = nextProps.isVisible ? videoRef.props["data-src"] : "";
 
     videoIframe.setAttribute("src", videoSrc);
   }
@@ -90,13 +89,13 @@ class VideoModal extends React.Component {
 
   render() {
     return (
-      <Modal isVisible={this.props.isVisible} >
+      <Modal isVisible={this.props.isVisible}>
         <ModalClose onClick={this.props.closeModal}>&times;</ModalClose>
         <Flex align="center" style={{ height: "100vh" }}>
           <Container maxWidth="72em" w={1}>
             <FlexEmbed ratio="9/16">
               <VideoIframe
-                ref={ref => this.video = ref}
+                ref={ref => (this.video = ref)}
                 data-src="https://www.youtube.com/embed/1QJBUBemFKI?autoplay=1"
                 frameborder="0"
                 allowtransparency="true"

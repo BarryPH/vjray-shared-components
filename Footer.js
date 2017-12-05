@@ -1,48 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
 import styled, { css } from "styled-components";
 import { Box, Flex } from "rebass";
-import { site } from "../constants";
-import theme from "../theme";
-import icons from "./iconConstants";
-import hoc from "./hoc";
 import Container from "./Container2";
-import { Divider } from "./Text";
-import Icon from "./Icon";
-import ResponsiveToggle from "./ResponsiveToggle";
+import FooterItem from "./FooterItem";
+import { Divider } from "./Texts";
+import { site } from "../constants";
+import theme from "../theme-new";
 
 // prettier-ignore
-const Root = hoc(Box).extend`
+const Root = styled(Box) `
   border-top: 1px solid ${theme.colors.text20};
-  font-family: inherit;
-
-  ${props => props.bg && css`
-    background-color: ${theme.colors[props.color]};
-  `}
 `;
 
 // prettier-ignore
-const LogoBox = styled(Box)`
-  @media (max-width: 512px) {
-    margin-top: 12px;
-    transform: translateX(-6px);
+const StyledFlex = styled(Flex) `
+  @media (max-width: 1023px) {
+    nav + nav {
+      margin-top: 2rem;
+    }
   }
 `;
 
-// as soon as you extend it, you lose the hoc()
-// so I'm assigning margins manually…
-// this is why proper Rebass is so good…
-const Nav = Flex.withComponent("nav").extend`
+// prettier-ignore
+const Nav = styled(Flex) `
   color: ${theme.colors.text40};
-  margin-top: ${theme.space[2]}px;
 
-  @media (min-width: 768px) {
-    margin-top: {theme.space[4]}px;
+  @media (max-width: 767px) {
+    :not(:first-child) {
+      margin-top: 2rem;
+    }
   }
 
   p,
-  span,
+  em,
   a {
     color: ${theme.colors.text70};
 
@@ -51,23 +42,23 @@ const Nav = Flex.withComponent("nav").extend`
     }
   }
 
-  span {
-    font-family: ${theme.fonts.textRegular};
+  em {
+    font-family: ${theme.families.textRegular};
+    font-style: normal;
   }
 `;
 
-const Column = styled(Box)`
+// prettier-ignore
+const Column = styled(Box) `
   @media (max-width: 767px) {
-    margin-top: 2rem;
-
-    :first-child {
-      margin-top: 1.5rem;
+    :not(:first-child) {
+      margin-top: 2rem;
     }
   }
 
   @media (min-width: 768px) {
     :not(:last-child) {
-      margin-right: 3rem;
+      margin-right: 2.5rem;
     }
   }
 
@@ -75,8 +66,16 @@ const Column = styled(Box)`
     display: block;
 
     &:not(:first-child) {
-      margin-top: 1rem;
+      margin-top: 0.25rem;
     }
+
+    ${props => props.tapSpace && css`
+      @media (max-width: 767px) {
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+      }
+    `};
   }
 `;
 
@@ -87,21 +86,16 @@ const Column = styled(Box)`
  */
 
 const RuledBox = styled(Box)`
-  border-top: 1px solid ${theme.colors.text10};
-  margin-top: ${theme.space[3]}px;
-  padding-top: ${theme.space[2]}px;
-
-  @media (min-width: 768px) {
-    margin-top: 36px;
-  }
+  border-top: 1px solid ${theme.colors.text20};
+  padding-top: ${theme.space[3]}px;
 `;
 
-const SecondNav = Flex.withComponent("nav").extend`
+const SecondNav = styled(Flex)`
   color: ${theme.colors.text40};
 
   @media (max-width: 512px) {
     :last-child {
-      margin-top: ${theme.space[2]}px;
+      margin-top: ${theme.space[3]}px;
     }
   }
 
@@ -114,104 +108,150 @@ const SecondNav = Flex.withComponent("nav").extend`
   }
 `;
 
-const StyledDivider = styled(Divider)`--spacing: 0.5rem;`;
-
 const Footer = props => (
-  <Root bg={props.bg}>
-    <Container maxWidth="72em" pt={[0, 2]} pb={3}>
-      <Flex direction={["column", "row"]} justify="space-between">
-        <ResponsiveToggle hideAtMobile>
-          <Flex column>
-            <LogoBox>
-              <Link href="/">
-                <a>
-                  <Icon color="text" size="80" icon={icons.logo} />
-                </a>
-              </Link>
-            </LogoBox>
+  <Root is="footer" bg={props.bg}>
+    <Container maxWidth="72em" py={5}>
+      <StyledFlex
+        direction={["column", "column", "column", "row"]}
+        justify="space-between"
+      >
+        <Nav is="nav">
+          <Flex direction={["column", "row"]}>
+            <Column>
+              <FooterItem
+                link="https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z"
+                bold
+                label="Campsie Head Office"
+              />
+              <FooterItem
+                link="https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z"
+                label="8 Anglo Road"
+              />
+              <FooterItem
+                link="https://www.google.com.au/maps/place/V+J+Ray/@-33.9113278,151.1011612,17z"
+                label="Campsie, NSW 2194"
+              />
+              <FooterItem link="tel:02 9784 7900" label="T: 02 9784 7900" />
+              <FooterItem
+                link="mailto:campsie@vjray.com.au"
+                label="E: campsie@vjray.com.au"
+              />
+            </Column>
+            <Column>
+              <FooterItem
+                link="https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z"
+                bold
+                label="Caringbah Office"
+              />
+              <FooterItem
+                link="https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z"
+                label="18 President Avenue"
+              />
+              <FooterItem
+                link="https://www.google.com.au/maps/place/V.J.+Ray/@-34.0432583,151.1198929,17z"
+                label="Caringbah, NSW 2229"
+              />
+              <FooterItem link="tel:02 9541 3300" label="T: 02 9541 3300" />
+              <FooterItem
+                link="mailto:caringbah@vjray.com.au"
+                label="E: caringbah@vjray.com.au"
+              />
+            </Column>
           </Flex>
-        </ResponsiveToggle>
-
-        <Box>
-          <Nav>
-            <Flex direction={["column", "row"]} justify="center">
-              <Column>
-                <Link href="/who-we-are">
-                  <a>
-                    <span>About Us</span>
-                  </a>
-                </Link>
-                <Link href="/">
-                  <a>Home page</a>
-                </Link>
-                <Link href="/who-we-are">
-                  <a>Who we are</a>
-                </Link>
-                <Link href="/what-we-do-for-you">
-                  <a>What we do for you</a>
-                </Link>
+        </Nav>
+        <Nav is="nav">
+          {site === "strata" ? (
+            <Flex direction={["column", "row"]} order={[-1, 2]}>
+              <Column tapSpace>
+                <FooterItem link="/who-we-are" label="About Us" bold />
+                <FooterItem link="/" label="Home page" />
+                <FooterItem link="/who-we-are" label="Who we are" />
+                <FooterItem
+                  link="/what-we-do-for-you"
+                  label="What we do for you"
+                />
               </Column>
-              <Column>
-                <Link href="/useful-info">
-                  <a>
-                    <span>Useful Info</span>
-                  </a>
-                </Link>
-                <Link href="/useful-info">
-                  <a>Strata guides</a>
-                </Link>
-                <Link href="/useful-info#blog">
-                  <a>Strata blog</a>
-                </Link>
-                <Link href="/useful-info/forms-and-fact-sheets">
-                  <a>Forms and facts</a>
-                </Link>
+              <Column tapSpace>
+                <FooterItem link="/useful-info" label="Useful Info" bold />
+                <FooterItem link="/useful-info" label="Strata guides" />
+                <FooterItem link="/useful-info#blog" label="Strata blog" />
+                <FooterItem
+                  link="/useful-info/forms-and-fact-sheets"
+                  label="Forms and facts"
+                />
               </Column>
-              <Column>
-                <Link href="/contact">
-                  <a>
-                    <span>Contact Us</span>
-                  </a>
-                </Link>
-                <Link href="/let-us-help-you">
-                  <a>Get a fast quote</a>
-                </Link>
-                <Link href="/contact?form=report#contact-forms">
-                  <a>Report an issue</a>
-                </Link>
-                <Link href="/emergency">
-                  <a>Emergencies</a>
-                </Link>
+              <Column tapSpace>
+                <FooterItem link="/contact" label="Contact Us" bold />
+                <FooterItem link="/let-us-help-you" label="Get a fast quote" />
+                <FooterItem
+                  link="/contact?form=report#contact-forms"
+                  label="Report an issue"
+                />
+                <FooterItem link="/emergency" label="Emergencies" />
               </Column>
             </Flex>
-          </Nav>
-        </Box>
-      </Flex>
+          ) : (
+            <Flex direction={["column", "row"]} order={[-1, 2]}>
+              <Column tapSpace>
+                <FooterItem link="/" bold label="Services" />
+                <FooterItem
+                  link="/strata-management"
+                  label="Strata Management"
+                />
+                <FooterItem
+                  link="/rental-property-management"
+                  label="Property Management"
+                />
+                <FooterItem link="/property-valuations" label="Valuations" />
+              </Column>
+              <Column tapSpace>
+                <FooterItem
+                  link="/forms-and-fact-sheets"
+                  bold
+                  label="Useful Info"
+                />
+                <FooterItem
+                  link="/forms-and-fact-sheets"
+                  label="Facts and forms"
+                />
+              </Column>
+              <Column tapSpace>
+                <FooterItem link="/contact" bold label="Contact us" />
+                <FooterItem
+                  link="/contact?form=report#contact-forms"
+                  label="Report a repair"
+                />
+                <FooterItem
+                  link="/contact#emergencies"
+                  label="Strata emergencies"
+                />
+              </Column>
+            </Flex>
+          )}
+        </Nav>
+      </StyledFlex>
 
-      <RuledBox>
+      <RuledBox mt={[32, 64]}>
         <Flex direction={["column", "row"]} justify="space-between">
-          <SecondNav>
+          <SecondNav is="nav">
             <span>© 2017 VJ Ray</span>
-            <StyledDivider />
-            <Link href="/terms-of-use">
-              <a>Terms</a>
-            </Link>
-            <StyledDivider />
-            <Link href="/privacy-policy">
-              <a>Privacy</a>
-            </Link>
+            <Divider />
+            <FooterItem link="/terms-of-use" label="Terms" />
+            <Divider />
+            <FooterItem link="/privacy-policy" label="Privacy" />
           </SecondNav>
-          <SecondNav mt={[0, "auto"]}>
-            <Link href="https://patternworks.com.au/">
-              <a>Site by Patternworks</a>
-            </Link>
-
+          <SecondNav is="nav">
+            <FooterItem
+              link="https://patternworks.com.au/"
+              label="Site by Patternworks"
+            />
             {site === "strata" && (
               <div>
-                <StyledDivider />
-                <Link href="https://admin.vjraystrata.com.au/keystone/signin">
-                  <a>Login</a>
-                </Link>
+                <Divider />
+                <FooterItem
+                  link="https://admin.vjraystrata.com.au/keystone/signin"
+                  label="Login"
+                />
               </div>
             )}
           </SecondNav>
@@ -223,6 +263,10 @@ const Footer = props => (
 
 Footer.propsTypes = {
   bg: PropTypes.string,
+};
+
+Footer.defaultProps = {
+  bg: "",
 };
 
 export default Footer;

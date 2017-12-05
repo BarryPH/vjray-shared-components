@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { Absolute, Flex } from "rebass";
-import theme from "../theme";
+import theme from "../theme-new";
 import { Text } from "./Texts";
 import { displayBreakPoint } from "./utils";
 
-const Wrapper = styled(Absolute) `
-  ${displayBreakPoint}
+const Wrapper = styled(Absolute)`
+  ${displayBreakPoint};
 `;
 
-const StyledFlex = styled(Flex) `
+const StyledFlex = styled(Flex)`
   a {
     cursor: pointer;
     line-height: ${theme.blockHeights.navBar};
@@ -22,6 +22,7 @@ const StyledFlex = styled(Flex) `
   }
 `;
 
+// prettier-ignore
 const LinkTextRoot = styled(Text) `
   ${props => props.isActive && css`
     border-bottom: 2px solid currentColor;
@@ -40,24 +41,19 @@ const LinkText = props => (
 );
 
 const HeaderDesktopNav = props => (
-  <Wrapper
-    break={["none", "none", "none", "block"]}
-    top
-    right
-    bottom
-    left
-  >
+  <Wrapper break={["none", "none", "none", "block"]} top right bottom left>
     <StyledFlex is="nav" justify="center">
-      {props.navItems
-        .filter(item => item.label !== "Home")
-        .map(item => (
-          <Link href={item.href}>
-            <a><LinkText isActive={props.pathname === item.href}>{item.label}</LinkText></a>
-          </Link>
-        ))
-      }
+      {props.navItems.filter(item => item.label !== "Home").map(item => (
+        <Link href={item.href}>
+          <a>
+            <LinkText isActive={props.pathname === item.href}>
+              {item.label}
+            </LinkText>
+          </a>
+        </Link>
+      ))}
     </StyledFlex>
-  </Wrapper >
+  </Wrapper>
 );
 
 HeaderDesktopNav.propTypes = {

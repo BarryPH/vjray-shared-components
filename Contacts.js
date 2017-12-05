@@ -55,9 +55,8 @@ const LocationRoot = styled(Box)`
 `;
 
 const ItemsBox = styled(Box)`
-  --Item-rule: ${theme.colors.text20};
-  border-bottom: 1px solid var(--Item-rule);
-  border-top: 1px solid var(--Item-rule);
+  border-bottom: 1px solid ${theme.colors.text20};
+  border-top: 1px solid ${theme.colors.text20};
 `;
 
 const Item = styled(Flex)`

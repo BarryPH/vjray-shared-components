@@ -28,7 +28,6 @@ const Layout = ({ children }) => (
 );
 
 Layout.propTypes = {
-  title: PropTypes.string,
   children: PropTypes.element,
 };
 
