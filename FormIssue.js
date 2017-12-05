@@ -22,7 +22,7 @@ class FormIssue extends React.Component {
 
   render() {
     return (
-      <FormContainer submit={this.submit} brand={this.props.brand}>
+      <FormContainer submit={this.submit} brand={this.props.brand} brandColor={this.props.brandColor}>
         <FormGroup>
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
           <Input placeholder="Your name*" name="name" required />
