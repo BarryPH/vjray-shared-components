@@ -7,15 +7,16 @@ import { Subheading } from "./Headings";
 import { LargeText } from "./Texts";
 import RespToggle from "./ResponsiveToggle";
 
-const StyledFlex = styled(Flex) `
+const StyledFlex = styled(Flex)`
   height: 100%;
 `;
 
+// prettier-ignore
 const StyledBox = styled(Box) `
   ${props => props.textRight && css`text-align: right;`}
 `;
 
-const StyledAbsolute = styled(Absolute) `
+const StyledAbsolute = styled(Absolute)`
   display: none;
 
   @media (min-width: 32em) {
@@ -28,17 +29,12 @@ const TestimonialSlide = props => (
     <FlexEmbed ratio="9/16">
       <img src={props.src} alt="" />
       <StyledAbsolute top bottom right left>
-        <StyledFlex
-          align="flex-end"
-          justify={props.textRight && "flex-end"}
-        >
-          <StyledBox
-            w={[1, 1, 1 / 2]}
-            p={[3, 4]}
-            textRight={props.textRight}
-          >
-            <Subheading color="white" >{props.subheading}</Subheading>
-            <LargeText color="white" right={props.textRight}>{props.text}</LargeText>
+        <StyledFlex align="flex-end" justify={props.textRight && "flex-end"}>
+          <StyledBox w={[1, 1, 1 / 2]} p={[3, 4]} textRight={props.textRight}>
+            <Subheading color="white">{props.subheading}</Subheading>
+            <LargeText color="white" right={props.textRight}>
+              {props.text}
+            </LargeText>
           </StyledBox>
         </StyledFlex>
       </StyledAbsolute>
@@ -51,8 +47,12 @@ const TestimonialSlide = props => (
         textRight={props.textRight}
         bg="brand"
       >
-        <Subheading color="white" w="1/2">{props.subheading}</Subheading>
-        <LargeText color="white" right={props.textRight}>{props.text}</LargeText>
+        <Subheading color="white" w="1/2">
+          {props.subheading}
+        </Subheading>
+        <LargeText color="white" right={props.textRight}>
+          {props.text}
+        </LargeText>
       </StyledBox>
     </RespToggle>
   </div>
