@@ -23,8 +23,10 @@ class FormContact extends React.Component {
           <FormGroupHeadline>Your details (Required)</FormGroupHeadline>
 
           {/* Formspree filters */}
-          <input type="text" name="_gotcha" style={{ display: "none" }} />
-          <input
+          <div style={{ display: "none" }}>
+            <Input type="text" name="_gotcha" value="" />
+          </div>
+          <Input
             type="hidden"
             name="_subject"
             value={
@@ -44,12 +46,8 @@ class FormContact extends React.Component {
             placeholder="Your email*"
             name="email"
             brandColor={this.brandColor}
-            validations={{
-              isEmail: true,
-            }}
-            validationErrors={{
-              isEmail: "Not a valid email",
-            }}
+            validations={{ isEmail: true }}
+            validationErrors={{ isEmail: "Not a valid email" }}
             required
           />
           <Input
