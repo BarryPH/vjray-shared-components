@@ -65,6 +65,20 @@ class FormContact extends React.Component {
             brandColor={this.brandColor}
             rows="7"
           />
+
+          {/* Formspree filters */}
+          <div style={{ display: "none" }}>
+            <Input type="text" name="_gotcha" value="" />
+          </div>
+          <Input
+            type="hidden"
+            name="_subject"
+            value={
+              site === "strata"
+                ? "Strata website contact submission"
+                : "Group website contact submission"
+            }
+          />
         </FormGroup>
       </FormContainer>
     );

@@ -65,6 +65,20 @@ class FormIssue extends React.Component {
             name="comments"
             rows="7"
           />
+
+          {/* Formspree filters */}
+          <div style={{ display: "none" }}>
+            <Input type="text" name="_gotcha" value="" />
+          </div>
+          <Input
+            type="hidden"
+            name="_subject"
+            value={
+              site === "strata"
+                ? "Strata website issue submission"
+                : "Group website issue submission"
+            }
+          />
         </FormGroup>
       </FormContainer>
     );

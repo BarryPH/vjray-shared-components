@@ -57,6 +57,16 @@ class FormLandlord extends React.Component {
             brandColor={this.brandColor}
             rows="7"
           />
+
+          {/* Formspree filters */}
+          <div style={{ display: "none" }}>
+            <Input type="text" name="_gotcha" value="" />
+          </div>
+          <Input
+            type="hidden"
+            name="_subject"
+            value="Group website landlord appraisal submission"
+          />
         </FormGroup>
       </FormContainer>
     );

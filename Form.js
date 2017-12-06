@@ -102,7 +102,7 @@ const ErrorMessage = props => (
 
 // prettier-ignore
 const StyledSelect = styled.select`
-  ${props => props.unselected && css` 
+  ${props => props.unselected && css`
     color: ${theme.colors.text40} !important;
   `};
 `;
@@ -115,6 +115,7 @@ class InputRoot extends React.Component {
           onChange={e => this.props.setValue(e.target.value)}
           placeholder={this.props.placeholder}
           brandColor={this.props.brandColor}
+          type={this.props.type}
         />
         <ErrorMessage>{this.props.getErrorMessage()}</ErrorMessage>
       </div>
