@@ -90,18 +90,16 @@ const ListItem = props => (
 
 ListItem.propTypes = {
   smallSpace: PropTypes.bool,
-  item: React.PropTypes.shape({
-    icon: PropTypes.string,
-    headline: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    link: PropTypes.string,
-    buttonUrl: PropTypes.string,
-    buttonLabel: PropTypes.string,
-  }),
+  icon: PropTypes.string,
+  headline: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  buttonUrl: PropTypes.string,
+  buttonLabel: PropTypes.string
 };
 
 ListItem.defaultProps = {
-  smallSpace: true,
+  smallSpace: true
 };
 
 export default ListItem;
