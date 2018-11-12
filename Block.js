@@ -5,12 +5,14 @@ import { Box } from "rebass";
 import BlockWrapper from "./BlockWrapper";
 import HGroup from "./HGroup";
 
-const StyledBox = styled(Box) `
+const StyledBox = styled(Box)`
   text-align: left;
 
-  ${props => props.childBoxTextCenter && css`
-    text-align: center;
-  `}
+  ${props =>
+    props.childBoxTextCenter &&
+    css`
+      text-align: center;
+    `}
 `;
 
 const Block = props => (
@@ -65,11 +67,11 @@ Block.propTypes = {
   titleIs: PropTypes.string,
   titleColor: PropTypes.string,
   titleFamily: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.object,
   textIsLast: PropTypes.bool,
   textColor: PropTypes.string,
   textFamily: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.element || PropTypes.array
 };
 
 Block.defaultProps = {
@@ -89,7 +91,7 @@ Block.defaultProps = {
   titleFamily: "displayMedium",
   textColor: "text70",
   textFamily: "textLight",
-  textIsLast: false,
+  textIsLast: false
 };
 
 export default Block;

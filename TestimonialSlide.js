@@ -41,12 +41,7 @@ const TestimonialSlide = props => (
     </FlexEmbed>
 
     <RespToggle break={["block", "none"]}>
-      <StyledBox
-        w={[1, 1, 1 / 2]}
-        p={[3, 4]}
-        textRight={props.textRight}
-        bg="brand"
-      >
+      <StyledBox w={[1, 1, 1 / 2]} p={[3, 4]} textRight={props.textRight} bg="brand">
         <Subheading color="white" w="1/2">
           {props.subheading}
         </Subheading>
@@ -62,11 +57,11 @@ TestimonialSlide.propTypes = {
   src: PropTypes.string.isRequired,
   textRight: PropTypes.bool,
   subheading: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired
 };
 
 TestimonialSlide.defaultProps = {
-  textRight: false,
+  textRight: false
 };
 
 export default TestimonialSlide;

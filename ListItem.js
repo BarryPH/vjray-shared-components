@@ -44,11 +44,7 @@ const ItemNumber = styled(Display)`
 `;
 
 const ListItem = props => (
-  <ItemRoot
-    direction={["column", "row"]}
-    mx={-3}
-    mb={props.smallSpace ? [3, 4] : [4, 5]}
-  >
+  <ItemRoot direction={["column", "row"]} mx={-3} mb={props.smallSpace ? [3, 4] : [4, 5]}>
     {props.item.icon && (
       <Box px={3}>
         <ItemIcon color="text" size="90" icon={icons[props.item.icon]} />
@@ -91,8 +87,8 @@ const ListItem = props => (
 ListItem.propTypes = {
   smallSpace: PropTypes.bool,
   icon: PropTypes.string,
-  headline: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  headline: PropTypes.string,
+  text: PropTypes.string,
   link: PropTypes.string,
   buttonUrl: PropTypes.string,
   buttonLabel: PropTypes.string
