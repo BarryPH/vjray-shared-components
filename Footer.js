@@ -197,7 +197,7 @@ const Footer = props => (
       <RuledBox mt={[32, 64]}>
         <Flex direction={["column", "row"]} justify="space-between">
           <SecondNav is="nav">
-            <span>© 2017 VJ Ray</span>
+            <span>© 2019 VJ Ray</span>
             <Divider />
             <FooterItem link="/terms-of-use" label="Terms" />
             <Divider />
@@ -219,11 +219,11 @@ const Footer = props => (
 );
 
 Footer.propsTypes = {
-  bg: PropTypes.string
+  bg: PropTypes.string,
 };
 
 Footer.defaultProps = {
-  bg: ""
+  bg: "",
 };
 
 export default Footer;
